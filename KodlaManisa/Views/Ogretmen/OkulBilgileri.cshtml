@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "OkulBilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Okul Bilgileri</h3>
+                    </div>
+
+                    <!-- Nav tabs -->
+                    <div class="card-title">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#okul1" aria-controls="okul1" role="tab" data-toggle="tab"><img src="../../Content/dist/img/o1.png" border="0"> <b>1. OKUL BİLGİLERİ</b></a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!-- Tab panel1 -->
+                        <div role="tabpanel" class="tab-pane active" id="okul1">
+                            <form method="POST" action="kodlama.asp?islem=guncelle" name="gb1">
+                                <input type="hidden" name="kurumkodu" size="31" value="904">
+                                <table border="1" width="100%" class="table table-bordered table-hover">
+                                    <tbody>
+                                        <tr class="warning"><td colspan="2"><center><b>YUNUSEMRE / Fatih Anadolu Lisesi</b></center></td></tr>
+                                        <tr class="info">
+                                            <td width="100%" height="30" colspan="2" align="center"><b>GENEL BİLGİLER</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right" height="30"> Okulda BT sınıfı var mı?</td>
+                                            <td width="40%" height="30"><input type="radio" value="1" name="a1">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a1">Hayır</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right" height="30"> Destekleme Yetiştirme Kursu açıldı mı?</td>
+                                            <td width="40%" height="30"><input type="radio" value="1" name="a2">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a2">Hayır</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right" height="30"> 7. Sınıflarda seçmeli ders var mı?</td>
+                                            <td width="40%" height="30"><input type="radio" value="1" name="a3">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a3">Hayır</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right" height="30"> 8. Sınıflarda seçmeli ders var mı?</td>
+                                            <td width="40%" height="30"><input type="radio" value="1" name="a4">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a4">Hayır</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Okuldaki BT sınıfı sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a9" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Bilgisayar Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a10" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> 5. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı (Hazırlık sınıfları hariç)</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a11" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> 6. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a12" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> 7. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a13" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> 8. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a14" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Bilişim Teknolojileri ve Yazılım Dersi Gören Toplam Öğrenci Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a15" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Okuldaki Bilişim Dersine Giren Öğretmen Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a16" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Okuldaki Bilişim Dersi Toplam Ders Saati</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a17" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> BT Sınıfının Durumu: (BT sınıfının kurulum yılı, bağış mı, kurulum şekli,bilgisayarların durumu vs.)</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a18" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> BT Sınıfında İhtiyaç Duyulan Bilgisayar Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a19" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> BT Sınıfında Kullanılmayan İhtiyaç Fazlası Bilgisayar Sayısı</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a20" size="5" value=""></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table border="1" width="100%" class="table table-bordered table-hover">
+                                    <tbody>
+                                        <tr class="info">
+                                            <td align="right" height="30" colspan="2">
+                                                <p align="center"><b>OKULDAKİ ROBOTİK SETLER</b></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Arduino Set Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a21" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Mbot Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a22" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Mbot Ranger Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a23" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Lego Seti Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a24" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Vex Seti Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a25" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> 3 Boyutlu Yazıcı Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a26" size="5" value=""></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%" align="right"> Diğer Robotik Setlerin Sayısı:</td>
+                                            <td width="40%"><div class="col-md-6 col-sm-12 col-xs-12"><input type="text" class="form-control" name="a27" size="5" value=""></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p align="center">
+                                    <br><input type="submit" value="  GÜNCELLE  " name="B2" class="btn btn-primary">
+                                </p>
+                            </form>
+                        </div>
+                        <!-- Tab panel2 -->
+                        <div role="tabpanel" class="tab-pane" id="okul2">
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="okul3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* tab color */
+    .nav-tabs > li > a {
+        background-color: #D9EDF7;
+        border-color: #337AB7;
+        color: #000000;
+        margin-left: 4px;
+        margin-top: 4px;
+    }
+
+    /* active tab color */
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        color: #fff;
+        background-color: #337AB7;
+        border: 1px solid #337AB7;
+    }
+
+    /* hover tab color */
+    .nav-tabs > li > a:hover {
+        border-color: #337AB7;
+        background-color: #D9EDF7;
+    }
+</style>

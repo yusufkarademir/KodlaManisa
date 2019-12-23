@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "Duyurular";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-dark">
+                <div class="card-header">
+                    <h3 class="card-title">DUYURULAR SAYFASI</h3>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-dark">
+                <div class="card-header">
+                    <h3 class="card-title">DUYURU İŞLEMLERİ</h3>
+                    <div style="float:right; position: relative; left: 10px; top:-8px">
+                        <div class="col-sm-12 col-md-6" style="float:right; position: relative; top: 8px">
+                            <form method="POST" action="#">
+                                <input type="hidden" name="islem" size="5" value="ekle">
+                                <input type="submit" class="btn btn-info btn-sm" value="DUYURU EKLE" name="B1">
+                            </form>
+                        </div>
+                        <div class="col-sm-12 col-md-6" style="float:right; position: relative; top: 8px">
+                            <form method="POST" action="#">
+                                <input type="hidden" name="islem" size="5" value="">
+                                <input type="submit" class="btn btn-info btn-sm"
+                                       value="DUYURULAR" name="B1">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <table border="1" width="100%" class="table table-bordered table-hover">
+                    <tbody>
+                        <tr class="active">
+                            <td width="65%"><b>DUYURULAR (Detaylar için duyuru başlığına tıklayın)</b></td>
+                            <td width="15%" align="center"><b>TARİH</b></td>
+                            <td width="20%"><b>İŞLEMLER</b></td>
+                        </tr>
+                        <tr>
+                            <td height="30">
+                                <div class="col-sm-12 col-md-12">
+                                    <a href="/Home/Duyurular/#/" class="btn btn-default">Duyuru Başlığı</a>
+                                </div>
+                            </td>
+                            <td align="center">Duyuru Tarihi</td>
+                            <td align="center">
+                                <div class="col-sm-12 col-md-4" style="float:right; position: relative; top: 8px">
+                                    <form method="POST" action="#">
+                                        <input type="hidden" name="islem" size="5" value="onay">
+                                        <input type="hidden" name="id" size="5" value="24"><input type="hidden" name="o" size="5" value="1">
+                                        <input type="submit" class="btn btn-primary btn-sm" value="Onaylı" name="B1">
+                                    </form>
+                                </div>
+                                <div class="col-sm-12 col-md-4" style="float:right; position: relative; top: 8px">
+                                    <form method="POST" action="#">
+                                        <input type="hidden" name="islem" size="5" value="duzenle">
+                                        <input type="hidden" name="id" size="5" value="24">
+                                        <input type="submit" class="btn btn-success btn-sm" value="Düzenle" name="B1">
+                                    </form>
+                                </div>
+                                <div class="col-sm-12 col-md-4" style="float:right; position: relative; top: 8px">
+                                    <form method="POST" action="#">
+                                        <input type="hidden" name="islem" size="5" value="sil">
+                                        <input type="hidden" name="id" size="5" value="24">
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Sil" name="B1">
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+<script>
+    var sec = 00;   // set the seconds
+    var min = 20;   // set the minutes
+
+    function countDown() {
+        sec--;
+        if (sec == -01) {
+            sec = 59;
+            min = min - 1;
+        } else {
+            min = min;
+        }
+        if (sec <= 9) {
+            sec = "0" + sec;
+        }
+        time = (min <= 9 ? "0" + min : min) + ":" + sec + "  ";
+        if (document.getElementById) {
+            theTime.innerHTML = time;
+        }
+        SD = window.setTimeout("countDown();", 1000);
+        if (min == '00' && sec == '00') {
+            sec = "00";
+            window.clearTimeout(SD);
+        }
+    }
+
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function () {
+                if (oldonload) {
+                    oldonload();
+                }
+                func();
+            }
+        }
+    }
+
+    addLoadEvent(function () {
+        countDown();
+    });
+</script>
+<script type="text/javascript">
+    function rtcScript() {
+        document.oncontextmenu = null;
+        document.onselectstart = null;
+        document.onmousedown = null;
+        document.onclick = null;
+        document.oncopy = null;
+        document.oncut = null;
+        var elements = document.getElementsByTagName('*');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].oncontextmenu = null;
+            elements[i].onselectstart = null;
+            elements[i].onmousedown = null;
+            elements[i].oncopy = null;
+            elements[i].oncut = null;
+        }
+
+        function preventShareThis() {
+            document.getSelection = window.getSelection = function () {
+                return { isCollapsed: true };
+            }
+        }
+
+        var scripts = document.getElementsByTagName('script');
+        for (var i = 0; i < scripts.length; i++) {
+            if (scripts[i].src.indexOf('w.sharethis.com') > -1) {
+                preventShareThis();
+            }
+        }
+        if (typeof Tynt != 'undefined') {
+            Tynt = null;
+        }
+    }
+
+    rtcScript();
+    setInterval(rtcScript, 2000);</script>
+
+
+
+
+

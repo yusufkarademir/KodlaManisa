@@ -1,0 +1,47 @@
+﻿@model KodlaManisa.Models.EntityFramework.tblOkullar
+@{
+    ViewBag.Title = "OkulGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="margin:50px">
+    <h2>Okul Güncelleme Sayfası</h2>
+</div>
+<div style="margin:50px">
+    @using (Html.BeginForm("Guncelle", "Okul", FormMethod.Post))
+    {
+        <div class="form-group">
+            @*@Html.LabelFor(m => m.OkulKodu)*@
+            <label>Kodu</label>
+            @Html.TextBoxFor(m => m.OkulKodu, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>İlçe</label>
+            @*@Html.LabelFor(m => m.OkulIlceAdi)*@
+            @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Türü</label>
+            @*@Html.LabelFor(m => m.OkulTuru)*@
+            @Html.DropDownListFor(m => m.tblOkulTuru.OkulTuruID, (List<SelectListItem>)ViewBag.okulTuru, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(m => m.OkulAdi)*@
+            <label>Adı</label>
+            @Html.TextBoxFor(m => m.OkulAdi, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(m => m.OkulAdres)*@
+            <label>Adresi</label>
+            @Html.TextBoxFor(m => m.OkulAdres, new { @class = "form-control" })
+        </div>
+
+        @Html.HiddenFor(m => m.OkulID)
+        <div style="margin-top:15px">
+            <button class="btn btn-info">Güncelle</button>
+        </div>
+    }
+</div>
+
+

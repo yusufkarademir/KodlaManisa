@@ -1,0 +1,42 @@
+﻿@using KodlaManisa.Models.EntityFramework
+@model List<tblOkullar>
+@{
+    ViewBag.Title = "Okullar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin:20px">
+    <h2>Okullar</h2>
+</div>
+
+<div style="margin:20px">
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>KODU</th>
+            <th>ILCESI</th>
+            <th>TURU</th>
+            <th>ADI</th>
+            <th>ADRESI</th>
+            <th>İŞLEMLER</th>
+
+        </tr>
+        <tbody>
+            @foreach (var okul in Model)
+            {
+            <tr>
+                <td>@okul.OkulID</td>
+                <td>@okul.OkulKodu</td>
+                <td>@okul.OkulIlceAdi</td>
+                <td>@okul.OkulTuru</td>
+                <td>@okul.OkulAdi</td>
+                <td>@okul.OkulAdres</td>
+                <td>
+                    <a href="/Okul/Sil/@okul.OkulID" class="btn btn-danger">Sil</a>
+                    <a href="/Okul/OkulGuncelle/@okul.OkulID" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Okul/OkulEkle" class="btn btn-primary">Yeni Okul Kaydı</a>
+</div>

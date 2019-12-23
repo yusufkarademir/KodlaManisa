@@ -1,0 +1,47 @@
+﻿@using KodlaManisa.Models.EntityFramework
+@model List<tblAtolyeler>
+@{
+    ViewBag.Title = "Atolyeler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h3 class="card-title">ATÖLYELER</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin:10px">
+    <table class="table table-bordered">
+        <tr>
+            <th>ATÖLYE ID</th>
+            <th>İLÇESİ</th>
+            <th>TÜTÜ</th>
+            <th>ADI</th>
+            <th>ADRESİ</th>
+            <th>İŞLEMLER</th>
+
+        </tr>
+        <tbody>
+            @foreach (var atolye in Model)
+            {
+                <tr>
+                    <td>@atolye.AtolyeID</td>
+                    <td>@atolye.AtolyeIlcesi</td>
+                    <td>@atolye.AtolyeTuru</td>
+                    <td>@atolye.AtolyeAdi</td>
+                    <td>@atolye.AtolyeAdres</td>
+                    <td>
+                        <a href="/Atolye/Sil/@atolye.AtolyeID" class="btn btn-danger">Sil</a>
+                        <a href="/Atolye/AtolyeGetir/@atolye.AtolyeID" class="btn btn-success">Güncelle</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Atolye/AtolyeEkle" class="btn btn-primary">Yeni Atölye Kaydı</a>
+</div>

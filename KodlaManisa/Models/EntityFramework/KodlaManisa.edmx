@@ -1,0 +1,2360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KodlaManisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAtolyeFotograf">
+          <Key>
+            <PropertyRef Name="FotografID" />
+          </Key>
+          <Property Name="FotografID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeID" Type="int" />
+          <Property Name="FotografLink" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblAtolyeGelenZiyaretci">
+          <Key>
+            <PropertyRef Name="ZiyaretID" />
+          </Key>
+          <Property Name="ZiyaretID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeID" Type="int" />
+          <Property Name="ZiyaretciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="ZiyaretciSayisi" Type="tinyint" />
+          <Property Name="ZiyaretTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAtolyeKurslar">
+          <Key>
+            <PropertyRef Name="KurslarID" />
+          </Key>
+          <Property Name="KurslarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeID" Type="int" />
+          <Property Name="KursYili" Type="varchar" MaxLength="10" />
+          <Property Name="KursDönemi" Type="varchar" MaxLength="5" />
+          <Property Name="KursTuru" Type="varchar" MaxLength="10" />
+          <Property Name="KursSeviyesi" Type="varchar" MaxLength="5" />
+          <Property Name="KursGrubu" Type="varchar" MaxLength="50" />
+          <Property Name="OgretmenID" Type="int" />
+          <Property Name="GrupGunu" Type="varchar" MaxLength="50" />
+          <Property Name="GrupSaati" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tblAtolyeKursOgrencileri">
+          <Key>
+            <PropertyRef Name="GrupID" />
+          </Key>
+          <Property Name="GrupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KursID" Type="int" />
+          <Property Name="OgrenciID" Type="int" />
+          <Property Name="DevamDurumu" Type="tinyint" />
+          <Property Name="OgrenciNot" Type="tinyint" />
+          <Property Name="OgretmenGorusu" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblAtolyeler">
+          <Key>
+            <PropertyRef Name="AtolyeID" />
+          </Key>
+          <Property Name="AtolyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeIlcesi" Type="int" />
+          <Property Name="AtolyeTuru" Type="int" />
+          <Property Name="AtolyeAdi" Type="varchar" MaxLength="255" />
+          <Property Name="OgretmenID" Type="int" />
+          <Property Name="AtolyeAdres" Type="varchar" MaxLength="50" />
+          <Property Name="AtolyeTel" Type="varchar" MaxLength="50" />
+          <Property Name="AtolyeCalismaSaati" Type="varchar" MaxLength="50" />
+          <Property Name="AtolyeFacebook" Type="varchar" MaxLength="50" />
+          <Property Name="AtolyeInstagram" Type="varchar" MaxLength="50" />
+          <Property Name="AtolyeTwitter" Type="varchar" MaxLength="50" />
+          <Property Name="AtolyeYoutube" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAtolyeMalzemeler">
+          <Key>
+            <PropertyRef Name="MalzemeID" />
+          </Key>
+          <Property Name="MalzemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeID" Type="int" />
+          <Property Name="MalzemeAdi" Type="varchar" MaxLength="50" />
+          <Property Name="MalzemeAdeti" Type="tinyint" />
+          <Property Name="MalzemeDurumu" Type="bit" />
+          <Property Name="MalzemeTeminSekli" Type="varchar" MaxLength="50" />
+          <Property Name="TeminTarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="tblAtolyeOduncVerme">
+          <Key>
+            <PropertyRef Name="OduncVermeID" />
+          </Key>
+          <Property Name="OduncVermeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeID" Type="int" />
+          <Property Name="MalzemeID" Type="int" />
+          <Property Name="MalzemeSayisi" Type="tinyint" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="OgretmenID" Type="int" />
+          <Property Name="VerilisTarihi" Type="datetime" />
+          <Property Name="TeslimTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAtolyeTuru">
+          <Key>
+            <PropertyRef Name="AtolyeTurID" />
+          </Key>
+          <Property Name="AtolyeTurID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeTurAdi" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblAtolyeYapilanZiyaretler">
+          <Key>
+            <PropertyRef Name="ZiyaretID" />
+          </Key>
+          <Property Name="ZiyaretID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AtolyeID" Type="int" />
+          <Property Name="ZiyaretciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="SinifID" Type="int" />
+          <Property Name="ZiyaretTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblDersler">
+          <Key>
+            <PropertyRef Name="DersID" />
+          </Key>
+          <Property Name="DersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DersKodu" Type="varchar" MaxLength="10" />
+          <Property Name="DersAdi" Type="varchar" MaxLength="50" />
+          <Property Name="DersYili" Type="varchar" MaxLength="9" />
+          <Property Name="DersDonemi" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tblIlceler">
+          <Key>
+            <PropertyRef Name="IlceID" />
+          </Key>
+          <Property Name="IlceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IlceAdi" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblIlkokulSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="Sorular" Type="varchar" MaxLength="255" />
+          <Property Name="Cevaplar" Type="smallint" />
+        </EntityType>
+        <EntityType Name="tblLiseSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="Sorular" Type="varchar" MaxLength="50" />
+          <Property Name="Cevaplar" Type="smallint" />
+        </EntityType>
+        <EntityType Name="tblOgrenciler">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciNo" Type="varchar" MaxLength="4" />
+          <Property Name="OgrenciTC" Type="char" MaxLength="11" />
+          <Property Name="OgrenciAdi" Type="varchar" MaxLength="20" />
+          <Property Name="OgrenciSoyadi" Type="varchar" MaxLength="20" />
+          <Property Name="IlceID" Type="int" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="SinifID" Type="int" />
+          <Property Name="OgenciTelefon" Type="char" MaxLength="11" />
+          <Property Name="OgrenciEposta" Type="varchar" MaxLength="50" />
+          <Property Name="OgrenciVeli" Type="varchar" MaxLength="50" />
+          <Property Name="OgrenciVeliTelefon" Type="char" MaxLength="11" />
+          <Property Name="OgrenciVeliEposta" Type="varchar" MaxLength="50" />
+          <Property Name="OgrenciOgretmenID" Type="int" />
+          <Property Name="OkulOgretmeniGorus" Type="varchar(max)" />
+          <Property Name="AtolyeOgetmeniGorus" Type="varchar(max)" />
+          <Property Name="OgrenciDurumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOgrenciOgrenimBilgileri">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="int" Nullable="false" />
+          <Property Name="DersID" Type="int" />
+          <Property Name="DersNotu" Type="tinyint" />
+          <Property Name="OgretmenDersGorusu" Type="varchar" MaxLength="255" />
+          <Property Name="DevamDurumu" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblOgretmenDYKBilgileri">
+          <Key>
+            <PropertyRef Name="DYKID" />
+          </Key>
+          <Property Name="DYKID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgretmenID" Type="int" />
+          <Property Name="OkulTuru" Type="tinyint" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="Sinifi" Type="tinyint" />
+          <Property Name="DersSaati" Type="tinyint" />
+          <Property Name="OgrenciSayisi" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblOgretmenGorevlendirmeTuru">
+          <Key>
+            <PropertyRef Name="GorevlendirmeID" />
+          </Key>
+          <Property Name="GorevlendirmeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GorevAdi" Type="varchar" MaxLength="50" />
+          <Property Name="BaslamaTarihi" Type="date" />
+          <Property Name="BitisTarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="tblOgretmenGorevYaptigiOkullar">
+          <Key>
+            <PropertyRef Name="GorevID" />
+          </Key>
+          <Property Name="GorevID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgretmenID" Type="int" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="Sinif" Type="varchar" MaxLength="50" />
+          <Property Name="DersSaati" Type="tinyint" />
+          <Property Name="OgrenciSayisi" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblOgretmenler">
+          <Key>
+            <PropertyRef Name="OgretmenID" />
+          </Key>
+          <Property Name="OgretmenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgretmenTC" Type="char" MaxLength="10" />
+          <Property Name="OgretmenAdi" Type="varchar" MaxLength="50" />
+          <Property Name="OgretmenSoyadi" Type="varchar" MaxLength="50" />
+          <Property Name="IlceID" Type="int" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="OgretmenBrans" Type="varchar" MaxLength="50" />
+          <Property Name="OgretmenMezuniyet" Type="varchar" MaxLength="50" />
+          <Property Name="GorevlendirmeID" Type="int" />
+          <Property Name="OgretmenAdres" Type="varchar" MaxLength="255" />
+          <Property Name="OgretmenEposta" Type="varchar" MaxLength="50" />
+          <Property Name="OgretmenTel" Type="char" MaxLength="11" />
+          <Property Name="OgretmenDurumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOkullar">
+          <Key>
+            <PropertyRef Name="OkulID" />
+          </Key>
+          <Property Name="OkulID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulKodu" Type="int" />
+          <Property Name="OkulAdi" Type="varchar" MaxLength="255" />
+          <Property Name="OkulIlceAdi" Type="int" />
+          <Property Name="OkulTuru" Type="tinyint" />
+          <Property Name="OkulMuduru" Type="varchar" MaxLength="50" />
+          <Property Name="BTOgretmenSayisi" Type="smallint" />
+          <Property Name="OkulAdres" Type="varchar" MaxLength="255" />
+          <Property Name="OkulEposta" Type="varchar" MaxLength="50" />
+          <Property Name="OkulTel" Type="char" MaxLength="11" />
+          <Property Name="OkulFax" Type="char" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="tblOkulMalzemeler">
+          <Key>
+            <PropertyRef Name="MalzemeID" />
+          </Key>
+          <Property Name="MalzemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="MalzemeAdi" Type="varchar" MaxLength="50" />
+          <Property Name="MalzemeAdedi" Type="int" />
+          <Property Name="MalzemeDurumu" Type="tinyint" />
+          <Property Name="MalzemeTeminSekli" Type="varchar" MaxLength="50" />
+          <Property Name="TeminTarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="tblOkulOncesiSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" Nullable="false" />
+          <Property Name="Sorular" Type="varchar" MaxLength="255" />
+          <Property Name="Cevaplar" Type="smallint" />
+        </EntityType>
+        <EntityType Name="tblOkulProjeEkibi">
+          <Key>
+            <PropertyRef Name="EkipID" />
+          </Key>
+          <Property Name="EkipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="Yonetici" Type="varchar" MaxLength="50" />
+          <Property Name="Ogretmen1" Type="varchar" MaxLength="50" />
+          <Property Name="Ogretmen2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOkulSiniflar">
+          <Key>
+            <PropertyRef Name="SinifID" />
+          </Key>
+          <Property Name="SinifID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinifAdi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOkulTeknolojiTakimi">
+          <Key>
+            <PropertyRef Name="TakimID" />
+          </Key>
+          <Property Name="TakimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="TakimAdi" Type="varchar" MaxLength="50" />
+          <Property Name="SorumluOgretmenID" Type="int" />
+          <Property Name="OgrenciSayisi" Type="tinyint" />
+          <Property Name="KatildigiYarismaAdi" Type="text" />
+        </EntityType>
+        <EntityType Name="tblOkulTuru">
+          <Key>
+            <PropertyRef Name="OkulTuruID" />
+          </Key>
+          <Property Name="OkulTuruID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulTuru" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="tblOrtaokulSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulID" Type="int" />
+          <Property Name="Sorular" Type="varchar" MaxLength="255" />
+          <Property Name="Cevaplar" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_tblAtolyeFotograf_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeFotograf" Type="Self.tblAtolyeFotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeFotograf">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeGelenZiyaretci_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeGelenZiyaretci" Type="Self.tblAtolyeGelenZiyaretci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeGelenZiyaretci">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeGelenZiyaretci_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblAtolyeGelenZiyaretci" Type="Self.tblAtolyeGelenZiyaretci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblAtolyeGelenZiyaretci">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeKurslar_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeKurslar" Type="Self.tblAtolyeKurslar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeKurslar">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar">
+          <End Role="tblAtolyeKurslar" Type="Self.tblAtolyeKurslar" Multiplicity="0..1" />
+          <End Role="tblAtolyeKursOgrencileri" Type="Self.tblAtolyeKursOgrencileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeKurslar">
+              <PropertyRef Name="KurslarID" />
+            </Principal>
+            <Dependent Role="tblAtolyeKursOgrencileri">
+              <PropertyRef Name="KursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeler_tblAtolyeTuru">
+          <End Role="tblAtolyeTuru" Type="Self.tblAtolyeTuru" Multiplicity="0..1" />
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeTuru">
+              <PropertyRef Name="AtolyeTurID" />
+            </Principal>
+            <Dependent Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeTuru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeler_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeIlcesi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeMalzemeler_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeMalzemeler" Type="Self.tblAtolyeMalzemeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeMalzemeler">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler">
+          <End Role="tblAtolyeMalzemeler" Type="Self.tblAtolyeMalzemeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeMalzemeler">
+              <PropertyRef Name="MalzemeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="MalzemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="OgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeYapilanZiyaretler_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeYapilanZiyaretler" Type="Self.tblAtolyeYapilanZiyaretler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeYapilanZiyaretler">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeYapilanZiyaretler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblAtolyeYapilanZiyaretler" Type="Self.tblAtolyeYapilanZiyaretler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblAtolyeYapilanZiyaretler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar">
+          <End Role="tblOkulSiniflar" Type="Self.tblOkulSiniflar" Multiplicity="0..1" />
+          <End Role="tblAtolyeYapilanZiyaretler" Type="Self.tblAtolyeYapilanZiyaretler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulSiniflar">
+              <PropertyRef Name="SinifID" />
+            </Principal>
+            <Dependent Role="tblAtolyeYapilanZiyaretler">
+              <PropertyRef Name="SinifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblIlkokulSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblIlkokulSorular" Type="Self.tblIlkokulSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblIlkokulSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLiseSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblLiseSorular" Type="Self.tblLiseSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblLiseSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="IlceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="OgrenciOgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblOkulSiniflar">
+          <End Role="tblOkulSiniflar" Type="Self.tblOkulSiniflar" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulSiniflar">
+              <PropertyRef Name="SinifID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="SinifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciOgrenimBilgileri_tblDersler">
+          <End Role="tblDersler" Type="Self.tblDersler" Multiplicity="0..1" />
+          <End Role="tblOgrenciOgrenimBilgileri" Type="Self.tblOgrenciOgrenimBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDersler">
+              <PropertyRef Name="DersID" />
+            </Principal>
+            <Dependent Role="tblOgrenciOgrenimBilgileri">
+              <PropertyRef Name="DersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciOgrenimBilgileri_tblOgrenciler">
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="1" />
+          <End Role="tblOgrenciOgrenimBilgileri" Type="Self.tblOgrenciOgrenimBilgileri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgrenciler">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="tblOgrenciOgrenimBilgileri">
+              <PropertyRef Name="OgrenciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenDYKBilgileri_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOgretmenDYKBilgileri" Type="Self.tblOgretmenDYKBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOgretmenDYKBilgileri">
+              <PropertyRef Name="OgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenDYKBilgileri_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOgretmenDYKBilgileri" Type="Self.tblOgretmenDYKBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOgretmenDYKBilgileri">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenDYKBilgileri_tblOkulTuru">
+          <End Role="tblOkulTuru" Type="Self.tblOkulTuru" Multiplicity="0..1" />
+          <End Role="tblOgretmenDYKBilgileri" Type="Self.tblOgretmenDYKBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulTuru">
+              <PropertyRef Name="OkulTuruID" />
+            </Principal>
+            <Dependent Role="tblOgretmenDYKBilgileri">
+              <PropertyRef Name="OkulTuru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOgretmenGorevYaptigiOkullar" Type="Self.tblOgretmenGorevYaptigiOkullar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOgretmenGorevYaptigiOkullar">
+              <PropertyRef Name="OgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenler_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblOgretmenler">
+              <PropertyRef Name="IlceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru">
+          <End Role="tblOgretmenGorevlendirmeTuru" Type="Self.tblOgretmenGorevlendirmeTuru" Multiplicity="0..1" />
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenGorevlendirmeTuru">
+              <PropertyRef Name="GorevlendirmeID" />
+            </Principal>
+            <Dependent Role="tblOgretmenler">
+              <PropertyRef Name="GorevlendirmeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOgretmenler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkullar_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblOkullar">
+              <PropertyRef Name="OkulIlceAdi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkullar_tblOkulTuru">
+          <End Role="tblOkulTuru" Type="Self.tblOkulTuru" Multiplicity="0..1" />
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulTuru">
+              <PropertyRef Name="OkulTuruID" />
+            </Principal>
+            <Dependent Role="tblOkullar">
+              <PropertyRef Name="OkulTuru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulMalzemeler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOkulMalzemeler" Type="Self.tblOkulMalzemeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulMalzemeler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulOncesiSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="1" />
+          <End Role="tblOkulOncesiSorular" Type="Self.tblOkulOncesiSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulOncesiSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulProjeEkibi_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOkulProjeEkibi" Type="Self.tblOkulProjeEkibi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulProjeEkibi">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulTeknolojiTakimi_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOkulTeknolojiTakimi" Type="Self.tblOkulTeknolojiTakimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOkulTeknolojiTakimi">
+              <PropertyRef Name="SorumluOgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulTeknolojiTakimi_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOkulTeknolojiTakimi" Type="Self.tblOkulTeknolojiTakimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulTeknolojiTakimi">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrtaokulSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOrtaokulSorular" Type="Self.tblOrtaokulSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOrtaokulSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KodlaManisaModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeFotograf" EntityType="Self.tblAtolyeFotograf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeGelenZiyaretci" EntityType="Self.tblAtolyeGelenZiyaretci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeKurslar" EntityType="Self.tblAtolyeKurslar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeKursOgrencileri" EntityType="Self.tblAtolyeKursOgrencileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeler" EntityType="Self.tblAtolyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeMalzemeler" EntityType="Self.tblAtolyeMalzemeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeOduncVerme" EntityType="Self.tblAtolyeOduncVerme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeTuru" EntityType="Self.tblAtolyeTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAtolyeYapilanZiyaretler" EntityType="Self.tblAtolyeYapilanZiyaretler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDersler" EntityType="Self.tblDersler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIlceler" EntityType="Self.tblIlceler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIlkokulSorular" EntityType="Self.tblIlkokulSorular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLiseSorular" EntityType="Self.tblLiseSorular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenciler" EntityType="Self.tblOgrenciler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenciOgrenimBilgileri" EntityType="Self.tblOgrenciOgrenimBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgretmenDYKBilgileri" EntityType="Self.tblOgretmenDYKBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgretmenGorevlendirmeTuru" EntityType="Self.tblOgretmenGorevlendirmeTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgretmenGorevYaptigiOkullar" EntityType="Self.tblOgretmenGorevYaptigiOkullar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgretmenler" EntityType="Self.tblOgretmenler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkullar" EntityType="Self.tblOkullar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkulMalzemeler" EntityType="Self.tblOkulMalzemeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkulOncesiSorular" EntityType="Self.tblOkulOncesiSorular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkulProjeEkibi" EntityType="Self.tblOkulProjeEkibi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkulSiniflar" EntityType="Self.tblOkulSiniflar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkulTeknolojiTakimi" EntityType="Self.tblOkulTeknolojiTakimi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOkulTuru" EntityType="Self.tblOkulTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrtaokulSorular" EntityType="Self.tblOrtaokulSorular" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblAtolyeFotograf_tblAtolyeler" Association="Self.FK_tblAtolyeFotograf_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+            <End Role="tblAtolyeFotograf" EntitySet="tblAtolyeFotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeGelenZiyaretci_tblAtolyeler" Association="Self.FK_tblAtolyeGelenZiyaretci_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+            <End Role="tblAtolyeGelenZiyaretci" EntitySet="tblAtolyeGelenZiyaretci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeGelenZiyaretci_tblOkullar" Association="Self.FK_tblAtolyeGelenZiyaretci_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblAtolyeGelenZiyaretci" EntitySet="tblAtolyeGelenZiyaretci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeKurslar_tblAtolyeler" Association="Self.FK_tblAtolyeKurslar_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+            <End Role="tblAtolyeKurslar" EntitySet="tblAtolyeKurslar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" Association="Self.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar">
+            <End Role="tblAtolyeKurslar" EntitySet="tblAtolyeKurslar" />
+            <End Role="tblAtolyeKursOgrencileri" EntitySet="tblAtolyeKursOgrencileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeler_tblAtolyeTuru" Association="Self.FK_tblAtolyeler_tblAtolyeTuru">
+            <End Role="tblAtolyeTuru" EntitySet="tblAtolyeTuru" />
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeler_tblIlceler" Association="Self.FK_tblAtolyeler_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlceler" />
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeMalzemeler_tblAtolyeler" Association="Self.FK_tblAtolyeMalzemeler_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+            <End Role="tblAtolyeMalzemeler" EntitySet="tblAtolyeMalzemeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblAtolyeler" Association="Self.FK_tblAtolyeOduncVerme_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVerme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler" Association="Self.FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler">
+            <End Role="tblAtolyeMalzemeler" EntitySet="tblAtolyeMalzemeler" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVerme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblOgretmenler" Association="Self.FK_tblAtolyeOduncVerme_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVerme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblOkullar" Association="Self.FK_tblAtolyeOduncVerme_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVerme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeYapilanZiyaretler_tblAtolyeler" Association="Self.FK_tblAtolyeYapilanZiyaretler_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyeler" />
+            <End Role="tblAtolyeYapilanZiyaretler" EntitySet="tblAtolyeYapilanZiyaretler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeYapilanZiyaretler_tblOkullar" Association="Self.FK_tblAtolyeYapilanZiyaretler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblAtolyeYapilanZiyaretler" EntitySet="tblAtolyeYapilanZiyaretler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar" Association="Self.FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar">
+            <End Role="tblOkulSiniflar" EntitySet="tblOkulSiniflar" />
+            <End Role="tblAtolyeYapilanZiyaretler" EntitySet="tblAtolyeYapilanZiyaretler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblIlkokulSorular_tblOkullar" Association="Self.FK_tblIlkokulSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblIlkokulSorular" EntitySet="tblIlkokulSorular" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLiseSorular_tblOkullar" Association="Self.FK_tblLiseSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblLiseSorular" EntitySet="tblLiseSorular" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblIlceler" Association="Self.FK_tblOgrenciler_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlceler" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblOgretmenler" Association="Self.FK_tblOgrenciler_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblOkullar" Association="Self.FK_tblOgrenciler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblOkulSiniflar" Association="Self.FK_tblOgrenciler_tblOkulSiniflar">
+            <End Role="tblOkulSiniflar" EntitySet="tblOkulSiniflar" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciOgrenimBilgileri_tblDersler" Association="Self.FK_tblOgrenciOgrenimBilgileri_tblDersler">
+            <End Role="tblDersler" EntitySet="tblDersler" />
+            <End Role="tblOgrenciOgrenimBilgileri" EntitySet="tblOgrenciOgrenimBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciOgrenimBilgileri_tblOgrenciler" Association="Self.FK_tblOgrenciOgrenimBilgileri_tblOgrenciler">
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
+            <End Role="tblOgrenciOgrenimBilgileri" EntitySet="tblOgrenciOgrenimBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenDYKBilgileri_tblOgretmenler" Association="Self.FK_tblOgretmenDYKBilgileri_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+            <End Role="tblOgretmenDYKBilgileri" EntitySet="tblOgretmenDYKBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenDYKBilgileri_tblOkullar" Association="Self.FK_tblOgretmenDYKBilgileri_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOgretmenDYKBilgileri" EntitySet="tblOgretmenDYKBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenDYKBilgileri_tblOkulTuru" Association="Self.FK_tblOgretmenDYKBilgileri_tblOkulTuru">
+            <End Role="tblOkulTuru" EntitySet="tblOkulTuru" />
+            <End Role="tblOgretmenDYKBilgileri" EntitySet="tblOgretmenDYKBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler" Association="Self.FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+            <End Role="tblOgretmenGorevYaptigiOkullar" EntitySet="tblOgretmenGorevYaptigiOkullar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenler_tblIlceler" Association="Self.FK_tblOgretmenler_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlceler" />
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru" Association="Self.FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru">
+            <End Role="tblOgretmenGorevlendirmeTuru" EntitySet="tblOgretmenGorevlendirmeTuru" />
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenler_tblOkullar" Association="Self.FK_tblOgretmenler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkullar_tblIlceler" Association="Self.FK_tblOkullar_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlceler" />
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkullar_tblOkulTuru" Association="Self.FK_tblOkullar_tblOkulTuru">
+            <End Role="tblOkulTuru" EntitySet="tblOkulTuru" />
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulMalzemeler_tblOkullar" Association="Self.FK_tblOkulMalzemeler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOkulMalzemeler" EntitySet="tblOkulMalzemeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulOncesiSorular_tblOkullar" Association="Self.FK_tblOkulOncesiSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOkulOncesiSorular" EntitySet="tblOkulOncesiSorular" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulProjeEkibi_tblOkullar" Association="Self.FK_tblOkulProjeEkibi_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOkulProjeEkibi" EntitySet="tblOkulProjeEkibi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulTeknolojiTakimi_tblOgretmenler" Association="Self.FK_tblOkulTeknolojiTakimi_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenler" />
+            <End Role="tblOkulTeknolojiTakimi" EntitySet="tblOkulTeknolojiTakimi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulTeknolojiTakimi_tblOkullar" Association="Self.FK_tblOkulTeknolojiTakimi_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOkulTeknolojiTakimi" EntitySet="tblOkulTeknolojiTakimi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrtaokulSorular_tblOkullar" Association="Self.FK_tblOrtaokulSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullar" />
+            <End Role="tblOrtaokulSorular" EntitySet="tblOrtaokulSorular" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KodlaManisaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAtolyeFotograf">
+          <Key>
+            <PropertyRef Name="FotografID" />
+          </Key>
+          <Property Name="FotografID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeID" Type="Int32" />
+          <Property Name="FotografLink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAtolyeler" Relationship="Self.FK_tblAtolyeFotograf_tblAtolyeler" FromRole="tblAtolyeFotograf" ToRole="tblAtolyeler" />
+        </EntityType>
+        <EntityType Name="tblAtolyeGelenZiyaretci">
+          <Key>
+            <PropertyRef Name="ZiyaretID" />
+          </Key>
+          <Property Name="ZiyaretID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeID" Type="Int32" />
+          <Property Name="ZiyaretciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="ZiyaretciSayisi" Type="Byte" />
+          <Property Name="ZiyaretTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAtolyeler" Relationship="Self.FK_tblAtolyeGelenZiyaretci_tblAtolyeler" FromRole="tblAtolyeGelenZiyaretci" ToRole="tblAtolyeler" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblAtolyeGelenZiyaretci_tblOkullar" FromRole="tblAtolyeGelenZiyaretci" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblAtolyeKurslar">
+          <Key>
+            <PropertyRef Name="KurslarID" />
+          </Key>
+          <Property Name="KurslarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeID" Type="Int32" />
+          <Property Name="KursYili" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KursDönemi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="KursTuru" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KursSeviyesi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="KursGrubu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgretmenID" Type="Int32" />
+          <Property Name="GrupGunu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GrupSaati" Type="Time" Precision="7" />
+          <NavigationProperty Name="tblAtolyeler" Relationship="Self.FK_tblAtolyeKurslar_tblAtolyeler" FromRole="tblAtolyeKurslar" ToRole="tblAtolyeler" />
+          <NavigationProperty Name="tblAtolyeKursOgrencileris" Relationship="Self.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" FromRole="tblAtolyeKurslar" ToRole="tblAtolyeKursOgrencileri" />
+        </EntityType>
+        <EntityType Name="tblAtolyeKursOgrencileri">
+          <Key>
+            <PropertyRef Name="GrupID" />
+          </Key>
+          <Property Name="GrupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KursID" Type="Int32" />
+          <Property Name="OgrenciID" Type="Int32" />
+          <Property Name="DevamDurumu" Type="Byte" />
+          <Property Name="OgrenciNot" Type="Byte" />
+          <Property Name="OgretmenGorusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAtolyeKurslar" Relationship="Self.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" FromRole="tblAtolyeKursOgrencileri" ToRole="tblAtolyeKurslar" />
+        </EntityType>
+        <EntityType Name="tblAtolyeler">
+          <Key>
+            <PropertyRef Name="AtolyeID" />
+          </Key>
+          <Property Name="AtolyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeIlcesi" Type="Int32" />
+          <Property Name="AtolyeTuru" Type="Int32" />
+          <Property Name="AtolyeAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OgretmenID" Type="Int32" />
+          <Property Name="AtolyeAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeCalismaSaati" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeFacebook" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeInstagram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeTwitter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeYoutube" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAtolyeFotografs" Relationship="Self.FK_tblAtolyeFotograf_tblAtolyeler" FromRole="tblAtolyeler" ToRole="tblAtolyeFotograf" />
+          <NavigationProperty Name="tblAtolyeGelenZiyaretcis" Relationship="Self.FK_tblAtolyeGelenZiyaretci_tblAtolyeler" FromRole="tblAtolyeler" ToRole="tblAtolyeGelenZiyaretci" />
+          <NavigationProperty Name="tblAtolyeKurslars" Relationship="Self.FK_tblAtolyeKurslar_tblAtolyeler" FromRole="tblAtolyeler" ToRole="tblAtolyeKurslar" />
+          <NavigationProperty Name="tblAtolyeTuru" Relationship="Self.FK_tblAtolyeler_tblAtolyeTuru" FromRole="tblAtolyeler" ToRole="tblAtolyeTuru" />
+          <NavigationProperty Name="tblIlceler" Relationship="Self.FK_tblAtolyeler_tblIlceler" FromRole="tblAtolyeler" ToRole="tblIlceler" />
+          <NavigationProperty Name="tblAtolyeMalzemelers" Relationship="Self.FK_tblAtolyeMalzemeler_tblAtolyeler" FromRole="tblAtolyeler" ToRole="tblAtolyeMalzemeler" />
+          <NavigationProperty Name="tblAtolyeOduncVermes" Relationship="Self.FK_tblAtolyeOduncVerme_tblAtolyeler" FromRole="tblAtolyeler" ToRole="tblAtolyeOduncVerme" />
+          <NavigationProperty Name="tblAtolyeYapilanZiyaretlers" Relationship="Self.FK_tblAtolyeYapilanZiyaretler_tblAtolyeler" FromRole="tblAtolyeler" ToRole="tblAtolyeYapilanZiyaretler" />
+        </EntityType>
+        <EntityType Name="tblAtolyeMalzemeler">
+          <Key>
+            <PropertyRef Name="MalzemeID" />
+          </Key>
+          <Property Name="MalzemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeID" Type="Int32" />
+          <Property Name="MalzemeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MalzemeAdeti" Type="Byte" />
+          <Property Name="MalzemeDurumu" Type="Boolean" />
+          <Property Name="MalzemeTeminSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TeminTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblAtolyeler" Relationship="Self.FK_tblAtolyeMalzemeler_tblAtolyeler" FromRole="tblAtolyeMalzemeler" ToRole="tblAtolyeler" />
+          <NavigationProperty Name="tblAtolyeOduncVermes" Relationship="Self.FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler" FromRole="tblAtolyeMalzemeler" ToRole="tblAtolyeOduncVerme" />
+        </EntityType>
+        <EntityType Name="tblAtolyeOduncVerme">
+          <Key>
+            <PropertyRef Name="OduncVermeID" />
+          </Key>
+          <Property Name="OduncVermeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeID" Type="Int32" />
+          <Property Name="MalzemeID" Type="Int32" />
+          <Property Name="MalzemeSayisi" Type="Byte" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="OgretmenID" Type="Int32" />
+          <Property Name="VerilisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="TeslimTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAtolyeler" Relationship="Self.FK_tblAtolyeOduncVerme_tblAtolyeler" FromRole="tblAtolyeOduncVerme" ToRole="tblAtolyeler" />
+          <NavigationProperty Name="tblAtolyeMalzemeler" Relationship="Self.FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler" FromRole="tblAtolyeOduncVerme" ToRole="tblAtolyeMalzemeler" />
+          <NavigationProperty Name="tblOgretmenler" Relationship="Self.FK_tblAtolyeOduncVerme_tblOgretmenler" FromRole="tblAtolyeOduncVerme" ToRole="tblOgretmenler" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblAtolyeOduncVerme_tblOkullar" FromRole="tblAtolyeOduncVerme" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblAtolyeTuru">
+          <Key>
+            <PropertyRef Name="AtolyeTurID" />
+          </Key>
+          <Property Name="AtolyeTurID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeTurAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAtolyelers" Relationship="Self.FK_tblAtolyeler_tblAtolyeTuru" FromRole="tblAtolyeTuru" ToRole="tblAtolyeler" />
+        </EntityType>
+        <EntityType Name="tblAtolyeYapilanZiyaretler">
+          <Key>
+            <PropertyRef Name="ZiyaretID" />
+          </Key>
+          <Property Name="ZiyaretID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AtolyeID" Type="Int32" />
+          <Property Name="ZiyaretciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="SinifID" Type="Int32" />
+          <Property Name="ZiyaretTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAtolyeler" Relationship="Self.FK_tblAtolyeYapilanZiyaretler_tblAtolyeler" FromRole="tblAtolyeYapilanZiyaretler" ToRole="tblAtolyeler" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblAtolyeYapilanZiyaretler_tblOkullar" FromRole="tblAtolyeYapilanZiyaretler" ToRole="tblOkullar" />
+          <NavigationProperty Name="tblOkulSiniflar" Relationship="Self.FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar" FromRole="tblAtolyeYapilanZiyaretler" ToRole="tblOkulSiniflar" />
+        </EntityType>
+        <EntityType Name="tblDersler">
+          <Key>
+            <PropertyRef Name="DersID" />
+          </Key>
+          <Property Name="DersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DersKodu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DersAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DersYili" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DersDonemi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOgrenciOgrenimBilgileris" Relationship="Self.FK_tblOgrenciOgrenimBilgileri_tblDersler" FromRole="tblDersler" ToRole="tblOgrenciOgrenimBilgileri" />
+        </EntityType>
+        <EntityType Name="tblIlceler">
+          <Key>
+            <PropertyRef Name="IlceID" />
+          </Key>
+          <Property Name="IlceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IlceAdi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAtolyelers" Relationship="Self.FK_tblAtolyeler_tblIlceler" FromRole="tblIlceler" ToRole="tblAtolyeler" />
+          <NavigationProperty Name="tblOgrencilers" Relationship="Self.FK_tblOgrenciler_tblIlceler" FromRole="tblIlceler" ToRole="tblOgrenciler" />
+          <NavigationProperty Name="tblOgretmenlers" Relationship="Self.FK_tblOgretmenler_tblIlceler" FromRole="tblIlceler" ToRole="tblOgretmenler" />
+          <NavigationProperty Name="tblOkullars" Relationship="Self.FK_tblOkullar_tblIlceler" FromRole="tblIlceler" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblIlkokulSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="Sorular" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cevaplar" Type="Int16" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblIlkokulSorular_tblOkullar" FromRole="tblIlkokulSorular" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblLiseSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="Sorular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cevaplar" Type="Int16" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblLiseSorular_tblOkullar" FromRole="tblLiseSorular" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblOgrenciler">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciNo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciTC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="OgrenciAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciSoyadi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IlceID" Type="Int32" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="SinifID" Type="Int32" />
+          <Property Name="OgenciTelefon" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="OgrenciEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciVeli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciVeliTelefon" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="OgrenciVeliEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciOgretmenID" Type="Int32" />
+          <Property Name="OkulOgretmeniGorus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AtolyeOgetmeniGorus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciDurumu" Type="Boolean" />
+          <NavigationProperty Name="tblIlceler" Relationship="Self.FK_tblOgrenciler_tblIlceler" FromRole="tblOgrenciler" ToRole="tblIlceler" />
+          <NavigationProperty Name="tblOgretmenler" Relationship="Self.FK_tblOgrenciler_tblOgretmenler" FromRole="tblOgrenciler" ToRole="tblOgretmenler" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOgrenciler_tblOkullar" FromRole="tblOgrenciler" ToRole="tblOkullar" />
+          <NavigationProperty Name="tblOkulSiniflar" Relationship="Self.FK_tblOgrenciler_tblOkulSiniflar" FromRole="tblOgrenciler" ToRole="tblOkulSiniflar" />
+          <NavigationProperty Name="tblOgrenciOgrenimBilgileri" Relationship="Self.FK_tblOgrenciOgrenimBilgileri_tblOgrenciler" FromRole="tblOgrenciler" ToRole="tblOgrenciOgrenimBilgileri" />
+        </EntityType>
+        <EntityType Name="tblOgrenciOgrenimBilgileri">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="Int32" Nullable="false" />
+          <Property Name="DersID" Type="Int32" />
+          <Property Name="DersNotu" Type="Byte" />
+          <Property Name="OgretmenDersGorusu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DevamDurumu" Type="Byte" />
+          <NavigationProperty Name="tblDersler" Relationship="Self.FK_tblOgrenciOgrenimBilgileri_tblDersler" FromRole="tblOgrenciOgrenimBilgileri" ToRole="tblDersler" />
+          <NavigationProperty Name="tblOgrenciler" Relationship="Self.FK_tblOgrenciOgrenimBilgileri_tblOgrenciler" FromRole="tblOgrenciOgrenimBilgileri" ToRole="tblOgrenciler" />
+        </EntityType>
+        <EntityType Name="tblOgretmenDYKBilgileri">
+          <Key>
+            <PropertyRef Name="DYKID" />
+          </Key>
+          <Property Name="DYKID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgretmenID" Type="Int32" />
+          <Property Name="OkulTuru" Type="Byte" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="Sinifi" Type="Byte" />
+          <Property Name="DersSaati" Type="Byte" />
+          <Property Name="OgrenciSayisi" Type="Byte" />
+          <NavigationProperty Name="tblOgretmenler" Relationship="Self.FK_tblOgretmenDYKBilgileri_tblOgretmenler" FromRole="tblOgretmenDYKBilgileri" ToRole="tblOgretmenler" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOgretmenDYKBilgileri_tblOkullar" FromRole="tblOgretmenDYKBilgileri" ToRole="tblOkullar" />
+          <NavigationProperty Name="tblOkulTuru" Relationship="Self.FK_tblOgretmenDYKBilgileri_tblOkulTuru" FromRole="tblOgretmenDYKBilgileri" ToRole="tblOkulTuru" />
+        </EntityType>
+        <EntityType Name="tblOgretmenGorevlendirmeTuru">
+          <Key>
+            <PropertyRef Name="GorevlendirmeID" />
+          </Key>
+          <Property Name="GorevlendirmeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GorevAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BaslamaTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblOgretmenlers" Relationship="Self.FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru" FromRole="tblOgretmenGorevlendirmeTuru" ToRole="tblOgretmenler" />
+        </EntityType>
+        <EntityType Name="tblOgretmenGorevYaptigiOkullar">
+          <Key>
+            <PropertyRef Name="GorevID" />
+          </Key>
+          <Property Name="GorevID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgretmenID" Type="Int32" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="Sinif" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DersSaati" Type="Byte" />
+          <Property Name="OgrenciSayisi" Type="Byte" />
+          <NavigationProperty Name="tblOgretmenler" Relationship="Self.FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler" FromRole="tblOgretmenGorevYaptigiOkullar" ToRole="tblOgretmenler" />
+        </EntityType>
+        <EntityType Name="tblOgretmenler">
+          <Key>
+            <PropertyRef Name="OgretmenID" />
+          </Key>
+          <Property Name="OgretmenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgretmenTC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="OgretmenAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgretmenSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IlceID" Type="Int32" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="OgretmenBrans" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgretmenMezuniyet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GorevlendirmeID" Type="Int32" />
+          <Property Name="OgretmenAdres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OgretmenEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgretmenTel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="OgretmenDurumu" Type="Boolean" />
+          <NavigationProperty Name="tblAtolyeOduncVermes" Relationship="Self.FK_tblAtolyeOduncVerme_tblOgretmenler" FromRole="tblOgretmenler" ToRole="tblAtolyeOduncVerme" />
+          <NavigationProperty Name="tblIlceler" Relationship="Self.FK_tblOgretmenler_tblIlceler" FromRole="tblOgretmenler" ToRole="tblIlceler" />
+          <NavigationProperty Name="tblOgrencilers" Relationship="Self.FK_tblOgrenciler_tblOgretmenler" FromRole="tblOgretmenler" ToRole="tblOgrenciler" />
+          <NavigationProperty Name="tblOgretmenDYKBilgileris" Relationship="Self.FK_tblOgretmenDYKBilgileri_tblOgretmenler" FromRole="tblOgretmenler" ToRole="tblOgretmenDYKBilgileri" />
+          <NavigationProperty Name="tblOgretmenGorevlendirmeTuru" Relationship="Self.FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru" FromRole="tblOgretmenler" ToRole="tblOgretmenGorevlendirmeTuru" />
+          <NavigationProperty Name="tblOgretmenGorevYaptigiOkullars" Relationship="Self.FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler" FromRole="tblOgretmenler" ToRole="tblOgretmenGorevYaptigiOkullar" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOgretmenler_tblOkullar" FromRole="tblOgretmenler" ToRole="tblOkullar" />
+          <NavigationProperty Name="tblOkulTeknolojiTakimis" Relationship="Self.FK_tblOkulTeknolojiTakimi_tblOgretmenler" FromRole="tblOgretmenler" ToRole="tblOkulTeknolojiTakimi" />
+        </EntityType>
+        <EntityType Name="tblOkullar">
+          <Key>
+            <PropertyRef Name="OkulID" />
+          </Key>
+          <Property Name="OkulID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulKodu" Type="Int32" />
+          <Property Name="OkulAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OkulIlceAdi" Type="Int32" />
+          <Property Name="OkulTuru" Type="Byte" />
+          <Property Name="OkulMuduru" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BTOgretmenSayisi" Type="Int16" />
+          <Property Name="OkulAdres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OkulEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OkulTel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="OkulFax" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblAtolyeGelenZiyaretcis" Relationship="Self.FK_tblAtolyeGelenZiyaretci_tblOkullar" FromRole="tblOkullar" ToRole="tblAtolyeGelenZiyaretci" />
+          <NavigationProperty Name="tblAtolyeOduncVermes" Relationship="Self.FK_tblAtolyeOduncVerme_tblOkullar" FromRole="tblOkullar" ToRole="tblAtolyeOduncVerme" />
+          <NavigationProperty Name="tblAtolyeYapilanZiyaretlers" Relationship="Self.FK_tblAtolyeYapilanZiyaretler_tblOkullar" FromRole="tblOkullar" ToRole="tblAtolyeYapilanZiyaretler" />
+          <NavigationProperty Name="tblIlceler" Relationship="Self.FK_tblOkullar_tblIlceler" FromRole="tblOkullar" ToRole="tblIlceler" />
+          <NavigationProperty Name="tblIlkokulSorulars" Relationship="Self.FK_tblIlkokulSorular_tblOkullar" FromRole="tblOkullar" ToRole="tblIlkokulSorular" />
+          <NavigationProperty Name="tblLiseSorulars" Relationship="Self.FK_tblLiseSorular_tblOkullar" FromRole="tblOkullar" ToRole="tblLiseSorular" />
+          <NavigationProperty Name="tblOgrencilers" Relationship="Self.FK_tblOgrenciler_tblOkullar" FromRole="tblOkullar" ToRole="tblOgrenciler" />
+          <NavigationProperty Name="tblOgretmenDYKBilgileris" Relationship="Self.FK_tblOgretmenDYKBilgileri_tblOkullar" FromRole="tblOkullar" ToRole="tblOgretmenDYKBilgileri" />
+          <NavigationProperty Name="tblOgretmenlers" Relationship="Self.FK_tblOgretmenler_tblOkullar" FromRole="tblOkullar" ToRole="tblOgretmenler" />
+          <NavigationProperty Name="tblOkulTuru" Relationship="Self.FK_tblOkullar_tblOkulTuru" FromRole="tblOkullar" ToRole="tblOkulTuru" />
+          <NavigationProperty Name="tblOkulMalzemelers" Relationship="Self.FK_tblOkulMalzemeler_tblOkullar" FromRole="tblOkullar" ToRole="tblOkulMalzemeler" />
+          <NavigationProperty Name="tblOkulOncesiSorulars" Relationship="Self.FK_tblOkulOncesiSorular_tblOkullar" FromRole="tblOkullar" ToRole="tblOkulOncesiSorular" />
+          <NavigationProperty Name="tblOkulProjeEkibis" Relationship="Self.FK_tblOkulProjeEkibi_tblOkullar" FromRole="tblOkullar" ToRole="tblOkulProjeEkibi" />
+          <NavigationProperty Name="tblOkulTeknolojiTakimis" Relationship="Self.FK_tblOkulTeknolojiTakimi_tblOkullar" FromRole="tblOkullar" ToRole="tblOkulTeknolojiTakimi" />
+          <NavigationProperty Name="tblOrtaokulSorulars" Relationship="Self.FK_tblOrtaokulSorular_tblOkullar" FromRole="tblOkullar" ToRole="tblOrtaokulSorular" />
+        </EntityType>
+        <EntityType Name="tblOkulMalzemeler">
+          <Key>
+            <PropertyRef Name="MalzemeID" />
+          </Key>
+          <Property Name="MalzemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="MalzemeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MalzemeAdedi" Type="Int32" />
+          <Property Name="MalzemeDurumu" Type="Byte" />
+          <Property Name="MalzemeTeminSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TeminTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOkulMalzemeler_tblOkullar" FromRole="tblOkulMalzemeler" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblOkulOncesiSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" Nullable="false" />
+          <Property Name="Sorular" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cevaplar" Type="Int16" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOkulOncesiSorular_tblOkullar" FromRole="tblOkulOncesiSorular" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblOkulProjeEkibi">
+          <Key>
+            <PropertyRef Name="EkipID" />
+          </Key>
+          <Property Name="EkipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="Yonetici" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ogretmen1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ogretmen2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOkulProjeEkibi_tblOkullar" FromRole="tblOkulProjeEkibi" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblOkulSiniflar">
+          <Key>
+            <PropertyRef Name="SinifID" />
+          </Key>
+          <Property Name="SinifID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinifAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAtolyeYapilanZiyaretlers" Relationship="Self.FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar" FromRole="tblOkulSiniflar" ToRole="tblAtolyeYapilanZiyaretler" />
+          <NavigationProperty Name="tblOgrencilers" Relationship="Self.FK_tblOgrenciler_tblOkulSiniflar" FromRole="tblOkulSiniflar" ToRole="tblOgrenciler" />
+        </EntityType>
+        <EntityType Name="tblOkulTeknolojiTakimi">
+          <Key>
+            <PropertyRef Name="TakimID" />
+          </Key>
+          <Property Name="TakimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="TakimAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SorumluOgretmenID" Type="Int32" />
+          <Property Name="OgrenciSayisi" Type="Byte" />
+          <Property Name="KatildigiYarismaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOgretmenler" Relationship="Self.FK_tblOkulTeknolojiTakimi_tblOgretmenler" FromRole="tblOkulTeknolojiTakimi" ToRole="tblOgretmenler" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOkulTeknolojiTakimi_tblOkullar" FromRole="tblOkulTeknolojiTakimi" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblOkulTuru">
+          <Key>
+            <PropertyRef Name="OkulTuruID" />
+          </Key>
+          <Property Name="OkulTuruID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulTuru" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOgretmenDYKBilgileris" Relationship="Self.FK_tblOgretmenDYKBilgileri_tblOkulTuru" FromRole="tblOkulTuru" ToRole="tblOgretmenDYKBilgileri" />
+          <NavigationProperty Name="tblOkullars" Relationship="Self.FK_tblOkullar_tblOkulTuru" FromRole="tblOkulTuru" ToRole="tblOkullar" />
+        </EntityType>
+        <EntityType Name="tblOrtaokulSorular">
+          <Key>
+            <PropertyRef Name="SoruID" />
+          </Key>
+          <Property Name="SoruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulID" Type="Int32" />
+          <Property Name="Sorular" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cevaplar" Type="Int16" />
+          <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOrtaokulSorular_tblOkullar" FromRole="tblOrtaokulSorular" ToRole="tblOkullar" />
+        </EntityType>
+        <Association Name="FK_tblAtolyeFotograf_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeFotograf" Type="Self.tblAtolyeFotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeFotograf">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeGelenZiyaretci_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeGelenZiyaretci" Type="Self.tblAtolyeGelenZiyaretci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeGelenZiyaretci">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeGelenZiyaretci_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblAtolyeGelenZiyaretci" Type="Self.tblAtolyeGelenZiyaretci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblAtolyeGelenZiyaretci">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeKurslar_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeKurslar" Type="Self.tblAtolyeKurslar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeKurslar">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar">
+          <End Role="tblAtolyeKurslar" Type="Self.tblAtolyeKurslar" Multiplicity="0..1" />
+          <End Role="tblAtolyeKursOgrencileri" Type="Self.tblAtolyeKursOgrencileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeKurslar">
+              <PropertyRef Name="KurslarID" />
+            </Principal>
+            <Dependent Role="tblAtolyeKursOgrencileri">
+              <PropertyRef Name="KursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeler_tblAtolyeTuru">
+          <End Role="tblAtolyeTuru" Type="Self.tblAtolyeTuru" Multiplicity="0..1" />
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeTuru">
+              <PropertyRef Name="AtolyeTurID" />
+            </Principal>
+            <Dependent Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeTuru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeler_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeIlcesi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeMalzemeler_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeMalzemeler" Type="Self.tblAtolyeMalzemeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeMalzemeler">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeYapilanZiyaretler_tblAtolyeler">
+          <End Role="tblAtolyeler" Type="Self.tblAtolyeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeYapilanZiyaretler" Type="Self.tblAtolyeYapilanZiyaretler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeler">
+              <PropertyRef Name="AtolyeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeYapilanZiyaretler">
+              <PropertyRef Name="AtolyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler">
+          <End Role="tblAtolyeMalzemeler" Type="Self.tblAtolyeMalzemeler" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAtolyeMalzemeler">
+              <PropertyRef Name="MalzemeID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="MalzemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="OgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeOduncVerme_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblAtolyeOduncVerme" Type="Self.tblAtolyeOduncVerme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblAtolyeOduncVerme">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeYapilanZiyaretler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblAtolyeYapilanZiyaretler" Type="Self.tblAtolyeYapilanZiyaretler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblAtolyeYapilanZiyaretler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar">
+          <End Role="tblOkulSiniflar" Type="Self.tblOkulSiniflar" Multiplicity="0..1" />
+          <End Role="tblAtolyeYapilanZiyaretler" Type="Self.tblAtolyeYapilanZiyaretler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulSiniflar">
+              <PropertyRef Name="SinifID" />
+            </Principal>
+            <Dependent Role="tblAtolyeYapilanZiyaretler">
+              <PropertyRef Name="SinifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciOgrenimBilgileri_tblDersler">
+          <End Role="tblDersler" Type="Self.tblDersler" Multiplicity="0..1" />
+          <End Role="tblOgrenciOgrenimBilgileri" Type="Self.tblOgrenciOgrenimBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDersler">
+              <PropertyRef Name="DersID" />
+            </Principal>
+            <Dependent Role="tblOgrenciOgrenimBilgileri">
+              <PropertyRef Name="DersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="IlceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenler_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblOgretmenler">
+              <PropertyRef Name="IlceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkullar_tblIlceler">
+          <End Role="tblIlceler" Type="Self.tblIlceler" Multiplicity="0..1" />
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIlceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="tblOkullar">
+              <PropertyRef Name="OkulIlceAdi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblIlkokulSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblIlkokulSorular" Type="Self.tblIlkokulSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblIlkokulSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLiseSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblLiseSorular" Type="Self.tblLiseSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblLiseSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="OgrenciOgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciler_tblOkulSiniflar">
+          <End Role="tblOkulSiniflar" Type="Self.tblOkulSiniflar" Multiplicity="0..1" />
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulSiniflar">
+              <PropertyRef Name="SinifID" />
+            </Principal>
+            <Dependent Role="tblOgrenciler">
+              <PropertyRef Name="SinifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgrenciOgrenimBilgileri_tblOgrenciler">
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="1" />
+          <End Role="tblOgrenciOgrenimBilgileri" Type="Self.tblOgrenciOgrenimBilgileri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgrenciler">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="tblOgrenciOgrenimBilgileri">
+              <PropertyRef Name="OgrenciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenDYKBilgileri_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOgretmenDYKBilgileri" Type="Self.tblOgretmenDYKBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOgretmenDYKBilgileri">
+              <PropertyRef Name="OgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenDYKBilgileri_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOgretmenDYKBilgileri" Type="Self.tblOgretmenDYKBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOgretmenDYKBilgileri">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenDYKBilgileri_tblOkulTuru">
+          <End Role="tblOkulTuru" Type="Self.tblOkulTuru" Multiplicity="0..1" />
+          <End Role="tblOgretmenDYKBilgileri" Type="Self.tblOgretmenDYKBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulTuru">
+              <PropertyRef Name="OkulTuruID" />
+            </Principal>
+            <Dependent Role="tblOgretmenDYKBilgileri">
+              <PropertyRef Name="OkulTuru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru">
+          <End Role="tblOgretmenGorevlendirmeTuru" Type="Self.tblOgretmenGorevlendirmeTuru" Multiplicity="0..1" />
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenGorevlendirmeTuru">
+              <PropertyRef Name="GorevlendirmeID" />
+            </Principal>
+            <Dependent Role="tblOgretmenler">
+              <PropertyRef Name="GorevlendirmeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOgretmenGorevYaptigiOkullar" Type="Self.tblOgretmenGorevYaptigiOkullar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOgretmenGorevYaptigiOkullar">
+              <PropertyRef Name="OgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOgretmenler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOgretmenler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulTeknolojiTakimi_tblOgretmenler">
+          <End Role="tblOgretmenler" Type="Self.tblOgretmenler" Multiplicity="0..1" />
+          <End Role="tblOkulTeknolojiTakimi" Type="Self.tblOkulTeknolojiTakimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgretmenler">
+              <PropertyRef Name="OgretmenID" />
+            </Principal>
+            <Dependent Role="tblOkulTeknolojiTakimi">
+              <PropertyRef Name="SorumluOgretmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkullar_tblOkulTuru">
+          <End Role="tblOkulTuru" Type="Self.tblOkulTuru" Multiplicity="0..1" />
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkulTuru">
+              <PropertyRef Name="OkulTuruID" />
+            </Principal>
+            <Dependent Role="tblOkullar">
+              <PropertyRef Name="OkulTuru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulMalzemeler_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOkulMalzemeler" Type="Self.tblOkulMalzemeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulMalzemeler">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulOncesiSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="1" />
+          <End Role="tblOkulOncesiSorular" Type="Self.tblOkulOncesiSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulOncesiSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulProjeEkibi_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOkulProjeEkibi" Type="Self.tblOkulProjeEkibi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulProjeEkibi">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOkulTeknolojiTakimi_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOkulTeknolojiTakimi" Type="Self.tblOkulTeknolojiTakimi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOkulTeknolojiTakimi">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrtaokulSorular_tblOkullar">
+          <End Role="tblOkullar" Type="Self.tblOkullar" Multiplicity="0..1" />
+          <End Role="tblOrtaokulSorular" Type="Self.tblOrtaokulSorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOkullar">
+              <PropertyRef Name="OkulID" />
+            </Principal>
+            <Dependent Role="tblOrtaokulSorular">
+              <PropertyRef Name="OkulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KodlaManisaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAtolyeFotografs" EntityType="Self.tblAtolyeFotograf" />
+          <EntitySet Name="tblAtolyeGelenZiyaretcis" EntityType="Self.tblAtolyeGelenZiyaretci" />
+          <EntitySet Name="tblAtolyeKurslars" EntityType="Self.tblAtolyeKurslar" />
+          <EntitySet Name="tblAtolyeKursOgrencileris" EntityType="Self.tblAtolyeKursOgrencileri" />
+          <EntitySet Name="tblAtolyelers" EntityType="Self.tblAtolyeler" />
+          <EntitySet Name="tblAtolyeMalzemelers" EntityType="Self.tblAtolyeMalzemeler" />
+          <EntitySet Name="tblAtolyeOduncVermes" EntityType="Self.tblAtolyeOduncVerme" />
+          <EntitySet Name="tblAtolyeTurus" EntityType="Self.tblAtolyeTuru" />
+          <EntitySet Name="tblAtolyeYapilanZiyaretlers" EntityType="Self.tblAtolyeYapilanZiyaretler" />
+          <EntitySet Name="tblDerslers" EntityType="Self.tblDersler" />
+          <EntitySet Name="tblIlcelers" EntityType="Self.tblIlceler" />
+          <EntitySet Name="tblIlkokulSorulars" EntityType="Self.tblIlkokulSorular" />
+          <EntitySet Name="tblLiseSorulars" EntityType="Self.tblLiseSorular" />
+          <EntitySet Name="tblOgrencilers" EntityType="Self.tblOgrenciler" />
+          <EntitySet Name="tblOgrenciOgrenimBilgileris" EntityType="Self.tblOgrenciOgrenimBilgileri" />
+          <EntitySet Name="tblOgretmenDYKBilgileris" EntityType="Self.tblOgretmenDYKBilgileri" />
+          <EntitySet Name="tblOgretmenGorevlendirmeTurus" EntityType="Self.tblOgretmenGorevlendirmeTuru" />
+          <EntitySet Name="tblOgretmenGorevYaptigiOkullars" EntityType="Self.tblOgretmenGorevYaptigiOkullar" />
+          <EntitySet Name="tblOgretmenlers" EntityType="Self.tblOgretmenler" />
+          <EntitySet Name="tblOkullars" EntityType="Self.tblOkullar" />
+          <EntitySet Name="tblOkulMalzemelers" EntityType="Self.tblOkulMalzemeler" />
+          <EntitySet Name="tblOkulOncesiSorulars" EntityType="Self.tblOkulOncesiSorular" />
+          <EntitySet Name="tblOkulProjeEkibis" EntityType="Self.tblOkulProjeEkibi" />
+          <EntitySet Name="tblOkulSiniflars" EntityType="Self.tblOkulSiniflar" />
+          <EntitySet Name="tblOkulTeknolojiTakimis" EntityType="Self.tblOkulTeknolojiTakimi" />
+          <EntitySet Name="tblOkulTurus" EntityType="Self.tblOkulTuru" />
+          <EntitySet Name="tblOrtaokulSorulars" EntityType="Self.tblOrtaokulSorular" />
+          <AssociationSet Name="FK_tblAtolyeFotograf_tblAtolyeler" Association="Self.FK_tblAtolyeFotograf_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+            <End Role="tblAtolyeFotograf" EntitySet="tblAtolyeFotografs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeGelenZiyaretci_tblAtolyeler" Association="Self.FK_tblAtolyeGelenZiyaretci_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+            <End Role="tblAtolyeGelenZiyaretci" EntitySet="tblAtolyeGelenZiyaretcis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeGelenZiyaretci_tblOkullar" Association="Self.FK_tblAtolyeGelenZiyaretci_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblAtolyeGelenZiyaretci" EntitySet="tblAtolyeGelenZiyaretcis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeKurslar_tblAtolyeler" Association="Self.FK_tblAtolyeKurslar_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+            <End Role="tblAtolyeKurslar" EntitySet="tblAtolyeKurslars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" Association="Self.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar">
+            <End Role="tblAtolyeKurslar" EntitySet="tblAtolyeKurslars" />
+            <End Role="tblAtolyeKursOgrencileri" EntitySet="tblAtolyeKursOgrencileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeler_tblAtolyeTuru" Association="Self.FK_tblAtolyeler_tblAtolyeTuru">
+            <End Role="tblAtolyeTuru" EntitySet="tblAtolyeTurus" />
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeler_tblIlceler" Association="Self.FK_tblAtolyeler_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlcelers" />
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeMalzemeler_tblAtolyeler" Association="Self.FK_tblAtolyeMalzemeler_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+            <End Role="tblAtolyeMalzemeler" EntitySet="tblAtolyeMalzemelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblAtolyeler" Association="Self.FK_tblAtolyeOduncVerme_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVermes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeYapilanZiyaretler_tblAtolyeler" Association="Self.FK_tblAtolyeYapilanZiyaretler_tblAtolyeler">
+            <End Role="tblAtolyeler" EntitySet="tblAtolyelers" />
+            <End Role="tblAtolyeYapilanZiyaretler" EntitySet="tblAtolyeYapilanZiyaretlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler" Association="Self.FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler">
+            <End Role="tblAtolyeMalzemeler" EntitySet="tblAtolyeMalzemelers" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVermes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblOgretmenler" Association="Self.FK_tblAtolyeOduncVerme_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVermes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeOduncVerme_tblOkullar" Association="Self.FK_tblAtolyeOduncVerme_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblAtolyeOduncVerme" EntitySet="tblAtolyeOduncVermes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeYapilanZiyaretler_tblOkullar" Association="Self.FK_tblAtolyeYapilanZiyaretler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblAtolyeYapilanZiyaretler" EntitySet="tblAtolyeYapilanZiyaretlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar" Association="Self.FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar">
+            <End Role="tblOkulSiniflar" EntitySet="tblOkulSiniflars" />
+            <End Role="tblAtolyeYapilanZiyaretler" EntitySet="tblAtolyeYapilanZiyaretlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciOgrenimBilgileri_tblDersler" Association="Self.FK_tblOgrenciOgrenimBilgileri_tblDersler">
+            <End Role="tblDersler" EntitySet="tblDerslers" />
+            <End Role="tblOgrenciOgrenimBilgileri" EntitySet="tblOgrenciOgrenimBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblIlceler" Association="Self.FK_tblOgrenciler_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlcelers" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrencilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenler_tblIlceler" Association="Self.FK_tblOgretmenler_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlcelers" />
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkullar_tblIlceler" Association="Self.FK_tblOkullar_tblIlceler">
+            <End Role="tblIlceler" EntitySet="tblIlcelers" />
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblIlkokulSorular_tblOkullar" Association="Self.FK_tblIlkokulSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblIlkokulSorular" EntitySet="tblIlkokulSorulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLiseSorular_tblOkullar" Association="Self.FK_tblLiseSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblLiseSorular" EntitySet="tblLiseSorulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblOgretmenler" Association="Self.FK_tblOgrenciler_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrencilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblOkullar" Association="Self.FK_tblOgrenciler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrencilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciler_tblOkulSiniflar" Association="Self.FK_tblOgrenciler_tblOkulSiniflar">
+            <End Role="tblOkulSiniflar" EntitySet="tblOkulSiniflars" />
+            <End Role="tblOgrenciler" EntitySet="tblOgrencilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgrenciOgrenimBilgileri_tblOgrenciler" Association="Self.FK_tblOgrenciOgrenimBilgileri_tblOgrenciler">
+            <End Role="tblOgrenciler" EntitySet="tblOgrencilers" />
+            <End Role="tblOgrenciOgrenimBilgileri" EntitySet="tblOgrenciOgrenimBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenDYKBilgileri_tblOgretmenler" Association="Self.FK_tblOgretmenDYKBilgileri_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+            <End Role="tblOgretmenDYKBilgileri" EntitySet="tblOgretmenDYKBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenDYKBilgileri_tblOkullar" Association="Self.FK_tblOgretmenDYKBilgileri_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOgretmenDYKBilgileri" EntitySet="tblOgretmenDYKBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenDYKBilgileri_tblOkulTuru" Association="Self.FK_tblOgretmenDYKBilgileri_tblOkulTuru">
+            <End Role="tblOkulTuru" EntitySet="tblOkulTurus" />
+            <End Role="tblOgretmenDYKBilgileri" EntitySet="tblOgretmenDYKBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru" Association="Self.FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru">
+            <End Role="tblOgretmenGorevlendirmeTuru" EntitySet="tblOgretmenGorevlendirmeTurus" />
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler" Association="Self.FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+            <End Role="tblOgretmenGorevYaptigiOkullar" EntitySet="tblOgretmenGorevYaptigiOkullars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOgretmenler_tblOkullar" Association="Self.FK_tblOgretmenler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulTeknolojiTakimi_tblOgretmenler" Association="Self.FK_tblOkulTeknolojiTakimi_tblOgretmenler">
+            <End Role="tblOgretmenler" EntitySet="tblOgretmenlers" />
+            <End Role="tblOkulTeknolojiTakimi" EntitySet="tblOkulTeknolojiTakimis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkullar_tblOkulTuru" Association="Self.FK_tblOkullar_tblOkulTuru">
+            <End Role="tblOkulTuru" EntitySet="tblOkulTurus" />
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulMalzemeler_tblOkullar" Association="Self.FK_tblOkulMalzemeler_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOkulMalzemeler" EntitySet="tblOkulMalzemelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulOncesiSorular_tblOkullar" Association="Self.FK_tblOkulOncesiSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOkulOncesiSorular" EntitySet="tblOkulOncesiSorulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulProjeEkibi_tblOkullar" Association="Self.FK_tblOkulProjeEkibi_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOkulProjeEkibi" EntitySet="tblOkulProjeEkibis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOkulTeknolojiTakimi_tblOkullar" Association="Self.FK_tblOkulTeknolojiTakimi_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOkulTeknolojiTakimi" EntitySet="tblOkulTeknolojiTakimis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrtaokulSorular_tblOkullar" Association="Self.FK_tblOrtaokulSorular_tblOkullar">
+            <End Role="tblOkullar" EntitySet="tblOkullars" />
+            <End Role="tblOrtaokulSorular" EntitySet="tblOrtaokulSorulars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KodlaManisaModelStoreContainer" CdmEntityContainer="KodlaManisaEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KodlaManisaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeFotografs">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeFotograf">
+              <MappingFragment StoreEntitySet="tblAtolyeFotograf">
+                <ScalarProperty Name="FotografID" ColumnName="FotografID" />
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="FotografLink" ColumnName="FotografLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeGelenZiyaretcis">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeGelenZiyaretci">
+              <MappingFragment StoreEntitySet="tblAtolyeGelenZiyaretci">
+                <ScalarProperty Name="ZiyaretID" ColumnName="ZiyaretID" />
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="ZiyaretciAdi" ColumnName="ZiyaretciAdi" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="ZiyaretciSayisi" ColumnName="ZiyaretciSayisi" />
+                <ScalarProperty Name="ZiyaretTarihi" ColumnName="ZiyaretTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeKurslars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeKurslar">
+              <MappingFragment StoreEntitySet="tblAtolyeKurslar">
+                <ScalarProperty Name="KurslarID" ColumnName="KurslarID" />
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="KursYili" ColumnName="KursYili" />
+                <ScalarProperty Name="KursDönemi" ColumnName="KursDönemi" />
+                <ScalarProperty Name="KursTuru" ColumnName="KursTuru" />
+                <ScalarProperty Name="KursSeviyesi" ColumnName="KursSeviyesi" />
+                <ScalarProperty Name="KursGrubu" ColumnName="KursGrubu" />
+                <ScalarProperty Name="OgretmenID" ColumnName="OgretmenID" />
+                <ScalarProperty Name="GrupGunu" ColumnName="GrupGunu" />
+                <ScalarProperty Name="GrupSaati" ColumnName="GrupSaati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeKursOgrencileris">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeKursOgrencileri">
+              <MappingFragment StoreEntitySet="tblAtolyeKursOgrencileri">
+                <ScalarProperty Name="GrupID" ColumnName="GrupID" />
+                <ScalarProperty Name="KursID" ColumnName="KursID" />
+                <ScalarProperty Name="OgrenciID" ColumnName="OgrenciID" />
+                <ScalarProperty Name="DevamDurumu" ColumnName="DevamDurumu" />
+                <ScalarProperty Name="OgrenciNot" ColumnName="OgrenciNot" />
+                <ScalarProperty Name="OgretmenGorusu" ColumnName="OgretmenGorusu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyelers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeler">
+              <MappingFragment StoreEntitySet="tblAtolyeler">
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="AtolyeIlcesi" ColumnName="AtolyeIlcesi" />
+                <ScalarProperty Name="AtolyeTuru" ColumnName="AtolyeTuru" />
+                <ScalarProperty Name="AtolyeAdi" ColumnName="AtolyeAdi" />
+                <ScalarProperty Name="OgretmenID" ColumnName="OgretmenID" />
+                <ScalarProperty Name="AtolyeAdres" ColumnName="AtolyeAdres" />
+                <ScalarProperty Name="AtolyeTel" ColumnName="AtolyeTel" />
+                <ScalarProperty Name="AtolyeCalismaSaati" ColumnName="AtolyeCalismaSaati" />
+                <ScalarProperty Name="AtolyeFacebook" ColumnName="AtolyeFacebook" />
+                <ScalarProperty Name="AtolyeInstagram" ColumnName="AtolyeInstagram" />
+                <ScalarProperty Name="AtolyeTwitter" ColumnName="AtolyeTwitter" />
+                <ScalarProperty Name="AtolyeYoutube" ColumnName="AtolyeYoutube" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeMalzemelers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeMalzemeler">
+              <MappingFragment StoreEntitySet="tblAtolyeMalzemeler">
+                <ScalarProperty Name="MalzemeID" ColumnName="MalzemeID" />
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="MalzemeAdi" ColumnName="MalzemeAdi" />
+                <ScalarProperty Name="MalzemeAdeti" ColumnName="MalzemeAdeti" />
+                <ScalarProperty Name="MalzemeDurumu" ColumnName="MalzemeDurumu" />
+                <ScalarProperty Name="MalzemeTeminSekli" ColumnName="MalzemeTeminSekli" />
+                <ScalarProperty Name="TeminTarihi" ColumnName="TeminTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeOduncVermes">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeOduncVerme">
+              <MappingFragment StoreEntitySet="tblAtolyeOduncVerme">
+                <ScalarProperty Name="OduncVermeID" ColumnName="OduncVermeID" />
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="MalzemeID" ColumnName="MalzemeID" />
+                <ScalarProperty Name="MalzemeSayisi" ColumnName="MalzemeSayisi" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="OgretmenID" ColumnName="OgretmenID" />
+                <ScalarProperty Name="VerilisTarihi" ColumnName="VerilisTarihi" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeTurus">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeTuru">
+              <MappingFragment StoreEntitySet="tblAtolyeTuru">
+                <ScalarProperty Name="AtolyeTurID" ColumnName="AtolyeTurID" />
+                <ScalarProperty Name="AtolyeTurAdi" ColumnName="AtolyeTurAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAtolyeYapilanZiyaretlers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblAtolyeYapilanZiyaretler">
+              <MappingFragment StoreEntitySet="tblAtolyeYapilanZiyaretler">
+                <ScalarProperty Name="ZiyaretID" ColumnName="ZiyaretID" />
+                <ScalarProperty Name="AtolyeID" ColumnName="AtolyeID" />
+                <ScalarProperty Name="ZiyaretciAdi" ColumnName="ZiyaretciAdi" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="SinifID" ColumnName="SinifID" />
+                <ScalarProperty Name="ZiyaretTarihi" ColumnName="ZiyaretTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDerslers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblDersler">
+              <MappingFragment StoreEntitySet="tblDersler">
+                <ScalarProperty Name="DersID" ColumnName="DersID" />
+                <ScalarProperty Name="DersKodu" ColumnName="DersKodu" />
+                <ScalarProperty Name="DersAdi" ColumnName="DersAdi" />
+                <ScalarProperty Name="DersYili" ColumnName="DersYili" />
+                <ScalarProperty Name="DersDonemi" ColumnName="DersDonemi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIlcelers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblIlceler">
+              <MappingFragment StoreEntitySet="tblIlceler">
+                <ScalarProperty Name="IlceID" ColumnName="IlceID" />
+                <ScalarProperty Name="IlceAdi" ColumnName="IlceAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIlkokulSorulars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblIlkokulSorular">
+              <MappingFragment StoreEntitySet="tblIlkokulSorular">
+                <ScalarProperty Name="SoruID" ColumnName="SoruID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Sorular" ColumnName="Sorular" />
+                <ScalarProperty Name="Cevaplar" ColumnName="Cevaplar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLiseSorulars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblLiseSorular">
+              <MappingFragment StoreEntitySet="tblLiseSorular">
+                <ScalarProperty Name="SoruID" ColumnName="SoruID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Sorular" ColumnName="Sorular" />
+                <ScalarProperty Name="Cevaplar" ColumnName="Cevaplar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrencilers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOgrenciler">
+              <MappingFragment StoreEntitySet="tblOgrenciler">
+                <ScalarProperty Name="OgrenciID" ColumnName="OgrenciID" />
+                <ScalarProperty Name="OgrenciNo" ColumnName="OgrenciNo" />
+                <ScalarProperty Name="OgrenciTC" ColumnName="OgrenciTC" />
+                <ScalarProperty Name="OgrenciAdi" ColumnName="OgrenciAdi" />
+                <ScalarProperty Name="OgrenciSoyadi" ColumnName="OgrenciSoyadi" />
+                <ScalarProperty Name="IlceID" ColumnName="IlceID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="SinifID" ColumnName="SinifID" />
+                <ScalarProperty Name="OgenciTelefon" ColumnName="OgenciTelefon" />
+                <ScalarProperty Name="OgrenciEposta" ColumnName="OgrenciEposta" />
+                <ScalarProperty Name="OgrenciVeli" ColumnName="OgrenciVeli" />
+                <ScalarProperty Name="OgrenciVeliTelefon" ColumnName="OgrenciVeliTelefon" />
+                <ScalarProperty Name="OgrenciVeliEposta" ColumnName="OgrenciVeliEposta" />
+                <ScalarProperty Name="OgrenciOgretmenID" ColumnName="OgrenciOgretmenID" />
+                <ScalarProperty Name="OkulOgretmeniGorus" ColumnName="OkulOgretmeniGorus" />
+                <ScalarProperty Name="AtolyeOgetmeniGorus" ColumnName="AtolyeOgetmeniGorus" />
+                <ScalarProperty Name="OgrenciDurumu" ColumnName="OgrenciDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrenciOgrenimBilgileris">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOgrenciOgrenimBilgileri">
+              <MappingFragment StoreEntitySet="tblOgrenciOgrenimBilgileri">
+                <ScalarProperty Name="OgrenciID" ColumnName="OgrenciID" />
+                <ScalarProperty Name="DersID" ColumnName="DersID" />
+                <ScalarProperty Name="DersNotu" ColumnName="DersNotu" />
+                <ScalarProperty Name="OgretmenDersGorusu" ColumnName="OgretmenDersGorusu" />
+                <ScalarProperty Name="DevamDurumu" ColumnName="DevamDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgretmenDYKBilgileris">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOgretmenDYKBilgileri">
+              <MappingFragment StoreEntitySet="tblOgretmenDYKBilgileri">
+                <ScalarProperty Name="DYKID" ColumnName="DYKID" />
+                <ScalarProperty Name="OgretmenID" ColumnName="OgretmenID" />
+                <ScalarProperty Name="OkulTuru" ColumnName="OkulTuru" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Sinifi" ColumnName="Sinifi" />
+                <ScalarProperty Name="DersSaati" ColumnName="DersSaati" />
+                <ScalarProperty Name="OgrenciSayisi" ColumnName="OgrenciSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgretmenGorevlendirmeTurus">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOgretmenGorevlendirmeTuru">
+              <MappingFragment StoreEntitySet="tblOgretmenGorevlendirmeTuru">
+                <ScalarProperty Name="GorevlendirmeID" ColumnName="GorevlendirmeID" />
+                <ScalarProperty Name="GorevAdi" ColumnName="GorevAdi" />
+                <ScalarProperty Name="BaslamaTarihi" ColumnName="BaslamaTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgretmenGorevYaptigiOkullars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOgretmenGorevYaptigiOkullar">
+              <MappingFragment StoreEntitySet="tblOgretmenGorevYaptigiOkullar">
+                <ScalarProperty Name="GorevID" ColumnName="GorevID" />
+                <ScalarProperty Name="OgretmenID" ColumnName="OgretmenID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Sinif" ColumnName="Sinif" />
+                <ScalarProperty Name="DersSaati" ColumnName="DersSaati" />
+                <ScalarProperty Name="OgrenciSayisi" ColumnName="OgrenciSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgretmenlers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOgretmenler">
+              <MappingFragment StoreEntitySet="tblOgretmenler">
+                <ScalarProperty Name="OgretmenID" ColumnName="OgretmenID" />
+                <ScalarProperty Name="OgretmenTC" ColumnName="OgretmenTC" />
+                <ScalarProperty Name="OgretmenAdi" ColumnName="OgretmenAdi" />
+                <ScalarProperty Name="OgretmenSoyadi" ColumnName="OgretmenSoyadi" />
+                <ScalarProperty Name="IlceID" ColumnName="IlceID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="OgretmenBrans" ColumnName="OgretmenBrans" />
+                <ScalarProperty Name="OgretmenMezuniyet" ColumnName="OgretmenMezuniyet" />
+                <ScalarProperty Name="GorevlendirmeID" ColumnName="GorevlendirmeID" />
+                <ScalarProperty Name="OgretmenAdres" ColumnName="OgretmenAdres" />
+                <ScalarProperty Name="OgretmenEposta" ColumnName="OgretmenEposta" />
+                <ScalarProperty Name="OgretmenTel" ColumnName="OgretmenTel" />
+                <ScalarProperty Name="OgretmenDurumu" ColumnName="OgretmenDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkullars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkullar">
+              <MappingFragment StoreEntitySet="tblOkullar">
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="OkulKodu" ColumnName="OkulKodu" />
+                <ScalarProperty Name="OkulAdi" ColumnName="OkulAdi" />
+                <ScalarProperty Name="OkulIlceAdi" ColumnName="OkulIlceAdi" />
+                <ScalarProperty Name="OkulTuru" ColumnName="OkulTuru" />
+                <ScalarProperty Name="OkulMuduru" ColumnName="OkulMuduru" />
+                <ScalarProperty Name="BTOgretmenSayisi" ColumnName="BTOgretmenSayisi" />
+                <ScalarProperty Name="OkulAdres" ColumnName="OkulAdres" />
+                <ScalarProperty Name="OkulEposta" ColumnName="OkulEposta" />
+                <ScalarProperty Name="OkulTel" ColumnName="OkulTel" />
+                <ScalarProperty Name="OkulFax" ColumnName="OkulFax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkulMalzemelers">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkulMalzemeler">
+              <MappingFragment StoreEntitySet="tblOkulMalzemeler">
+                <ScalarProperty Name="MalzemeID" ColumnName="MalzemeID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="MalzemeAdi" ColumnName="MalzemeAdi" />
+                <ScalarProperty Name="MalzemeAdedi" ColumnName="MalzemeAdedi" />
+                <ScalarProperty Name="MalzemeDurumu" ColumnName="MalzemeDurumu" />
+                <ScalarProperty Name="MalzemeTeminSekli" ColumnName="MalzemeTeminSekli" />
+                <ScalarProperty Name="TeminTarihi" ColumnName="TeminTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkulOncesiSorulars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkulOncesiSorular">
+              <MappingFragment StoreEntitySet="tblOkulOncesiSorular">
+                <ScalarProperty Name="SoruID" ColumnName="SoruID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Sorular" ColumnName="Sorular" />
+                <ScalarProperty Name="Cevaplar" ColumnName="Cevaplar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkulProjeEkibis">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkulProjeEkibi">
+              <MappingFragment StoreEntitySet="tblOkulProjeEkibi">
+                <ScalarProperty Name="EkipID" ColumnName="EkipID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Yonetici" ColumnName="Yonetici" />
+                <ScalarProperty Name="Ogretmen1" ColumnName="Ogretmen1" />
+                <ScalarProperty Name="Ogretmen2" ColumnName="Ogretmen2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkulSiniflars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkulSiniflar">
+              <MappingFragment StoreEntitySet="tblOkulSiniflar">
+                <ScalarProperty Name="SinifID" ColumnName="SinifID" />
+                <ScalarProperty Name="SinifAdi" ColumnName="SinifAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkulTeknolojiTakimis">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkulTeknolojiTakimi">
+              <MappingFragment StoreEntitySet="tblOkulTeknolojiTakimi">
+                <ScalarProperty Name="TakimID" ColumnName="TakimID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="TakimAdi" ColumnName="TakimAdi" />
+                <ScalarProperty Name="SorumluOgretmenID" ColumnName="SorumluOgretmenID" />
+                <ScalarProperty Name="OgrenciSayisi" ColumnName="OgrenciSayisi" />
+                <ScalarProperty Name="KatildigiYarismaAdi" ColumnName="KatildigiYarismaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOkulTurus">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOkulTuru">
+              <MappingFragment StoreEntitySet="tblOkulTuru">
+                <ScalarProperty Name="OkulTuruID" ColumnName="OkulTuruID" />
+                <ScalarProperty Name="OkulTuru" ColumnName="OkulTuru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrtaokulSorulars">
+            <EntityTypeMapping TypeName="KodlaManisaModel.tblOrtaokulSorular">
+              <MappingFragment StoreEntitySet="tblOrtaokulSorular">
+                <ScalarProperty Name="SoruID" ColumnName="SoruID" />
+                <ScalarProperty Name="OkulID" ColumnName="OkulID" />
+                <ScalarProperty Name="Sorular" ColumnName="Sorular" />
+                <ScalarProperty Name="Cevaplar" ColumnName="Cevaplar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "OgrenciEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ogrenci Ekle Sayfası</h2>
+
+<form method="post" class="form-group">
+    <div class="accent-blue" style="margin:50px">
+        <div>
+            <label>Öğrenci Adı</label>
+            <input type="text" class="form-control" name="OGRENCIAD" />
+        </div>
+        <div>
+            <label>Öğrenci Soyad</label>
+            <input type="text" class="form-control" name="OGRENCISOYAD" />
+        </div>
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="btn1">Öğrenci Ekle</button>
+        </div>
+
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alet('Öğrenci Ekleme İşlemi Yapıldı...!');
+        });
+    </script>
+
+</form>

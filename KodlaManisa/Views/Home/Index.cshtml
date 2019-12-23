@@ -1,0 +1,415 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Ana Sayfa -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <!-- ./İlçe -->
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>17</h3>
+                        <h4>İlçe</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pin"></i>
+                    </div>
+                    <a href="/Atolye/Atolyeler/" class="small-box-footer">Daha fazla bilgi <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./Kodlama Atölyesi -->
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>30</h3>
+                        <h4>Kodlama Atölyesi</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-code-working"></i>
+                    </div>
+                    <a href="/Atolye/Atolyeler/" class="small-box-footer">Daha fazla bilgi <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./Öğretmen -->
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>300 </h3>
+                        <h4>Öğretmen</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="/Ogretmen/Ogretmenler/" class="small-box-footer">Daha fazla bilgi <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./Öğrenci -->
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>85000</h3>
+                        <h4>Öğrenci</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="/Ogrenci/Ogrenciler/" class="small-box-footer">Daha fazla bilgi <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-7 connectedSortable">
+                <!-- Yapılacaklar Listesi -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ion ion-clipboard mr-1"></i>
+                            Yapılacaklar Listesi
+                        </h3>
+                        <div class="card-tools">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <ul class="todo-list">
+                            <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo2" id="todoCheck2">
+                                    <label for="todoCheck2"></label>
+                                </div>
+                                <span class="text">Responsive hale getirilecek</span>
+                                <small class="badge badge-info"><i class="far fa-clock"></i> 4 saat</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo3" id="todoCheck3">
+                                    <label for="todoCheck3"></label>
+                                </div>
+                                <span class="text">Kullanıcı Yetkilendirmeleri yapılacak</span>
+                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 gün</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo4" id="todoCheck4">
+                                    <label for="todoCheck4"></label>
+                                </div>
+                                <span class="text">Koordinatör Menüsü zenginleştirilecek</span>
+                                <small class="badge badge-success"><i class="far fa-clock"></i> 3 gün</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo5" id="todoCheck5">
+                                    <label for="todoCheck5"></label>
+                                </div>
+                                <span class="text">Bildirimler ve mesaj bölümleri hazırlanacak</span>
+                                <small class="badge badge-primary"><i class="far fa-clock"></i> 1 hafta</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo6" id="todoCheck6">
+                                    <label for="todoCheck6"></label>
+                                </div>
+                                <span class="text">Admin Paneli hazırlanacak</span>
+                                <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 ay</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-default">
+                            <i class="fas fa-plus"></i> Madde
+                            Ekle
+                        </button>
+                    </div>
+                </div>
+                <div class="card card-primary">
+
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span class="nav-icon fas fa-bookmark"></span> Hızlı İşlemler
+                        </h3>
+                        <div class="card-tools">
+
+                            <button type="button"
+                                    class="btn btn-primary btn-sm"
+                                    data-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- Hızlı Erişimler -->
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6">
+                                <a href="/Atolye/Atolyeler/" class="btn btn-danger btn-lg" role="button">
+                                    <span class="nav-icon fas fa-list-alt"></span> <br />Atölyeler
+                                </a>
+                                <a href="/Home/Duyurular/" class="btn btn-warning btn-lg" role="button">
+                                    <span class="nav-icon fas fa-bullhorn"></span> <br />Duyurular
+                                </a>
+                                <a href="/Home/Raporlar" class="btn btn-info btn-lg" role="button">
+                                    <span class="nav-icon fas fa-signal"></span> <br />Raporlar
+                                </a>
+                                <a href="#" class="btn btn-primary btn-lg" role="button">
+                                    <span class="nav-icon fas fa-comment"></span> <br />Mesajlar
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <a href="#" class="btn btn-success btn-lg" role="button">
+                                    <span class="nav-icon fas fa-user"></span> <br />Profilim
+                                </a>
+                                <a href="/Home/Formlar/" class="btn btn-info btn-lg" role="button">
+                                    <span class="nav-icon fas fa-file"></span> <br />Formlar
+                                </a>
+                                <a href="#" class="btn btn-primary btn-lg" role="button">
+                                    <span class="nav-icon fas fa-calendar-alt"></span> <br />Etkinlikler
+                                </a>
+                                <a href="#" class="btn btn-primary btn-lg" role="button">
+                                    <span class="nav-icon fas fa-tag"></span> <br />Ayarlar
+                                </a>
+                            </div>
+                        </div>
+                        <a href="http://www.kodlamanisa.gov.tr/" class="btn btn-success btn-lg btn-block"
+                           role="button"><span class="nav-icon fas fa-globe"></span> Kodla(Ma)nisa Websitesi</a>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <section class="col-lg-5 connectedSortable">
+
+                <!-- Map card -->
+                <div class="card bg-gradient-primary">
+                    <div class="card-header no-border">
+                        <h3 class="card-title">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            İLÇELERİMİZ
+                        </h3>
+                        <!-- card tools -->
+                        <div class="card-tools">
+
+                            <button type="button"
+                                    class="btn btn-primary btn-sm"
+                                    data-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.card-tools -->
+                    </div>
+                    <div class="card-body">
+                        <style>
+                            .harita svg#manisa g[data-countyid]:hover polygon {
+                                fill: #9fb4b7;
+                            }
+                            .harita svg#manisa g[data-countyid]:hover path {
+                                fill: #9fb4b7;
+                            }
+                            .harita {
+                                width: 80%;
+                                margin: 5% auto;
+                            }
+                        </style>
+
+                        <div class="harita">
+                            <div class="svg-container">
+                                <svg id="manisa" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet"
+                                     viewBox="0 0 502 460">
+                                    <g id="Demirci" transform="translate(330.834606, 106.055556)"
+                                       data-countyid="1522">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="90.0256666 27.9444444 80.0289855 0.944444444 36.0435889 4.94444444 0.0555371169 98.9444444 13.0512225 120.944444 11.0518863 131.944444 23.0479035 125.944444 25.0472397 128.944444 8.05288196 146.944444 9.05255006 151.944444 26.0469078 148.944444 25.0472397 151.944444 41.0419294 148.944444 63.0346277 155.944444 71.0319726 113.944444 117.016705 89.9444444 155.004093 90.9444444 157.00343 81.9444444 140.009072 70.9444444 145.007412 56.9444444 116.017037 25.9444444"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Selendi" transform="translate(393.424936, 195.500000)"
+                                       data-countyid="1531" class="">
+                                        <a href="">
+                                            <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                     points="92.4137626 1.5 54.4263746 0.5 8.44164177 24.5 0.444296936 66.5 28.4350039 71.5 49.4280341 79.5 87.4154221 67.5 108.408452 45.5 108.408452 39.5 103.410112 22.5"
+                                                     style="stroke: rgb(19, 24, 62);"></polygon>
+                                        </a>
+                                    </g>
+                                    <g id="Kula" transform="translate(333.389313, 254.277778)" data-countyid="1527"
+                                       class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="109.463657 20.7222222 86.4712911 112.722222 57.480916 92.7222222 48.4839031 100.722222 0.499834052 79.7222222 10.4965151 68.7222222 6.49784268 50.7222222 7.49751079 30.7222222 1.49950216 20.7222222 10.4965151 8.72222222 22.4925324 3.72222222 38.487222 0.722222222 60.4799203 7.72222222 88.4706273 12.7222222"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Salihli" transform="translate(196.712468, 238.944444)"
+                                       data-countyid="1528">
+                                        <path d="M147.17336,24.0555556 L135.177343,21.0555556 L132.178338,29.0555556 L109.185972,47.0555556 L107.186636,42.0555556 L114.184312,37.0555556 L99.1892909,27.0555556 L94.1909503,3.05555556 L59.2025667,0.0555555556 L36.2102002,26.0555556 L46.2068813,32.0555556 L39.2092046,45.0555556 L28.2128554,41.0555556 L21.2151787,42.0555556 L15.21717,35.0555556 L11.2184976,34.0555556 L9.21916141,47.0555556 C9.21916141,47.0555556 18.2496181,65.0555556 18.2161744,65.0555556 C18.2496181,65.0555556 -0.739150118,101.055556 0.222148468,101.055556 C1.25966758,101.055556 41.2085408,109.055556 41.2085408,109.055556 L49.2058856,128.055556 L58.2028986,137.055556 L73.1979201,135.055556 L103.187963,93.0555556 L126.18033,85.0555556 L143.174687,66.0555556 L144.174356,46.0555556 L138.176347,36.0555556 L147.17336,24.0555556 Z"
+                                              stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                              style="stroke: rgb(19, 24, 62);"></path>
+                                    </g>
+                                    <g id="Golmarmara" transform="translate(180.106870, 223.611111)"
+                                       data-countyid="1523">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="27.8240956 49.3888889 8.83040159 38.3888889 0.833056754 25.3888889 8.83040159 11.3888889 7.83073349 0.388888889 33.8221042 0.388888889 60.813143 8.38888889 75.8081646 15.3888889 52.8157982 41.3888889 42.8191172 40.3888889 37.8207766 45.3888889 32.8224361 47.3888889 31.822768 50.3888889"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Koprubasi" transform="translate(287.404580, 201.888889)"
+                                       data-countyid="1526">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="54.4819117 36.1111111 47.484235 37.1111111 39.4868901 56.1111111 34.4885496 58.1111111 31.4895453 69.1111111 23.4922005 74.1111111 8.49717889 64.1111111 3.49883837 40.1111111 0.499834052 19.1111111 25.4915367 0.111111111 43.4855626 3.11111111 56.4812479 25.1111111"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Gordes" transform="translate(240.142494, 110.888889)"
+                                       data-countyid="1524" class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="126.735701 0.11111111 85.7493086 4.11111111 71.7539551 15.1111111 38.7649076 18.1111111 30.7675628 32.1111111 28.7682266 74.1111111 0.777519637 99.111111 0.777519637 121.111111 15.7725412 128.111111 50.7609249 131.111111 47.7619206 110.111111 72.7536232 91.1111111 90.7476491 94.1111111"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Akhisar" transform="translate(97.078880, 71.555556)"
+                                       data-countyid="1520">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="181.828521 57.4444444 168.832835 34.4444444 141.841797 14.4444444 135.843788 0.444444444 109.852417 26.4444444 109.852417 39.4444444 65.8670207 61.4444444 37.8763138 51.4444444 7.88627061 63.4444444 0.888593871 70.4444444 5.8869344 99.4444444 49.872331 108.444444 61.8683483 138.444444 90.8587233 152.444444 116.850094 152.444444 143.841133 160.444444 143.841133 138.444444 171.83184 113.444444 173.831176 71.4444444"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Kirkagac" transform="translate(134.122137, 25.555556)"
+                                       data-countyid="1525" class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="98.800531 46.4444444 88.80385 27.4444444 88.80385 4.44444444 82.8058414 0.444444444 61.8128112 10.4444444 48.8171258 9.44444444 47.8174577 51.4444444 12.829074 62.4444444 0.833056754 97.4444444 28.8237637 107.444444 72.8091603 85.4444444 72.8091603 72.4444444"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Soma" transform="translate(85.582697, 0.000000)" data-countyid="1532">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="97.356566 35 85.3605487 25 56.3701737 25 24.3807943 4 9.38577276 0 0.388759819 15 15.3837814 48 14.3841133 83 21.38179 115 19.3824538 135 49.372497 123 61.3685142 88 96.3568979 77"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Saruhanli" transform="translate(64.867684, 141.833333)"
+                                       data-countyid="1530" class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="123.069919 82.1666667 94.0795442 68.1666667 82.0835269 38.1666667 38.0981303 29.1666667 33.0997898 0.166666667 0.11074234 18.1666667 5.10908286 36.1666667 26.1021131 61.1666667 16.105432 75.1666667 47.0951433 101.166667 69.0878416 131.166667 90.0808718 124.166667 103.076557 125.166667 124.069587 120.166667 116.072243 107.166667 124.069587 93.1666667"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Yunusemre" transform="translate(0.000000, 159.722222)"
+                                       data-countyid="7710150" class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="64.9784268 0.277777778 21.9926983 1.27777778 24.9917026 14.2777778 10.9963492 8.27777778 0 50.2777778 21.9926983 74.2777778 31.9893794 120.277778 53.9820777 126.277778 68.9770992 129.277778 73.9754398 80.2777778 71.9761036 66.2777778 80.9731165 57.2777778 90.9697975 43.2777778 69.9767673 18.2777778"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Sehzadeler" transform="translate(68.977099, 216.944444)"
+                                       data-countyid="7710132" class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="11.9960173 0.05555556 2.99900431 9.0555556 4.99834052 23.0555556 0 72.0555556 37.987388 99.055556 50.9830733 79.0555556 64.9784268 56.0555556 42.9857285 26.0555556"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Ahmetli" transform="translate(166.055980, 261.944444)"
+                                       data-countyid="1519">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="30.878637 78.0555556 48.8726629 42.0555556 39.87565 24.0555556 41.8749862 11.0555556 22.8812922 0.0555555556 1.88826198 5.05555556 0.888593871 22.0555556 10.8852749 44.0555556 5.8869344 70.0555556 17.8829517 89.0555556 20.881956 80.0555556"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Turgutlu" transform="translate(106.020356, 265.777778)"
+                                       data-countyid="1533">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="77.9185751 85.2222222 76.918907 104.222222 68.9215621 112.222222 56.9255449 105.222222 39.9311871 74.2222222 0.944130988 50.2222222 27.9351698 7.22222222 48.9282 0.222222222 61.9238854 1.22222222 60.9242173 17.2222222 70.9208983 40.2222222 65.9225578 66.2222222"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Alasehir" transform="translate(269.521628, 304.111111)"
+                                       data-countyid="1521">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="150.338976 62.8888889 149.339307 70.8888889 105.353911 96.8888889 102.354907 105.888889 115.350592 124.888889 98.3562341 131.888889 84.3608806 148.888889 63.3678504 146.888889 69.3658591 108.888889 23.3811262 70.8888889 0.388759819 69.8888889 30.378803 27.8888889 53.3711694 19.8888889 70.3655272 0.888888889 74.3641996 18.8888889 64.3675185 29.8888889 112.351588 50.8888889 121.348601 42.8888889"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    <g id="Sarigol" transform="translate(353.826972, 374.388889)"
+                                       data-countyid="1529" class="">
+                                        <polygon stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"
+                                                 points="65.0339639 0.611111111 21.0485673 26.6111111 18.049563 35.6111111 31.0452484 54.6111111 14.0508906 61.6111111 0.0555371169 78.6111111 9.05255006 81.6111111 24.0475716 85.6111111 36.0435889 83.6111111 54.0376148 56.6111111 87.0266622 38.6111111 84.0276579 21.6111111"
+                                                 style="stroke: rgb(19, 24, 62);"></polygon>
+                                    </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body-->
+                </div>
+                <!-- /.card -->
+            </section>
+            <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+
+<style>
+    body {
+        padding-top: 20px;
+    }
+
+    .card-body .btn:not(.btn-block) {
+        width: 120px;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

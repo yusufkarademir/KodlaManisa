@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="474e8016a85c4545a227115ec17014fd" Name="Diagram1" ShowGrid="true">
+        <EntityTypeShape EntityType="KodlaManisaModel.sysdiagram" Width="1.5" PointX="1" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeFotograf" Width="1.5" PointX="8.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeGelenZiyaretci" Width="1.5" PointX="8.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeKurslar" Width="1.5" PointX="8.25" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeKursOgrencileri" Width="1.5" PointX="10.5" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeler" Width="1.5" PointX="6" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeMalzemeler" Width="1.5" PointX="8.25" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeOduncVerme" Width="1.5" PointX="10.5" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeTuru" Width="1.5" PointX="3.75" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblAtolyeYapilanZiyaretler" Width="1.5" PointX="11.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblDersler" Width="1.5" PointX="11.25" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblIlceler" Width="1.5" PointX="0.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblIlkokulSorular" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblLiseSorular" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOgrenciler" Width="1.5" PointX="8.25" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOgrenciOgrenimBilgileri" Width="1.5" PointX="13.5" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOgretmenDYKBilgileri" Width="1.5" PointX="8.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOgretmenGorevlendirmeTuru" Width="1.5" PointX="0.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOgretmenGorevYaptigiOkullar" Width="1.5" PointX="5.25" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOgretmenler" Width="1.5" PointX="3" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkullar" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkulMalzemeler" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkulOncesiSorular" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkulProjeEkibi" Width="1.5" PointX="5.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkulSiniflar" Width="1.5" PointX="9" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkulTeknolojiTakimi" Width="1.5" PointX="11.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOkulTuru" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KodlaManisaModel.tblOrtaokulSorular" Width="1.5" PointX="5.25" PointY="34.5" IsExpanded="true" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeFotograf_tblAtolyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeGelenZiyaretci_tblAtolyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeGelenZiyaretci_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeKurslar_tblAtolyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeler_tblAtolyeTuru" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeler_tblIlceler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeMalzemeler_tblAtolyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeOduncVerme_tblAtolyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeYapilanZiyaretler_tblAtolyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeOduncVerme_tblAtolyeMalzemeler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeOduncVerme_tblOgretmenler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeOduncVerme_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeYapilanZiyaretler_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblAtolyeYapilanZiyaretler_tblOkulSiniflar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgrenciOgrenimBilgileri_tblDersler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgrenciler_tblIlceler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenler_tblIlceler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkullar_tblIlceler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblIlkokulSorular_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblLiseSorular_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgrenciler_tblOgretmenler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgrenciler_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgrenciler_tblOkulSiniflar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgrenciOgrenimBilgileri_tblOgrenciler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenDYKBilgileri_tblOgretmenler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenDYKBilgileri_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenDYKBilgileri_tblOkulTuru" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenler_tblOgretmenGorevlendirmeTuru" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenGorevYaptigiOkullar_tblOgretmenler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOgretmenler_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkulTeknolojiTakimi_tblOgretmenler" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkullar_tblOkulTuru" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkulMalzemeler_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkulOncesiSorular_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkulProjeEkibi_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOkulTeknolojiTakimi_tblOkullar" ManuallyRouted="false" />
+        <AssociationConnector Association="KodlaManisaModel.FK_tblOrtaokulSorular_tblOkullar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

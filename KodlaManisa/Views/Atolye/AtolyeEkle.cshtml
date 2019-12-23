@@ -1,0 +1,45 @@
+﻿@model KodlaManisa.Models.EntityFramework.tblAtolyeler
+
+@{
+    ViewBag.Title = "AtolyeEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-dark">
+                <div class="card-header">
+                    <h3 class="card-title">YENİ ATÖLYE</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<form method="post" class="form-group">
+    <div class="accent-blue" style="margin:10px">
+        <div>
+            <label>Atölye İlçesi</label>
+            @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:2px">
+            <label>Atölye Türü</label>
+            @Html.DropDownListFor(m => m.tblAtolyeTuru.AtolyeTurID, (List<SelectListItem>)ViewBag.atolyeTuru, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:2px">
+            <label>Atölye Adı</label>
+            <input type="text" class="form-control" name="ATOLYEADI" />
+        </div>
+        <div style="margin-top:2px">
+            <label>Atölye Adresi</label>
+            <input type="text" class="form-control" name="ATOLYEADRES" />
+        </div>
+        <div style="margin-top:10px">
+            <button class="btn btn-info" id="btn1">Atölye Ekle</button>
+        </div>
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alet('Atölye Ekleme İşlemi Yapıldı...!');
+        });
+    </script>
+
+</form>
