@@ -17,16 +17,16 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOkulSiniflar()
         {
-            this.tblAtolyeYapilanZiyaretlers = new HashSet<tblAtolyeYapilanZiyaretler>();
-            this.tblOgrencilers = new HashSet<tblOgrenciler>();
+            this.tblAtolyeYapilanZiyaretler = new HashSet<tblAtolyeYapilanZiyaretler>();
+            this.tblOgrenciler = new HashSet<tblOgrenciler>();
         }
     
         public int SinifID { get; set; }
         public string SinifAdi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretlers { get; set; }
+        public virtual ICollection<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgrenciler> tblOgrencilers { get; set; }
+        public virtual ICollection<tblOgrenciler> tblOgrenciler { get; set; }
     }
 }

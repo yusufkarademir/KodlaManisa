@@ -1,0 +1,53 @@
+﻿@model KodlaManisa.Models.EntityFramework.tblAtolyeler
+@{
+    ViewBag.Title = "AtolyeGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">ATÖLYE GÜNCELLE</h1><a href="/Atolye/Atolyeler" class="btn btn-primary" style="float:right">ATÖLYELER</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin:auto;">
+
+    @using (Html.BeginForm("Guncelle", "Atolye", FormMethod.Post))
+    {
+
+        <div class="form-group" style="margin:auto;">
+
+            <div class="row" style="margin-top:20px">
+                <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Atölye İlçesi :</label></div>
+                <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" }) </div>
+            </div>
+
+            <div class="row" style="margin-top:20px">
+                <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Atölye Türü :</label></div>
+                <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblAtolyeTuru.AtolyeTurID, (List<SelectListItem>)ViewBag.atolyeTuru, new { @class = "form-control" }) </div>
+            </div>
+
+            <div class="row" style="margin-top:20px">
+                <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Atölye Adı :</label></div>
+                <div class="col-sm-6 col-md-7" align="center">  @Html.TextBoxFor(m => m.AtolyeAdi, new { @class = "form-control" }) </div>
+            </div>
+
+            <div class="row" style="margin-top:20px">
+                <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Atölye Adresi :</label></div>
+                <div class="col-sm-6 col-md-7" align="center">  @Html.TextBoxFor(m => m.AtolyeAdres, new { @class = "form-control" })</div>
+            </div>
+
+
+            @Html.HiddenFor(m => m.AtolyeID)
+            <div align="center" style="margin:15px">
+                <button class="btn btn-info">Güncelle</button>
+            </div>
+        </div>
+    }
+</div>

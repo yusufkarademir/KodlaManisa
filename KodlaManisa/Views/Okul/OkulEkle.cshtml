@@ -3,41 +3,64 @@
     ViewBag.Title = "OkulEkle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="margin:50px">
-    <h2>Okul Ekleme Sayfası</h2>
-</div>
 
-<form method="post" class="form-group">
-    <div class="accent-blue" style="margin:50px">
-        <div>
-            <label>Okul Kodu</label>
-            <input type="text" class="form-control" name="OKULKODU" />
-        </div>
-        <div>
-            <label>Okul İlcesi</label>
-            @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })
-        </div>
-        <div>
-            <label>Okul Türü</label>
-            @Html.DropDownListFor(m => m.tblOkulTuru.OkulTuruID, (List<SelectListItem>)ViewBag.okulTuru, new { @class = "form-control" })
-        </div>
-        <div>
-            <label>Okul Adı</label>
-            <input type="text" class="form-control" name="OKULADI" />
-        </div>
-
-        <div>
-            <label>Okul Adresi</label>
-            <input type="text" class="form-control" name="OKULADRES" />
-        </div>
-        <div style="margin-top:15px">
-            <button class="btn btn-info" id="btn1">Okul Ekle</button>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">YENİ OKUL</h1><a href="/Okul/Okullar" class="btn btn-primary" style="float:right">OKUL LİSTESİ</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+                </div>
+            </div>
         </div>
     </div>
-    <script>
-        $('#btn1').click(function () {
-            alet('Okul Ekleme İşlemi Yapıldı...!');
-        });
-    </script>
+</div>
 
-</form>
+<div class="container" style="margin:auto;">
+    <form method="post" class="form-group">
+
+
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul İlçesi:</label></div>
+            <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Türü:</label></div>
+            <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblOkulTuru.OkulTuruID, (List<SelectListItem>)ViewBag.okulTuru, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Adı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OkulAdi, new { @class = "form-control" })</div>
+        </div>
+
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Müdürü :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OkulMuduru, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Telefon :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OkulTel, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Adresi :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextAreaFor(m => m.OkulAdres, new { @class = "form-control" })</div>
+        </div>
+
+        <div align="center" style="margin-top:15px">
+            <button align="center" class="btn btn-info" id="btn1">Okul Ekle</button>
+        </div>
+
+        <script>
+            $('#btn1').click(function () {
+                alert('Okul Ekleme İşlemi Yapıldı...!');
+            });
+        </script>
+
+    </form>
+</div>

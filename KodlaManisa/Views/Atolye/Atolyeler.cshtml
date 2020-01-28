@@ -9,18 +9,21 @@
     <div class="col-sm-12 col-md-12">
         <div class="card card-dark">
             <div class="card-header">
-                <h3 class="card-title">ATÖLYELER</h3>
+                <h1 class="card-title" style="margin-top:8px">ATÖLYELER</h1><a href="/Atolye/AtolyeEkle" class="btn btn-primary" style="float:right">Yeni Atölye Kaydı</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div style="margin:10px">
+<div style="margin:20px">
     <table class="table table-bordered">
         <tr>
             <th>ATÖLYE ID</th>
             <th>İLÇESİ</th>
-            <th>TÜTÜ</th>
+            <th>TÜRÜ</th>
             <th>ADI</th>
             <th>ADRESİ</th>
             <th>İŞLEMLER</th>
@@ -31,17 +34,22 @@
             {
                 <tr>
                     <td>@atolye.AtolyeID</td>
-                    <td>@atolye.AtolyeIlcesi</td>
-                    <td>@atolye.AtolyeTuru</td>
+                    <td>@atolye.tblIlceler.IlceAdi</td>
+                    <td>@atolye.tblAtolyeTuru.AtolyeTurAdi</td>
                     <td>@atolye.AtolyeAdi</td>
                     <td>@atolye.AtolyeAdres</td>
                     <td>
                         <a href="/Atolye/Sil/@atolye.AtolyeID" class="btn btn-danger">Sil</a>
-                        <a href="/Atolye/AtolyeGetir/@atolye.AtolyeID" class="btn btn-success">Güncelle</a>
+                        <a href="/Atolye/AtolyeGuncelle/@atolye.AtolyeID" class="btn btn-success">Düzenle</a>
+                        <a href="/Atolye/AtolyeDetay/@atolye.AtolyeID" class="btn btn-info">Detay</a>
                     </td>
                 </tr>
             }
+
         </tbody>
+
     </table>
-    <a href="/Atolye/AtolyeEkle" class="btn btn-primary">Yeni Atölye Kaydı</a>
+    <div style="float:left"> <a href="/Atolye/AtolyeEkle" class="btn btn-primary" style="margin-bottom:8px">Yeni Atölye Kaydı</a></div>
+    </br>
 </div>
+

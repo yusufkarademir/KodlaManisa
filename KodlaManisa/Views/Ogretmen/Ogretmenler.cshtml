@@ -5,20 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">ÖĞRETMENLER</h1><a href="/Ogretmen/OgretmenEkle" class="btn btn-primary" style="float:right">Yeni Öğretmen Kaydı</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
 
-<div style="margin:20px">
-    <h2>Öğretmenler</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div style="margin:20px">
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
-            <th>TC</th>
             <th>ADI</th>
             <th>SOYADI</th>
-            <th>ILCESI</th>
+            <th>İLÇESİ</th>
             <th>OKULU</th>
+            <th>BRANŞI</th>
             <th>İŞLEMLER</th>
 
         </tr>
@@ -27,14 +35,15 @@
             {
             <tr>
                 <td>@ogretmen.OgretmenID</td>
-                <td>@ogretmen.OgretmenTC</td>
                 <td>@ogretmen.OgretmenAdi</td>
                 <td>@ogretmen.OgretmenSoyadi</td>
-                <td>@ogretmen.IlceID</td>
-                <td>@ogretmen.OkulID</td>
+                <td>@ogretmen.tblIlceler.IlceAdi</td>
+                <td>@ogretmen.tblOkullar.OkulAdi</td>
+                <td>@ogretmen.OgretmenBrans</td>
                 <td>
                     <a href="/Ogretmen/Sil/@ogretmen.OgretmenID" class="btn btn-danger">Sil</a>
-                    <a href="/Ogretmen/OgretmenGuncelle/@ogretmen.OgretmenID" class="btn btn-success">Güncelle</a>
+                    <a href="/Ogretmen/OgretmenGuncelle/@ogretmen.OgretmenID" class="btn btn-success">Düzenle</a>
+                    <a href="/Ogretmen/OgretmenDetay/@ogretmen.OgretmenID" class="btn btn-info">Detay</a>
                 </td>
             </tr>
             }

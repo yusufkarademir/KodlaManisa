@@ -9,17 +9,24 @@ namespace KodlaManisa.Controllers
 {
     public class AtolyeController : Controller
     {
-        // GET: Atolye
+       
         KodlaManisaEntities db = new KodlaManisaEntities();
+
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult Atolyeler()
+        {
+            var atolyeler = db.tblAtolyeler.ToList();
+            return View(atolyeler);
+        }
+
         [HttpGet]
         public ActionResult AtolyeEkle()
         {
-            List<SelectListItem> ilceler = (from i in db.tblIlcelers.ToList()
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
                                          select new SelectListItem
                                          {
                                              Text = i.IlceAdi,
@@ -27,7 +34,7 @@ namespace KodlaManisa.Controllers
                                          }).ToList();
             ViewBag.ilce = ilceler;
 
-            List<SelectListItem> atolyeTuru = (from i in db.tblAtolyeTurus.ToList()
+            List<SelectListItem> atolyeTuru = (from i in db.tblAtolyeTuru.ToList()
                                             select new SelectListItem
                                             {
                                                 Text = i.AtolyeTurAdi,
@@ -41,20 +48,20 @@ namespace KodlaManisa.Controllers
         [HttpPost]
         public ActionResult AtolyeEkle(tblAtolyeler p)
         {
-            var ilce = db.tblIlcelers.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var tur = db.tblAtolyeTurus.Where(m => m.AtolyeTurID == p.tblAtolyeTuru.AtolyeTurID).FirstOrDefault();
+            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
+            var tur = db.tblAtolyeTuru.Where(m => m.AtolyeTurID == p.tblAtolyeTuru.AtolyeTurID).FirstOrDefault();
             p.tblIlceler = ilce;
             p.tblAtolyeTuru = tur;
-            db.tblAtolyelers.Add(p);
+            db.tblAtolyeler.Add(p);
             db.SaveChanges();
             return RedirectToAction("Atolyeler");
         }
 
-        public ActionResult AtolyeGetir(int id)
+        public ActionResult AtolyeGuncelle(int id)
         {
-            var atolye = db.tblAtolyelers.Find(id);
+            var atolye = db.tblAtolyeler.Find(id);
 
-            List<SelectListItem> ilceler = (from i in db.tblIlcelers.ToList()
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
@@ -62,23 +69,23 @@ namespace KodlaManisa.Controllers
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
-            List<SelectListItem> atolyeTuru = (from i in db.tblAtolyeTurus.ToList()
+            List<SelectListItem> atolyeTuru = (from i in db.tblAtolyeTuru.ToList()
                                                select new SelectListItem
                                                {
                                                    Text = i.AtolyeTurAdi,
                                                    Value = i.AtolyeTurID.ToString()
                                                }).ToList();
             ViewBag.atolyeTuru = atolyeTuru;
-
-            return View("AtolyeGetir",atolye);
+            return View("AtolyeGuncelle",atolye);
         }
 
         public ActionResult Guncelle(tblAtolyeler p)
-        {
-           
-            var atolye = db.tblAtolyelers.Find(p.AtolyeID); 
-            atolye.AtolyeIlcesi = p.AtolyeIlcesi;
-            atolye.AtolyeTuru = p.AtolyeTuru;
+        {           
+            var atolye = db.tblAtolyeler.Find(p.AtolyeID);
+            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
+            var tur = db.tblAtolyeTuru.Where(m => m.AtolyeTurID == p.tblAtolyeTuru.AtolyeTurID).FirstOrDefault();
+            atolye.tblIlceler = ilce;
+            atolye.tblAtolyeTuru = tur;       
             atolye.AtolyeAdi = p.AtolyeAdi;
             atolye.AtolyeAdres = p.AtolyeAdres;
             db.SaveChanges();
@@ -87,17 +94,24 @@ namespace KodlaManisa.Controllers
 
         public ActionResult Sil(int id)
         {
-            var atolye = db.tblAtolyelers.Find(id);
-            db.tblAtolyelers.Remove(atolye);
+            var atolye = db.tblAtolyeler.Find(id);
+            db.tblAtolyeler.Remove(atolye);
             db.SaveChanges();
             return RedirectToAction("Atolyeler");
         }
 
-        public ActionResult Atolyeler()
+        public ActionResult AtolyeDetay (int id)
         {
-            var atolyeler = db.tblAtolyelers.ToList();
-            return View(atolyeler);
+            var atolye = db.tblAtolyeler.Find(id);
+            var malzeme = db.tblAtolyeMalzemeler.Where(m => m.AtolyeID == id).FirstOrDefault();
+                      
+            return View("AtolyeDetay", atolye);
+
+
+
         }
+
+
     }
 }
 

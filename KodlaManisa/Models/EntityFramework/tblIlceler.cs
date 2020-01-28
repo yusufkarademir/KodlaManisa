@@ -17,22 +17,22 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblIlceler()
         {
-            this.tblAtolyelers = new HashSet<tblAtolyeler>();
-            this.tblOgrencilers = new HashSet<tblOgrenciler>();
-            this.tblOgretmenlers = new HashSet<tblOgretmenler>();
-            this.tblOkullars = new HashSet<tblOkullar>();
+            this.tblAtolyeler = new HashSet<tblAtolyeler>();
+            this.tblOgrenciler = new HashSet<tblOgrenciler>();
+            this.tblOgretmenler = new HashSet<tblOgretmenler>();
+            this.tblOkullar = new HashSet<tblOkullar>();
         }
     
         public int IlceID { get; set; }
         public string IlceAdi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeler> tblAtolyelers { get; set; }
+        public virtual ICollection<tblAtolyeler> tblAtolyeler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgrenciler> tblOgrencilers { get; set; }
+        public virtual ICollection<tblOgrenciler> tblOgrenciler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenler> tblOgretmenlers { get; set; }
+        public virtual ICollection<tblOgretmenler> tblOgretmenler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkullar> tblOkullars { get; set; }
+        public virtual ICollection<tblOkullar> tblOkullar { get; set; }
     }
 }

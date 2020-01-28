@@ -17,7 +17,7 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblAtolyeMalzemeler()
         {
-            this.tblAtolyeOduncVermes = new HashSet<tblAtolyeOduncVerme>();
+            this.tblAtolyeOduncVerme = new HashSet<tblAtolyeOduncVerme>();
         }
     
         public int MalzemeID { get; set; }
@@ -30,6 +30,6 @@ namespace KodlaManisa.Models.EntityFramework
     
         public virtual tblAtolyeler tblAtolyeler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVermes { get; set; }
+        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVerme { get; set; }
     }
 }

@@ -17,11 +17,11 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOgretmenler()
         {
-            this.tblAtolyeOduncVermes = new HashSet<tblAtolyeOduncVerme>();
-            this.tblOgrencilers = new HashSet<tblOgrenciler>();
-            this.tblOgretmenDYKBilgileris = new HashSet<tblOgretmenDYKBilgileri>();
-            this.tblOgretmenGorevYaptigiOkullars = new HashSet<tblOgretmenGorevYaptigiOkullar>();
-            this.tblOkulTeknolojiTakimis = new HashSet<tblOkulTeknolojiTakimi>();
+            this.tblAtolyeOduncVerme = new HashSet<tblAtolyeOduncVerme>();
+            this.tblOgrenciler = new HashSet<tblOgrenciler>();
+            this.tblOgretmenDYKBilgileri = new HashSet<tblOgretmenDYKBilgileri>();
+            this.tblOgretmenGorevYaptigiOkullar = new HashSet<tblOgretmenGorevYaptigiOkullar>();
+            this.tblOkulTeknolojiTakimi = new HashSet<tblOkulTeknolojiTakimi>();
         }
     
         public int OgretmenID { get; set; }
@@ -39,17 +39,17 @@ namespace KodlaManisa.Models.EntityFramework
         public Nullable<bool> OgretmenDurumu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVermes { get; set; }
+        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVerme { get; set; }
         public virtual tblIlceler tblIlceler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgrenciler> tblOgrencilers { get; set; }
+        public virtual ICollection<tblOgrenciler> tblOgrenciler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileris { get; set; }
+        public virtual ICollection<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileri { get; set; }
         public virtual tblOgretmenGorevlendirmeTuru tblOgretmenGorevlendirmeTuru { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenGorevYaptigiOkullar> tblOgretmenGorevYaptigiOkullars { get; set; }
+        public virtual ICollection<tblOgretmenGorevYaptigiOkullar> tblOgretmenGorevYaptigiOkullar { get; set; }
         public virtual tblOkullar tblOkullar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimis { get; set; }
+        public virtual ICollection<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimi { get; set; }
     }
 }

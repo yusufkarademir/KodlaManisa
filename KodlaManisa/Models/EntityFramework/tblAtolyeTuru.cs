@@ -17,13 +17,13 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblAtolyeTuru()
         {
-            this.tblAtolyelers = new HashSet<tblAtolyeler>();
+            this.tblAtolyeler = new HashSet<tblAtolyeler>();
         }
     
         public int AtolyeTurID { get; set; }
         public string AtolyeTurAdi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeler> tblAtolyelers { get; set; }
+        public virtual ICollection<tblAtolyeler> tblAtolyeler { get; set; }
     }
 }

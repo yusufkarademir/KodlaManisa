@@ -25,33 +25,32 @@ namespace KodlaManisa.Models.EntityFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<tblAtolyeFotograf> tblAtolyeFotografs { get; set; }
-        public virtual DbSet<tblAtolyeGelenZiyaretci> tblAtolyeGelenZiyaretcis { get; set; }
-        public virtual DbSet<tblAtolyeKurslar> tblAtolyeKurslars { get; set; }
-        public virtual DbSet<tblAtolyeKursOgrencileri> tblAtolyeKursOgrencileris { get; set; }
-        public virtual DbSet<tblAtolyeler> tblAtolyelers { get; set; }
-        public virtual DbSet<tblAtolyeMalzemeler> tblAtolyeMalzemelers { get; set; }
-        public virtual DbSet<tblAtolyeOduncVerme> tblAtolyeOduncVermes { get; set; }
-        public virtual DbSet<tblAtolyeTuru> tblAtolyeTurus { get; set; }
-        public virtual DbSet<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretlers { get; set; }
-        public virtual DbSet<tblDersler> tblDerslers { get; set; }
-        public virtual DbSet<tblIlceler> tblIlcelers { get; set; }
-        public virtual DbSet<tblIlkokulSorular> tblIlkokulSorulars { get; set; }
-        public virtual DbSet<tblLiseSorular> tblLiseSorulars { get; set; }
-        public virtual DbSet<tblOgrenciler> tblOgrencilers { get; set; }
-        public virtual DbSet<tblOgrenciOgrenimBilgileri> tblOgrenciOgrenimBilgileris { get; set; }
-        public virtual DbSet<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileris { get; set; }
-        public virtual DbSet<tblOgretmenGorevlendirmeTuru> tblOgretmenGorevlendirmeTurus { get; set; }
-        public virtual DbSet<tblOgretmenGorevYaptigiOkullar> tblOgretmenGorevYaptigiOkullars { get; set; }
-        public virtual DbSet<tblOgretmenler> tblOgretmenlers { get; set; }
-        public virtual DbSet<tblOkullar> tblOkullars { get; set; }
-        public virtual DbSet<tblOkulMalzemeler> tblOkulMalzemelers { get; set; }
-        public virtual DbSet<tblOkulOncesiSorular> tblOkulOncesiSorulars { get; set; }
-        public virtual DbSet<tblOkulProjeEkibi> tblOkulProjeEkibis { get; set; }
-        public virtual DbSet<tblOkulSiniflar> tblOkulSiniflars { get; set; }
-        public virtual DbSet<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimis { get; set; }
-        public virtual DbSet<tblOkulTuru> tblOkulTurus { get; set; }
-        public virtual DbSet<tblOrtaokulSorular> tblOrtaokulSorulars { get; set; }
+        public virtual DbSet<tblAtolyeFotograf> tblAtolyeFotograf { get; set; }
+        public virtual DbSet<tblAtolyeGelenZiyaretci> tblAtolyeGelenZiyaretci { get; set; }
+        public virtual DbSet<tblAtolyeKurslar> tblAtolyeKurslar { get; set; }
+        public virtual DbSet<tblAtolyeKursOgrencileri> tblAtolyeKursOgrencileri { get; set; }
+        public virtual DbSet<tblAtolyeler> tblAtolyeler { get; set; }
+        public virtual DbSet<tblAtolyeMalzemeler> tblAtolyeMalzemeler { get; set; }
+        public virtual DbSet<tblAtolyeOduncVerme> tblAtolyeOduncVerme { get; set; }
+        public virtual DbSet<tblAtolyeTuru> tblAtolyeTuru { get; set; }
+        public virtual DbSet<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretler { get; set; }
+        public virtual DbSet<tblDersler> tblDersler { get; set; }
+        public virtual DbSet<tblIlceler> tblIlceler { get; set; }
+        public virtual DbSet<tblIlkokulSorular> tblIlkokulSorular { get; set; }
+        public virtual DbSet<tblLiseSorular> tblLiseSorular { get; set; }
+        public virtual DbSet<tblOgrenciler> tblOgrenciler { get; set; }
+        public virtual DbSet<tblOgrenciOgrenimBilgileri> tblOgrenciOgrenimBilgileri { get; set; }
+        public virtual DbSet<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileri { get; set; }
+        public virtual DbSet<tblOgretmenGorevlendirmeTuru> tblOgretmenGorevlendirmeTuru { get; set; }
+        public virtual DbSet<tblOgretmenGorevYaptigiOkullar> tblOgretmenGorevYaptigiOkullar { get; set; }
+        public virtual DbSet<tblOgretmenler> tblOgretmenler { get; set; }
+        public virtual DbSet<tblOkullar> tblOkullar { get; set; }
+        public virtual DbSet<tblOkulMalzemeler> tblOkulMalzemeler { get; set; }
+        public virtual DbSet<tblOkulOncesiSorular> tblOkulOncesiSorular { get; set; }
+        public virtual DbSet<tblOkulProjeEkibi> tblOkulProjeEkibi { get; set; }
+        public virtual DbSet<tblOkulSiniflar> tblOkulSiniflar { get; set; }
+        public virtual DbSet<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimi { get; set; }
+        public virtual DbSet<tblOkulTuru> tblOkulTuru { get; set; }
+        public virtual DbSet<tblOrtaokulSorular> tblOrtaokulSorular { get; set; }
     }
 }

@@ -4,19 +4,29 @@
     ViewBag.Title = "Okullar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="margin:20px">
-    <h2>Okullar</h2>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">OKULLAR</h1><a href="/Okul/OkulEkle" class="btn btn-primary" style="float:right">Yeni Okul Kaydı</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div style="margin:20px">
+<div style="margin:10px">
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
-            <th>KODU</th>
-            <th>ILCESI</th>
-            <th>TURU</th>
-            <th>ADI</th>
-            <th>ADRESI</th>
+            <th>ID </th>
+            <th>İLÇESİ</th>
+            <th>OKUL TÜRÜ</th>
+            <th>OKUL ADI</th>
+            <th>OKUL TEL</th>
+            <th>OKUL EPOSTA</th>
             <th>İŞLEMLER</th>
 
         </tr>
@@ -25,14 +35,15 @@
             {
             <tr>
                 <td>@okul.OkulID</td>
-                <td>@okul.OkulKodu</td>
-                <td>@okul.OkulIlceAdi</td>
-                <td>@okul.OkulTuru</td>
+                <td>@okul.tblIlceler.IlceAdi</td>
+                <td>@okul.tblOkulTuru.OkulTuru</td>
                 <td>@okul.OkulAdi</td>
-                <td>@okul.OkulAdres</td>
+                <td>@okul.OkulTel</td>
+                <td>@okul.OkulEposta</td>
                 <td>
                     <a href="/Okul/Sil/@okul.OkulID" class="btn btn-danger">Sil</a>
-                    <a href="/Okul/OkulGuncelle/@okul.OkulID" class="btn btn-success">Güncelle</a>
+                    <a href="/Okul/OkulGuncelle/@okul.OkulID" class="btn btn-success">Düzenle</a>
+                    <a href="/Okul/OkulDetay/@okul.OkulID" class="btn btn-info">Detay</a>
                 </td>
             </tr>
             }

@@ -1,16 +1,280 @@
-﻿
+﻿@model KodlaManisa.Models.EntityFramework.tblOgretmenler
 @{
     ViewBag.Title = "Bilgilerim";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<div class="row">
-    <div class="col-sm-12 col-md-12">
-        <div class="card card-dark">
-            <div class="card-header">
-                <h3 class="card-title">OKUL BİLGİLERİM</h3>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-dark">
+                <div class="card-header">
+                    <h1 class="card-title" style="margin-top:8px">BİLGİLERİM</h1><a href="/Ogretmen/SifreDegistir/" class="btn btn-primary" style="float:right">Şifre Değiştirme</a>
+                    <div class="col-sm-12 col-md-3" style="float:right; ">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+<div class="container" style="max-width:100%">
+    <div class="container-fluid">
+        <div class="row">
+            @Html.HiddenFor(m => m.OgretmenID)
+            <!-- left column -->
+            <div class="col-sm-12 col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="bilgilerim">
+                            <form method="POST" action="bilgilerim.asp?islem=bguncelle" name="bilgilerim">
+                                <table border="1" width="100%" class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td width="50%" align="right">Adı:</td>
+                                            <td>@Html.TextBoxFor(m => m.OgretmenAdi, new { @class = "form-control" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Soyadı:</td>
+                                            <td>@Html.TextBoxFor(m => m.OgretmenSoyadi, new { @class = "form-control" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Cep Telefonu:</td>
+                                            <td>@Html.TextBoxFor(m => m.OgretmenTel, new { @class = "form-control" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Mail Adresi:</td>
+                                            <td>@Html.TextBoxFor(m => m.OgretmenEposta, new { @class = "form-control" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Branşı:</td>
+                                            <td>@Html.TextBoxFor(m => m.OgretmenBrans, new { @class = "form-control" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Mezuniyet:</td>
+                                            <td height="30">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                                        <select size="1" name="mezuniyet" tabindex="6" class="form-control">
+                                                            <option value="Lisans" selected="">Lisans</option>
+                                                            <option value="Lisans">Lisans</option>
+                                                            <option value="Yüksek Lisans">Yüksek Lisans</option>
+                                                            <option value="Doktora">Doktora</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Kadro Durumu:</td>
+                                            <td height="30">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                                        <select size="1" name="kadro" tabindex="6" class="form-control">
+                                                            <option value="Kadrolu" selected="">Kadrolu</option>
+                                                            <option value="Kadrolu">Kadrolu</option>
+                                                            <option value="Sözleşmeli">Sözleşmeli</option>
+                                                            <option value="Ücretli">Ücretli</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">Görevlendirme Türü:</td>
+                                            <td height="30">
+                                                <input type="checkbox" name="g8" value="İlçe Koordinatörü" tabindex="13" checked="">İlçe Koordinatörü
+                                                <input type="checkbox" name="g2" value="Okul Müdürü" tabindex="9">Okul Müdürü
+                                                <input type="checkbox" name="g3" value="Müdür Yardımcısı" tabindex="10">Müdür Yardımcısı
+                                                </br>
+                                                <input type="checkbox" name="g1" value="BT öğretmeni" tabindex="7" checked="">BT öğretmeni
+
+                                                <input type="checkbox" name="g4" value="BTR" tabindex="11">BTR
+                                                <input type="checkbox" name="g5" value="Branş Öğretmeni" tabindex="14">Branş Öğretmeni
+                                                <br>
+                                                <input type="checkbox" name="g6" value="Tam Zamanlı Atölye Sorumlusu" tabindex="12">Tam Zamanlı Atölye Sorumlusu
+                                                <input type="checkbox" name="g7" value="Yarı Zamanlı Atölye Sorumlusu" tabindex="13">Yarı Zamanlı Atölye Sorumlusu
+
+                                            </td>
+                                        </tr>
+                                        <tr class="danger">
+                                            <td align="left" colspan="2">
+                                                <font color="#FF0000">
+                                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Seçtiğiniz bir okulu iptal etmek için (o okulda artık derse girmiyorsanız) okul listesindeki  <b>Okul Seçiniz</b> seçeneğini seçin.<br>
+                                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Okul listesinin <b>yanındaki kutuya</b> o okulda girdiğiniz ders saatini yazın.<br>
+                                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Farklı bir ilçedeki okulları seçmek için önce ilçeyi seçip bilgileri güncelleyin. Daha sonra o ilçeye ait okul listesi
+                                                    gelecektir.
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">İlçe Seçin:</td>
+                                            <td height="30">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-5">
+                                                        @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">
+                                                Kadronuzun Bulunduğu Okul-Bu Okulda Girdiğiniz Ders Saati:
+                                            </td>
+                                            <td height="30">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-10">
+                                                        @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-2"><input type="text" name="ds1" size="30" value="" class="form-control"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">
+                                                Derse Girdiğiniz 2. Okul (Yoksa boş bırakın)-Bu Okulda Girdiğiniz Ders Saati:
+                                            </td>
+                                            <td height="30">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-10">
+                                                        @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-2"><input type="text" name="ds2" size="30" value="" class="form-control"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" align="right">
+                                                Derse Girdiğiniz 3. Okul (Yoksa boş bırakın)-Bu Okulda Girdiğiniz Ders Saati:
+                                            </td>
+                                            <td height="30">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-10">
+                                                        @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-2"><input type="text" name="ds3" size="30" value="" class="form-control"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p align="center">
+                                    <input type="submit" value="  BİLGİLERİ GÜNCELLE  " name="B2" class="btn btn-primary">
+                                </p>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+
 </div>
+
+<style>
+    /* tab color */
+    .nav-tabs > li > a {
+        color: #fff;
+        background-color: #337AB7;
+        border: 1px solid #337AB7;
+    }
+
+    /* active tab color */
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        background-color: #D9EDF7;
+        border-color: #99CCFF;
+        color: #000000;
+    }
+
+    /* hover tab color */
+    .nav-tabs > li > a:hover {
+        border-color: #1BA260;
+        background-color: #DFF0D8;
+        color: #000000;
+    }
+</style>
+
+<script>
+        var sec = 00;   // set the seconds
+        var min = 20;   // set the minutes
+
+        function countDown() {
+            sec--;
+            if (sec == -01) {
+                sec = 59;
+                min = min - 1;
+            } else {
+                min = min;
+            }
+            if (sec<=9) { sec = "0" + sec; }
+            time = (min<=9 ? "0" + min : min) + ":" + sec + "  ";
+            if (document.getElementById) { theTime.innerHTML = time; }
+            SD=window.setTimeout("countDown();", 1000);
+            if (min == '00' && sec == '00') { sec = "00"; window.clearTimeout(SD); }
+        }
+
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
+        }
+
+        addLoadEvent(function() {
+            countDown();
+        });
+</script>
+<script type="text/javascript">
+        function rtcScript() {
+            document.oncontextmenu = null;
+            document.onselectstart = null;
+            document.onmousedown = null;
+            document.onclick = null;
+            document.oncopy = null;
+            document.oncut = null;
+            var elements = document.getElementsByTagName('*');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oncontextmenu = null;
+                elements[i].onselectstart = null;
+                elements[i].onmousedown = null;
+                elements[i].oncopy = null;
+                elements[i].oncut = null;
+            }
+            function preventShareThis() {
+                document.getSelection = window.getSelection = function() {
+                    return {isCollapsed: true};
+                }
+            }
+            var scripts = document.getElementsByTagName('script');
+            for (var i = 0; i < scripts.length; i++) {
+                if (scripts[i].src.indexOf('w.sharethis.com') > -1) {
+                    preventShareThis();
+                }
+            }
+            if (typeof Tynt != 'undefined') {
+                Tynt = null;
+            }
+        }
+        rtcScript();
+        setInterval(rtcScript, 2000);</script>
+
+
+
+
+
+
+
+

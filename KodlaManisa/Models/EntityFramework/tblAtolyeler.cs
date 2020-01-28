@@ -17,12 +17,12 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblAtolyeler()
         {
-            this.tblAtolyeFotografs = new HashSet<tblAtolyeFotograf>();
-            this.tblAtolyeGelenZiyaretcis = new HashSet<tblAtolyeGelenZiyaretci>();
-            this.tblAtolyeKurslars = new HashSet<tblAtolyeKurslar>();
-            this.tblAtolyeMalzemelers = new HashSet<tblAtolyeMalzemeler>();
-            this.tblAtolyeOduncVermes = new HashSet<tblAtolyeOduncVerme>();
-            this.tblAtolyeYapilanZiyaretlers = new HashSet<tblAtolyeYapilanZiyaretler>();
+            this.tblAtolyeFotograf = new HashSet<tblAtolyeFotograf>();
+            this.tblAtolyeGelenZiyaretci = new HashSet<tblAtolyeGelenZiyaretci>();
+            this.tblAtolyeKurslar = new HashSet<tblAtolyeKurslar>();
+            this.tblAtolyeMalzemeler = new HashSet<tblAtolyeMalzemeler>();
+            this.tblAtolyeOduncVerme = new HashSet<tblAtolyeOduncVerme>();
+            this.tblAtolyeYapilanZiyaretler = new HashSet<tblAtolyeYapilanZiyaretler>();
         }
     
         public int AtolyeID { get; set; }
@@ -39,18 +39,18 @@ namespace KodlaManisa.Models.EntityFramework
         public string AtolyeYoutube { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeFotograf> tblAtolyeFotografs { get; set; }
+        public virtual ICollection<tblAtolyeFotograf> tblAtolyeFotograf { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeGelenZiyaretci> tblAtolyeGelenZiyaretcis { get; set; }
+        public virtual ICollection<tblAtolyeGelenZiyaretci> tblAtolyeGelenZiyaretci { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeKurslar> tblAtolyeKurslars { get; set; }
+        public virtual ICollection<tblAtolyeKurslar> tblAtolyeKurslar { get; set; }
         public virtual tblAtolyeTuru tblAtolyeTuru { get; set; }
         public virtual tblIlceler tblIlceler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeMalzemeler> tblAtolyeMalzemelers { get; set; }
+        public virtual ICollection<tblAtolyeMalzemeler> tblAtolyeMalzemeler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVermes { get; set; }
+        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVerme { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretlers { get; set; }
+        public virtual ICollection<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretler { get; set; }
     }
 }

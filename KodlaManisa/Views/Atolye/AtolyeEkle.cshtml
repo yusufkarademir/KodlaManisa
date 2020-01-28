@@ -4,42 +4,50 @@
     ViewBag.Title = "AtolyeEkle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="row">
-        <div class="col-sm-12 col-md-12">
-            <div class="card card-dark">
-                <div class="card-header">
-                    <h3 class="card-title">YENİ ATÖLYE</h3>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">YENİ ATÖLYE</h1><a href="/Atolye/Atolyeler" class="btn btn-primary" style="float:right">ATÖLYELER</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <form method="post" class="form-group">
     <div class="accent-blue" style="margin:10px">
-        <div>
-            <label>Atölye İlçesi</label>
-            @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })
-        </div>
-        <div style="margin-top:2px">
-            <label>Atölye Türü</label>
-            @Html.DropDownListFor(m => m.tblAtolyeTuru.AtolyeTurID, (List<SelectListItem>)ViewBag.atolyeTuru, new { @class = "form-control" })
-        </div>
-        <div style="margin-top:2px">
-            <label>Atölye Adı</label>
-            <input type="text" class="form-control" name="ATOLYEADI" />
-        </div>
-        <div style="margin-top:2px">
-            <label>Atölye Adresi</label>
-            <input type="text" class="form-control" name="ATOLYEADRES" />
-        </div>
-        <div style="margin-top:10px">
-            <button class="btn btn-info" id="btn1">Atölye Ekle</button>
-        </div>
-    </div>
-    <script>
-        $('#btn1').click(function () {
-            alet('Atölye Ekleme İşlemi Yapıldı...!');
-        });
-    </script>
 
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Atölye İlçesi:</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Atölye Türü :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblAtolyeTuru.AtolyeTurID, (List<SelectListItem>)ViewBag.atolyeTuru, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label>Atölye Adı</label> </div>
+            <div class="col-sm-6 col-md-7" align="center"><input type="text" class="form-control" name="ATOLYEADI" /></div>
+        </div>
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"> <label>Atölye Adresi</label></div>
+            <div class="col-sm-6 col-md-7" align="center"><input type="text" class="form-control" name="ATOLYEADRES" /> </div>
+        </div>
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"> <button class="btn btn-info" id="btn1">Atölye Ekle</button> </div>
+
+        </div>
+
+        <script>
+            $('#btn1').click(function () {
+                alert('Atölye Ekleme İşlemi Yapıldı...!');
+            });
+        </script>
+    </div>
 </form>

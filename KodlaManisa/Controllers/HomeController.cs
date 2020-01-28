@@ -13,6 +13,10 @@ namespace KodlaManisa.Controllers
         {
             return View();
         }
+        public ActionResult Iletisim()
+        {
+            return View();
+        }
         public ActionResult Duyurular()
         {
             return View();

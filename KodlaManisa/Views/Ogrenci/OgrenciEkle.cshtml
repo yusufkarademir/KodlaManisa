@@ -1,30 +1,118 @@
-﻿
+﻿@model KodlaManisa.Models.EntityFramework.tblOgrenciler
 @{
     ViewBag.Title = "OgrenciEkle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ogrenci Ekle Sayfası</h2>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">YENİ ÖĞRENCİ</h1><a href="/Ogrenci/Ogrenciler" class="btn btn-primary" style="float:right">ÖĞRENCİ LİSTESİ</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<form method="post" class="form-group">
-    <div class="accent-blue" style="margin:50px">
-        <div>
-            <label>Öğrenci Adı</label>
-            <input type="text" class="form-control" name="OGRENCIAD" />
+<div class="container" style="margin:auto;">
+    <form method="POST" class="form-group">
+
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">T.C. Kimlik No:</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgrenciTC, new { @class = "form-control" })</div>
         </div>
-        <div>
-            <label>Öğrenci Soyad</label>
-            <input type="text" class="form-control" name="OGRENCISOYAD" />
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğrenci Adı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgrenciAdi, new { @class = "form-control" })</div>
         </div>
-        <div style="margin-top:15px">
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğrenci Soyadı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgrenciSoyadi, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">İlçesi :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Tipi :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">
+                <td width="60%">
+
+                    <select name="okultipi" id="okultipi" size="1" tabindex="3" class="form-control">
+                        <option value="" selected="">OKUL TİPİ SEÇİNİZ</option>
+                        <option value="1">OKULÖNCESİ</option>
+                        <option value="2">İLKOKUL</option>
+                        <option value="3">ORTAOKUL</option>
+                        <option value="4">ORTAÖĞRETİM</option>
+                    </select>
+                </td>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okulu :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Sınıfı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.DropDownListFor(m => m.tblOkulSiniflar.SinifID, (List<SelectListItem>)ViewBag.sinif, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğrenci Numarası :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgrenciNo, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğrenci Telefonu :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.TextBoxFor(m => m.OgenciTelefon, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğrenci Eposta :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.TextBoxFor(m => m.OgrenciEposta, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okul Öğretmeni :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.DropDownListFor(m => m.tblOgretmenler.OgretmenID, (List<SelectListItem>)ViewBag.ogretmen, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Velisinin Adı Soyadı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgrenciVeli, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Veli İletişim Numarası :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">  @Html.TextBoxFor(m => m.OgrenciVeliTelefon, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Veli Eposta :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgrenciVeliEposta, new { @class = "form-control" })</div>
+        </div>
+       
+        <div align="center" style="margin-top:16px">
             <button class="btn btn-info" id="btn1">Öğrenci Ekle</button>
         </div>
+        <div class="row" style="margin-top:8px">
+            &nbsp;
+        </div>
+        <script>
+            $('#btn1').click(function () {
+                alert('Öğrenci Ekleme İşlemi Yapıldı...!');
+            });
+        </script>
 
-    </div>
-    <script>
-        $('#btn1').click(function () {
-            alet('Öğrenci Ekleme İşlemi Yapıldı...!');
-        });
-    </script>
+    </form> </div>
 
-</form>
+

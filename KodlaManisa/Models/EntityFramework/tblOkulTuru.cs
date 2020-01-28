@@ -17,16 +17,16 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOkulTuru()
         {
-            this.tblOgretmenDYKBilgileris = new HashSet<tblOgretmenDYKBilgileri>();
-            this.tblOkullars = new HashSet<tblOkullar>();
+            this.tblOgretmenDYKBilgileri = new HashSet<tblOgretmenDYKBilgileri>();
+            this.tblOkullar = new HashSet<tblOkullar>();
         }
     
         public byte OkulTuruID { get; set; }
         public string OkulTuru { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileris { get; set; }
+        public virtual ICollection<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkullar> tblOkullars { get; set; }
+        public virtual ICollection<tblOkullar> tblOkullar { get; set; }
     }
 }

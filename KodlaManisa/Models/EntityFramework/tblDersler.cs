@@ -17,7 +17,7 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblDersler()
         {
-            this.tblOgrenciOgrenimBilgileris = new HashSet<tblOgrenciOgrenimBilgileri>();
+            this.tblOgrenciOgrenimBilgileri = new HashSet<tblOgrenciOgrenimBilgileri>();
         }
     
         public int DersID { get; set; }
@@ -27,6 +27,6 @@ namespace KodlaManisa.Models.EntityFramework
         public string DersDonemi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgrenciOgrenimBilgileri> tblOgrenciOgrenimBilgileris { get; set; }
+        public virtual ICollection<tblOgrenciOgrenimBilgileri> tblOgrenciOgrenimBilgileri { get; set; }
     }
 }

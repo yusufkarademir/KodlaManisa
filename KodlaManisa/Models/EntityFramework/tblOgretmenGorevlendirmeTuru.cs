@@ -17,7 +17,7 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOgretmenGorevlendirmeTuru()
         {
-            this.tblOgretmenlers = new HashSet<tblOgretmenler>();
+            this.tblOgretmenler = new HashSet<tblOgretmenler>();
         }
     
         public int GorevlendirmeID { get; set; }
@@ -26,6 +26,6 @@ namespace KodlaManisa.Models.EntityFramework
         public Nullable<System.DateTime> BitisTarihi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenler> tblOgretmenlers { get; set; }
+        public virtual ICollection<tblOgretmenler> tblOgretmenler { get; set; }
     }
 }

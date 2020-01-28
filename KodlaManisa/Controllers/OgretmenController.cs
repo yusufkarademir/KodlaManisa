@@ -18,16 +18,113 @@ namespace KodlaManisa.Controllers
 
         public ActionResult Ogretmenler()
         {
-            var ogretmenler = db.tblOgretmenlers.ToList();
+            var ogretmenler = db.tblOgretmenler.ToList();
             return View(ogretmenler);
         }
 
+        [HttpGet]
         public ActionResult OgretmenEkle()
         {
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.IlceAdi,
+                                                Value = i.IlceID.ToString()
+                                            }).ToList();
+            ViewBag.ilce = ilceler;
+
+            List<SelectListItem> okullar = (from i in db.tblOkullar.ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = i.OkulAdi,
+                                                   Value = i.OkulID.ToString()
+                                               }).ToList();
+            ViewBag.okul = okullar;
             return View();
         }
+        [HttpPost]
+        public ActionResult OgretmenEkle(tblOgretmenler p)
+        {
+            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
+            var okul = db.tblOkullar.Where(m => m.OkulID == p.tblOkullar.OkulID).FirstOrDefault();
+            p.tblIlceler = ilce;
+            p.tblOkullar = okul;
+            db.tblOgretmenler.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("Ogretmenler");
+        }
 
-        public ActionResult Bilgilerim()
+        public ActionResult OgretmenGuncelle(int id)
+        {
+            var ogretmen = db.tblOgretmenler.Find(id);
+
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.IlceAdi,
+                                                Value = i.IlceID.ToString()
+                                            }).ToList();
+            ViewBag.ilce = ilceler;
+
+            List<SelectListItem> okullar = (from i in db.tblOkullar.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.OkulAdi,
+                                                Value = i.OkulID.ToString()
+                                            }).ToList();
+            ViewBag.okul = okullar;
+
+            return View("OgretmenGuncelle", ogretmen);
+        }
+        public ActionResult Guncelle(tblOgretmenler p)
+        {
+            var ogretmen = db.tblOgretmenler.Find(p.OgretmenID);
+            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
+            var okul = db.tblOkullar.Where(m => m.OkulID == p.tblOkullar.OkulID).FirstOrDefault();
+            ogretmen.tblIlceler = ilce;
+            ogretmen.tblOkullar = okul;
+            ogretmen.OgretmenAdi = p.OgretmenAdi;
+            ogretmen.OgretmenSoyadi = p.OgretmenSoyadi;
+            ogretmen.OgretmenBrans = p.OgretmenBrans;
+            ogretmen.OgretmenMezuniyet = p.OgretmenMezuniyet;
+            ogretmen.OgretmenTel = p.OgretmenTel;
+            ogretmen.OgretmenEposta = p.OgretmenEposta;
+            db.SaveChanges();
+            return RedirectToAction("Ogretmenler", "Ogretmen");
+        }
+
+        public ActionResult Sil(int id)
+        {
+            var ogretmen = db.tblOgretmenler.Find(id);
+            db.tblOgretmenler.Remove(ogretmen);
+            db.SaveChanges();
+            return RedirectToAction("Ogretmenler");
+        }
+        public ActionResult Bilgilerim(int id=1)
+        {
+            var ogretmen = db.tblOgretmenler.Find(id);
+            ViewBag.ogretmen = ogretmen;
+
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.IlceAdi,
+                                                Value = i.IlceID.ToString()
+                                            }).ToList();
+            ViewBag.ilce = ilceler;
+
+            List<SelectListItem> okullar = (from i in db.tblOkullar.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.OkulAdi,
+                                                Value = i.OkulID.ToString()
+                                            }).ToList();
+            ViewBag.okul = okullar;
+
+            return View("Bilgilerim", ogretmen);
+        }
+
+        public ActionResult SifreDegistir()
         {
             return View();
         }

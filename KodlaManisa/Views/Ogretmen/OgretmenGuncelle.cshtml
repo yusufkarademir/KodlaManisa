@@ -1,0 +1,100 @@
+﻿@model KodlaManisa.Models.EntityFramework.tblOgretmenler
+@{
+    ViewBag.Title = "OgretmenGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">ÖĞRETMEN GÜNCELLE</h1><a href="/Ogretmen/Ogretmenler" class="btn btn-primary" style="float:right">ÖĞRETMENLER</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" style="margin:auto;">
+    @using (Html.BeginForm("Guncelle", "Ogretmen", FormMethod.Post))
+    {
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">T.C. Kimlik No:</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgretmenTC, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğretmen Adı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgretmenAdi, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Öğretmen Soyadı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.OgretmenSoyadi, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">İlçesi :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })</div>
+        </div>
+
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Okulu :</label></div>
+            <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Branşı :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">
+                <td width="60%">
+                    <select name="OgretmenBrans" id="OgretmenBrans" size="1" tabindex="5" class="form-control">
+                        <option value="" selected="">Branş Türü Seçin:</option>
+                        <option value="Bilişim Teknolojileri">BİLİŞİM TEKNOLOJİLERİ</option>
+                        <option value="Fen ve Teknoloji">FEN VE TEKNOLOJİ</option>k
+                        <option value="Tasarım ve Üretim">TASARIM VE ÜRETİM</option>
+                        <option value="Mühendis">MÜHENDİS</option>
+                        <option value="Diğer">DİĞER</option>
+                    </select>
+                </td>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Mezuniyet :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">
+                <td width="60%">
+                    <select name="OgretmenMezuniyet" id="OgretmenMezuniyet" size="1" tabindex="3" class="form-control">
+                        <option value="" selected="">Mezuniyet Türü Seçin:</option>
+                        <option value="Lisans(E.F.)">LİSANS(Eğitim F.)</option>
+                        <option value="Lisans(T.E.F.)">LİSANS(T.E.F.)</option>k
+                        <option value="Yüksek Lisans">YÜKSEK LİSANS</option>
+                        <option value="Doktora">DOKTORA</option>
+                    </select>
+                </td>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Telefon :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.TextBoxFor(m => m.OgretmenTel, new { @class = "form-control" })</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+            <div class="col-sm-2" align="right"><label style="margin-left:5px">Eposta :</label></div>
+            <div class="col-sm-6 col-md-7" align="center">@Html.TextBoxFor(m => m.OgretmenEposta, new { @class = "form-control" })</div>
+        </div>
+
+        @Html.HiddenFor(m => m.OgretmenID)
+        <div align="center" style="margin-top:15px">
+            <button class="btn btn-info">Güncelle</button>
+        </div>
+    }
+</div>
+
+

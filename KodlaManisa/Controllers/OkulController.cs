@@ -18,13 +18,14 @@ namespace KodlaManisa.Controllers
 
         public ActionResult Okullar()
         {
-            var okullar = db.tblOkullars.ToList();
+            var okullar = db.tblOkullar.ToList();
             return View(okullar);
         }
+
         [HttpGet]
         public ActionResult OkulEkle()
         {
-            List<SelectListItem> ilceler = (from i in db.tblIlcelers.ToList()
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
@@ -32,7 +33,7 @@ namespace KodlaManisa.Controllers
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
-            List<SelectListItem> okulTuru = (from i in db.tblOkulTurus.ToList()
+            List<SelectListItem> okulTuru = (from i in db.tblOkulTuru.ToList()
                                                select new SelectListItem
                                                {
                                                    Text = i.OkulTuru,
@@ -46,20 +47,20 @@ namespace KodlaManisa.Controllers
         [HttpPost]
         public ActionResult OkulEkle(tblOkullar p)
         {
-            var ilce = db.tblIlcelers.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var tur = db.tblOkulTurus.Where(m => m.OkulTuruID == p.tblOkulTuru.OkulTuruID).FirstOrDefault();
+            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
+            var tur = db.tblOkulTuru.Where(m => m.OkulTuruID == p.tblOkulTuru.OkulTuruID).FirstOrDefault();
             p.tblIlceler = ilce;
             p.tblOkulTuru = tur;
-            db.tblOkullars.Add(p);
+            db.tblOkullar.Add(p);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Okullar");
         }
 
         public ActionResult OkulGuncelle(int id)
         {
-            var okul = db.tblOkullars.Find(id);
+            var okul = db.tblOkullar.Find(id);
 
-            List<SelectListItem> ilceler = (from i in db.tblIlcelers.ToList()
+            List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
@@ -67,27 +68,39 @@ namespace KodlaManisa.Controllers
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
-            List<SelectListItem> okulTuru = (from i in db.tblOkulTurus.ToList()
+            List<SelectListItem> okulTuru = (from i in db.tblOkulTuru.ToList()
                                              select new SelectListItem
                                              {
                                                  Text = i.OkulTuru,
                                                  Value = i.OkulTuruID.ToString()
                                              }).ToList();
             ViewBag.okulTuru = okulTuru;
-
             return View("OkulGuncelle",okul);
         }
 
         public ActionResult Guncelle(tblOkullar p)
         {
-            var okul = db.tblOkullars.Find(p.OkulID);
+            var okul = db.tblOkullar.Find(p.OkulID);
+            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
+            var tur = db.tblOkulTuru.Where(m => m.OkulTuruID == p.tblOkulTuru.OkulTuruID).FirstOrDefault();
             okul.OkulKodu = p.OkulKodu;
-            okul.OkulIlceAdi = p.OkulIlceAdi;
-            okul.OkulTuru = p.OkulTuru;
+            okul.tblIlceler = ilce;
+            okul.tblOkulTuru = tur;
             okul.OkulAdi = p.OkulAdi;
+            okul.OkulMuduru = p.OkulMuduru;
+            okul.OkulTel = p.OkulTel;
             okul.OkulAdres = p.OkulAdres;
             db.SaveChanges();
             return RedirectToAction("Okullar", "Okul");
         }
+
+        public ActionResult Sil(int id)
+        {
+            var okul = db.tblOkullar.Find(id);
+            db.tblOkullar.Remove(okul);
+            db.SaveChanges();
+            return RedirectToAction("Okullar");
+        }
+
     }
 }

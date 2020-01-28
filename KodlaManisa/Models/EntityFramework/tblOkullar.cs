@@ -17,19 +17,19 @@ namespace KodlaManisa.Models.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOkullar()
         {
-            this.tblAtolyeGelenZiyaretcis = new HashSet<tblAtolyeGelenZiyaretci>();
-            this.tblAtolyeOduncVermes = new HashSet<tblAtolyeOduncVerme>();
-            this.tblAtolyeYapilanZiyaretlers = new HashSet<tblAtolyeYapilanZiyaretler>();
-            this.tblIlkokulSorulars = new HashSet<tblIlkokulSorular>();
-            this.tblLiseSorulars = new HashSet<tblLiseSorular>();
-            this.tblOgrencilers = new HashSet<tblOgrenciler>();
-            this.tblOgretmenDYKBilgileris = new HashSet<tblOgretmenDYKBilgileri>();
-            this.tblOgretmenlers = new HashSet<tblOgretmenler>();
-            this.tblOkulMalzemelers = new HashSet<tblOkulMalzemeler>();
-            this.tblOkulOncesiSorulars = new HashSet<tblOkulOncesiSorular>();
-            this.tblOkulProjeEkibis = new HashSet<tblOkulProjeEkibi>();
-            this.tblOkulTeknolojiTakimis = new HashSet<tblOkulTeknolojiTakimi>();
-            this.tblOrtaokulSorulars = new HashSet<tblOrtaokulSorular>();
+            this.tblAtolyeGelenZiyaretci = new HashSet<tblAtolyeGelenZiyaretci>();
+            this.tblAtolyeOduncVerme = new HashSet<tblAtolyeOduncVerme>();
+            this.tblAtolyeYapilanZiyaretler = new HashSet<tblAtolyeYapilanZiyaretler>();
+            this.tblIlkokulSorular = new HashSet<tblIlkokulSorular>();
+            this.tblLiseSorular = new HashSet<tblLiseSorular>();
+            this.tblOgrenciler = new HashSet<tblOgrenciler>();
+            this.tblOgretmenDYKBilgileri = new HashSet<tblOgretmenDYKBilgileri>();
+            this.tblOgretmenler = new HashSet<tblOgretmenler>();
+            this.tblOkulMalzemeler = new HashSet<tblOkulMalzemeler>();
+            this.tblOkulOncesiSorular = new HashSet<tblOkulOncesiSorular>();
+            this.tblOkulProjeEkibi = new HashSet<tblOkulProjeEkibi>();
+            this.tblOkulTeknolojiTakimi = new HashSet<tblOkulTeknolojiTakimi>();
+            this.tblOrtaokulSorular = new HashSet<tblOrtaokulSorular>();
         }
     
         public int OkulID { get; set; }
@@ -45,32 +45,32 @@ namespace KodlaManisa.Models.EntityFramework
         public string OkulFax { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeGelenZiyaretci> tblAtolyeGelenZiyaretcis { get; set; }
+        public virtual ICollection<tblAtolyeGelenZiyaretci> tblAtolyeGelenZiyaretci { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVermes { get; set; }
+        public virtual ICollection<tblAtolyeOduncVerme> tblAtolyeOduncVerme { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretlers { get; set; }
+        public virtual ICollection<tblAtolyeYapilanZiyaretler> tblAtolyeYapilanZiyaretler { get; set; }
         public virtual tblIlceler tblIlceler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblIlkokulSorular> tblIlkokulSorulars { get; set; }
+        public virtual ICollection<tblIlkokulSorular> tblIlkokulSorular { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblLiseSorular> tblLiseSorulars { get; set; }
+        public virtual ICollection<tblLiseSorular> tblLiseSorular { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgrenciler> tblOgrencilers { get; set; }
+        public virtual ICollection<tblOgrenciler> tblOgrenciler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileris { get; set; }
+        public virtual ICollection<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOgretmenler> tblOgretmenlers { get; set; }
+        public virtual ICollection<tblOgretmenler> tblOgretmenler { get; set; }
         public virtual tblOkulTuru tblOkulTuru { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkulMalzemeler> tblOkulMalzemelers { get; set; }
+        public virtual ICollection<tblOkulMalzemeler> tblOkulMalzemeler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkulOncesiSorular> tblOkulOncesiSorulars { get; set; }
+        public virtual ICollection<tblOkulOncesiSorular> tblOkulOncesiSorular { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkulProjeEkibi> tblOkulProjeEkibis { get; set; }
+        public virtual ICollection<tblOkulProjeEkibi> tblOkulProjeEkibi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimis { get; set; }
+        public virtual ICollection<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOrtaokulSorular> tblOrtaokulSorulars { get; set; }
+        public virtual ICollection<tblOrtaokulSorular> tblOrtaokulSorular { get; set; }
     }
 }

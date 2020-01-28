@@ -5,16 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<div style="margin:20px">
-    <h2>Öğrenciler</h2>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">ÖĞRENCİLER</h1><a href="/Ogrenci/OgrenciEkle" class="btn btn-primary" style="float:right">Yeni Öğrenci Kaydı</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div style="margin:20px">
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
-            <th>NUMARASI</th>
+           
             <th>TC</th>
             <th>ADI</th>
             <th>SOYADI</th>
@@ -28,17 +35,17 @@
             @foreach (var ogrenci in Model)
             {
             <tr>
-                <td>@ogrenci.OgrenciID</td>
-                <td>@ogrenci.OgrenciNo</td>
+               
                 <td>@ogrenci.OgrenciTC</td>
                 <td>@ogrenci.OgrenciAdi</td>
                 <td>@ogrenci.OgrenciSoyadi</td>
-                <td>@ogrenci.IlceID</td>
-                <td>@ogrenci.OkulID</td>
-                <td>@ogrenci.SinifID</td>
+                <td>@ogrenci.tblIlceler.IlceAdi</td>
+                <td>@ogrenci.tblOkullar.OkulAdi</td>
+                <td>@ogrenci.tblOkulSiniflar.SinifAdi</td>
                 <td>
                     <a href="/Ogrenci/Sil/@ogrenci.OgrenciID" class="btn btn-danger">Sil</a>
-                    <a href="/Ogrenci/OgrenciGuncelle/@ogrenci.OgrenciID" class="btn btn-success">Güncelle</a>
+                    <a href="/Ogrenci/OgrenciGuncelle/@ogrenci.OgrenciID" class="btn btn-success">Düzenle</a>
+                    <a href="/Atolye/OgrenciDetay/@ogrenci.OgrenciID" class="btn btn-info">Detay</a>
                 </td>
             </tr>
             }
