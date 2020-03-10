@@ -1,4 +1,4 @@
-﻿@model KodlaManisa.Models.EntityFramework.tblOgretmenler
+﻿@model KodlaManisa.Models.Database.tblOgretmenler
 @{
     ViewBag.Title = "Bilgilerim";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,7 +21,7 @@
 <div class="container" style="max-width:100%">
     <div class="container-fluid">
         <div class="row">
-            @Html.HiddenFor(m => m.OgretmenID)
+            @Html.HiddenFor(m => m.ID)
             <!-- left column -->
             <div class="col-sm-12 col-md-12">
                 <!-- general form elements -->
@@ -54,35 +54,11 @@
                                         </tr>
                                         <tr>
                                             <td width="50%" align="right">Mezuniyet:</td>
-                                            <td height="30">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-12 col-md-4">
-                                                        <select size="1" name="mezuniyet" tabindex="6" class="form-control">
-                                                            <option value="Lisans" selected="">Lisans</option>
-                                                            <option value="Lisans">Lisans</option>
-                                                            <option value="Yüksek Lisans">Yüksek Lisans</option>
-                                                            <option value="Doktora">Doktora</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td height="30"> @Html.TextBoxFor(m => m.OgretmenMezuniyet, new { @class = "form-control" }) </td>
                                         </tr>
+                                    
                                         <tr>
-                                            <td width="50%" align="right">Kadro Durumu:</td>
-                                            <td height="30">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-12 col-md-4">
-                                                        <select size="1" name="kadro" tabindex="6" class="form-control">
-                                                            <option value="Kadrolu" selected="">Kadrolu</option>
-                                                            <option value="Kadrolu">Kadrolu</option>
-                                                            <option value="Sözleşmeli">Sözleşmeli</option>
-                                                            <option value="Ücretli">Ücretli</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                            @* Görevlendirme Türü ve Öğretmen Görevleri tabloları yeniden yapılandırıldı--burada bi yapı kur--*@
                                             <td width="50%" align="right">Görevlendirme Türü:</td>
                                             <td height="30">
                                                 <input type="checkbox" name="g8" value="İlçe Koordinatörü" tabindex="13" checked="">İlçe Koordinatörü
@@ -114,7 +90,7 @@
                                             <td height="30">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12 col-md-5">
-                                                        @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })
+                                                        @*@Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" })*@
                                                     </div>
                                                 </div>
                                             </td>
@@ -126,7 +102,7 @@
                                             <td height="30">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12 col-md-10">
-                                                        @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })
+                                                        @*@Html.DropDownListFor(m => m.Gorevleri., (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })*@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-2"><input type="text" name="ds1" size="30" value="" class="form-control"></div>
                                                 </div>
@@ -139,7 +115,7 @@
                                             <td height="30">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12 col-md-10">
-                                                        @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })
+                                                        @*@Html.DropDownListFor(m => m.OkulOgretmenler., (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })*@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-2"><input type="text" name="ds2" size="30" value="" class="form-control"></div>
                                                 </div>
@@ -152,7 +128,7 @@
                                             <td height="30">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12 col-md-10">
-                                                        @Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })
+                                                        @*@Html.DropDownListFor(m => m.tblOkullar.OkulID, (List<SelectListItem>)ViewBag.okul, new { @class = "form-control" })*@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-2"><input type="text" name="ds3" size="30" value="" class="form-control"></div>
                                                 </div>
@@ -200,7 +176,7 @@
     }
 </style>
 
-<script>
+@*<script>
         var sec = 00;   // set the seconds
         var min = 20;   // set the minutes
 
@@ -269,7 +245,7 @@
             }
         }
         rtcScript();
-        setInterval(rtcScript, 2000);</script>
+        setInterval(rtcScript, 2000);</script>*@
 
 
 

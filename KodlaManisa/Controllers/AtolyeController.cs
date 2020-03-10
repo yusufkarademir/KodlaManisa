@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using KodlaManisa.Models.EntityFramework;
+using KodlaManisa.Models;
+using KodlaManisa.Models.Database;
+using KodlaManisa.ViewModels;
 
 namespace KodlaManisa.Controllers
 {
     public class AtolyeController : Controller
     {
-       
         KodlaManisaEntities db = new KodlaManisaEntities();
+
 
         public ActionResult Index()
         {
@@ -20,6 +22,7 @@ namespace KodlaManisa.Controllers
         public ActionResult Atolyeler()
         {
             var atolyeler = db.tblAtolyeler.ToList();
+
             return View(atolyeler);
         }
 
@@ -27,19 +30,19 @@ namespace KodlaManisa.Controllers
         public ActionResult AtolyeEkle()
         {
             List<SelectListItem> ilceler = (from i in db.tblIlceler.ToList()
-                                         select new SelectListItem
-                                         {
-                                             Text = i.IlceAdi,
-                                             Value = i.IlceID.ToString()
-                                         }).ToList();
+                                            select new SelectListItem
+                                            {
+                                                Text = i.IlceAdi,
+                                                Value = i.ID.ToString()
+                                            }).ToList();
             ViewBag.ilce = ilceler;
 
             List<SelectListItem> atolyeTuru = (from i in db.tblAtolyeTuru.ToList()
-                                            select new SelectListItem
-                                            {
-                                                Text = i.AtolyeTurAdi,
-                                                Value = i.AtolyeTurID.ToString()
-                                            }).ToList();
+                                               select new SelectListItem
+                                               {
+                                                   Text = i.AtolyeTurAdi,
+                                                   Value = i.ID.ToString()
+                                               }).ToList();
             ViewBag.atolyeTuru = atolyeTuru;
 
             return View();
@@ -48,10 +51,10 @@ namespace KodlaManisa.Controllers
         [HttpPost]
         public ActionResult AtolyeEkle(tblAtolyeler p)
         {
-            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var tur = db.tblAtolyeTuru.Where(m => m.AtolyeTurID == p.tblAtolyeTuru.AtolyeTurID).FirstOrDefault();
-            p.tblIlceler = ilce;
-            p.tblAtolyeTuru = tur;
+            var ilce = db.tblIlceler.Where(m => m.ID == p.Ilce.ID).FirstOrDefault();
+            var tur = db.tblAtolyeTuru.Where(m => m.ID == p.AtolyeTuru.ID).FirstOrDefault();
+            p.Ilce = ilce;
+            p.AtolyeTuru= tur;
             db.tblAtolyeler.Add(p);
             db.SaveChanges();
             return RedirectToAction("Atolyeler");
@@ -65,7 +68,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
-                                                Value = i.IlceID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
@@ -73,23 +76,23 @@ namespace KodlaManisa.Controllers
                                                select new SelectListItem
                                                {
                                                    Text = i.AtolyeTurAdi,
-                                                   Value = i.AtolyeTurID.ToString()
+                                                   Value = i.ID.ToString()
                                                }).ToList();
             ViewBag.atolyeTuru = atolyeTuru;
-            return View("AtolyeGuncelle",atolye);
+            return View("AtolyeGuncelle", atolye);
         }
 
         public ActionResult Guncelle(tblAtolyeler p)
-        {           
-            var atolye = db.tblAtolyeler.Find(p.AtolyeID);
-            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var tur = db.tblAtolyeTuru.Where(m => m.AtolyeTurID == p.tblAtolyeTuru.AtolyeTurID).FirstOrDefault();
-            atolye.tblIlceler = ilce;
-            atolye.tblAtolyeTuru = tur;       
+        {
+            var atolye = db.tblAtolyeler.Find(p.ID);
+            var ilce = db.tblIlceler.Where(m => m.ID == p.Ilce.ID).FirstOrDefault();
+            var tur = db.tblAtolyeTuru.Where(m => m.ID == p.AtolyeTuru.ID).FirstOrDefault();
+            atolye.Ilce = ilce;
+            atolye.AtolyeTuru= tur;
             atolye.AtolyeAdi = p.AtolyeAdi;
             atolye.AtolyeAdres = p.AtolyeAdres;
             db.SaveChanges();
-            return RedirectToAction("Atolyeler","Atolye");
+            return RedirectToAction("Atolyeler", "Atolye");
         }
 
         public ActionResult Sil(int id)
@@ -100,17 +103,38 @@ namespace KodlaManisa.Controllers
             return RedirectToAction("Atolyeler");
         }
 
-        public ActionResult AtolyeDetay (int id)
+        [HttpGet]
+        public ActionResult AtolyeDetay(int id)
         {
-            var atolye = db.tblAtolyeler.Find(id);
-            var malzeme = db.tblAtolyeMalzemeler.Where(m => m.AtolyeID == id).FirstOrDefault();
-                      
-            return View("AtolyeDetay", atolye);
+            AtolyeDetayViewModel vm = new AtolyeDetayViewModel();
 
+            vm.Atolye = db.tblAtolyeler
+                .Where(i => i.ID == id)
+                .Select(i => new AtolyeDetayViewModel.AtolyeDataViewModel
+                {
+                    Adi = i.AtolyeAdi,
+                    CalismaSaati = i.AtolyeCalismaSaati,
+                    Adres = i.AtolyeAdres,
+                    OgretmenAdi = i.Ogretmen.OgretmenAdi,
+                    OgretmenSoyadi = i.Ogretmen.OgretmenSoyadi,
+                }).FirstOrDefault();
+            vm.Fotograflar = db.tblAtolyeFotograf
+                .Where(i => i.ID == id)
+                .Select(i => new AtolyeDetayViewModel.AtolyeFotograflariViewModel
+                {
+                    FotografLink = i.FotografLink,
+                    Atolye_ID = i.Atolye.ID,                    
+                }).FirstOrDefault();
+            
+            vm.Malzemeler = db.tblAtolyeMalzemeler.Where(i => i.ID == id).ToList();
+            vm.Kurslar = db.tblAtolyeKurslar.Where(i => i.ID == id).ToList();
+            vm.KursOgrencileri = db.tblAtolyeKursOgrencileri.Where(i => i.AtolyeKurs.Atolye.ID== id).ToList();
 
+            //var atolye = _db.tblAtolyeler.Find(id);
+            //var malzeme = _db.tblAtolyeMalzemeler.Where(m => m.AtolyeID == id).FirstOrDefault();
 
+            return View(vm);
         }
-
 
     }
 }

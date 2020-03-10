@@ -1,4 +1,4 @@
-﻿@model KodlaManisa.Models.EntityFramework.tblAtolyeler
+﻿@model tblAtolyeler
 @{
     ViewBag.Title = "AtolyeGetir";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,12 +25,12 @@
 
             <div class="row" style="margin-top:20px">
                 <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Atölye İlçesi :</label></div>
-                <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" }) </div>
+                <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.Ilce.ID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" }) </div>
             </div>
 
             <div class="row" style="margin-top:20px">
                 <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Atölye Türü :</label></div>
-                <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblAtolyeTuru.AtolyeTurID, (List<SelectListItem>)ViewBag.atolyeTuru, new { @class = "form-control" }) </div>
+                <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.AtolyeTuru.ID, (List<SelectListItem>)ViewBag.atolyeTuru, new { @class = "form-control" }) </div>
             </div>
 
             <div class="row" style="margin-top:20px">
@@ -43,8 +43,7 @@
                 <div class="col-sm-6 col-md-7" align="center">  @Html.TextBoxFor(m => m.AtolyeAdres, new { @class = "form-control" })</div>
             </div>
 
-
-            @Html.HiddenFor(m => m.AtolyeID)
+            @Html.HiddenFor(m => m.ID)
             <div align="center" style="margin:15px">
                 <button class="btn btn-info">Güncelle</button>
             </div>

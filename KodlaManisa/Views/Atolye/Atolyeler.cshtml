@@ -1,4 +1,4 @@
-﻿@using KodlaManisa.Models.EntityFramework
+﻿@using KodlaManisa.Models
 @model List<tblAtolyeler>
 @{
     ViewBag.Title = "Atolyeler";
@@ -17,39 +17,40 @@
         </div>
     </div>
 </div>
+<div class="card-body">
+    <div style="margin:20px">
+        <table class="table table-bordered">
+            <tr>
+                <th>ATÖLYE ADI</th>                
+                <th>TÜRÜ</th>
+                <th>İLÇESİ</th>
+                <th>ADRESİ</th>
+                <th>İŞLEMLER</th>
 
-<div style="margin:20px">
-    <table class="table table-bordered">
-        <tr>
-            <th>ATÖLYE ID</th>
-            <th>İLÇESİ</th>
-            <th>TÜRÜ</th>
-            <th>ADI</th>
-            <th>ADRESİ</th>
-            <th>İŞLEMLER</th>
-
-        </tr>
-        <tbody>
-            @foreach (var atolye in Model)
-            {
+            </tr>
+            <tbody>
+                @foreach (var atolye in Model)
+                {
                 <tr>
-                    <td>@atolye.AtolyeID</td>
-                    <td>@atolye.tblIlceler.IlceAdi</td>
-                    <td>@atolye.tblAtolyeTuru.AtolyeTurAdi</td>
                     <td>@atolye.AtolyeAdi</td>
+                    <td>@atolye.AtolyeTuru.AtolyeTurAdi</td>
+                    <td>@atolye.Ilce.IlceAdi</td>
                     <td>@atolye.AtolyeAdres</td>
                     <td>
-                        <a href="/Atolye/Sil/@atolye.AtolyeID" class="btn btn-danger">Sil</a>
-                        <a href="/Atolye/AtolyeGuncelle/@atolye.AtolyeID" class="btn btn-success">Düzenle</a>
-                        <a href="/Atolye/AtolyeDetay/@atolye.AtolyeID" class="btn btn-info">Detay</a>
+                        <a href="/Atolye/Sil/@atolye.ID" class="btn btn-danger">Sil</a>
+                        <a href="/Atolye/AtolyeGuncelle/@atolye.ID" class="btn btn-success">Düzenle</a>
+                        <a href="/Atolye/AtolyeDetay/@atolye.ID" class="btn btn-info">Detay</a>
                     </td>
                 </tr>
-            }
 
-        </tbody>
+                }
 
-    </table>
-    <div style="float:left"> <a href="/Atolye/AtolyeEkle" class="btn btn-primary" style="margin-bottom:8px">Yeni Atölye Kaydı</a></div>
-    </br>
+            </tbody>
+
+        </table>
+
+        <div style="float:left"> <a href="/Atolye/AtolyeEkle" class="btn btn-primary" style="margin-bottom:8px">Yeni Atölye Kaydı</a></div>
+        <br>
+    </div>
+
 </div>
-

@@ -14,6 +14,12 @@ namespace KodlaManisa.Models.EntityFramework
     
     public partial class tblOgrenciler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblOgrenciler()
+        {
+            this.tblAtolyeKursOgrencileri = new HashSet<tblAtolyeKursOgrencileri>();
+        }
+    
         public int OgrenciID { get; set; }
         public string OgrenciNo { get; set; }
         public string OgrenciTC { get; set; }
@@ -37,5 +43,7 @@ namespace KodlaManisa.Models.EntityFramework
         public virtual tblOkullar tblOkullar { get; set; }
         public virtual tblOkulSiniflar tblOkulSiniflar { get; set; }
         public virtual tblOgrenciOgrenimBilgileri tblOgrenciOgrenimBilgileri { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblAtolyeKursOgrencileri> tblAtolyeKursOgrencileri { get; set; }
     }
 }

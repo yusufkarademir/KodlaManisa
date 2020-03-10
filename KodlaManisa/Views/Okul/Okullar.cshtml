@@ -1,4 +1,4 @@
-﻿@using KodlaManisa.Models.EntityFramework
+﻿@using KodlaManisa.Models
 @model List<tblOkullar>
 @{
     ViewBag.Title = "Okullar";
@@ -21,10 +21,9 @@
 <div style="margin:10px">
     <table class="table table-bordered">
         <tr>
-            <th>ID </th>
-            <th>İLÇESİ</th>
-            <th>OKUL TÜRÜ</th>
             <th>OKUL ADI</th>
+            <th>OKUL TÜRÜ</th>
+            <th>İLÇESİ</th>
             <th>OKUL TEL</th>
             <th>OKUL EPOSTA</th>
             <th>İŞLEMLER</th>
@@ -34,16 +33,15 @@
             @foreach (var okul in Model)
             {
             <tr>
-                <td>@okul.OkulID</td>
-                <td>@okul.tblIlceler.IlceAdi</td>
-                <td>@okul.tblOkulTuru.OkulTuru</td>
                 <td>@okul.OkulAdi</td>
+                <td>@okul.tblOkulTuru.OkulTuru</td>
+                <td>@okul.tblIlceler.IlceAdi</td>
                 <td>@okul.OkulTel</td>
                 <td>@okul.OkulEposta</td>
                 <td>
-                    <a href="/Okul/Sil/@okul.OkulID" class="btn btn-danger">Sil</a>
-                    <a href="/Okul/OkulGuncelle/@okul.OkulID" class="btn btn-success">Düzenle</a>
-                    <a href="/Okul/OkulDetay/@okul.OkulID" class="btn btn-info">Detay</a>
+                    <a href="/Okul/Sil/@okul.ID" class="btn btn-danger">Sil</a>
+                    <a href="/Okul/OkulGuncelle/@okul.ID" class="btn btn-success">Düzenle</a>
+                    <a href="/Okul/OkulDetay/@okul.ID" class="btn btn-info">Detay</a>
                 </td>
             </tr>
             }

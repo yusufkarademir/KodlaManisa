@@ -1,0 +1,402 @@
+﻿
+@{
+    ViewBag.Title = "OgretmenDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top:10px;">
+
+    <div class="card card-gray-dark" style="margin:auto;">
+        <div class="card-header">
+            <h4 class="card-title"><b>ÖĞRETMEN BİLGİLERİ SAYFASI</b></h4>
+        </div>
+
+        <form method="POST" action="#" name="bilgilerim">
+            <table border="1" width="85%" class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td width="50%" align="right">T.C. Kimlik No:</td>
+                        <td height="28"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><input type="text" name="adsoyad" size="30" value="T.C. Numaranızı Girin" class="form-control"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Adı :</td>
+                        <td height="28"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><input type="text" name="adsoyad" size="30" value="Adınız" class="form-control"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Soyadı:</td>
+                        <td height="28"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><input type="text" name="adsoyad" size="30" value="Soyadınız" class="form-control"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">İlçe Seçin:</td>
+                        <td height="30">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                    <select id="ilce" name="ilce" class="form-control">
+                                        <option value="ŞEHZADELER" selected="">ŞEHZADELER</option>
+                                        <option value="AHMETLİ">AHMETLİ</option>
+                                        <option value="AKHİSAR">AKHİSAR</option>
+                                        <option value="ALAŞEHİR">ALAŞEHİR</option>
+                                        <option value="DEMİRCİ">DEMİRCİ</option>
+                                        <option value="GÖLMARMARA">GÖLMARMARA</option>
+                                        <option value="KIRKAĞAÇ">KIRKAĞAÇ</option>
+                                        <option value="KÖPRÜBAŞI">KÖPRÜBAŞI</option>
+                                        <option value="KULA">KULA</option>
+                                        <option value="SALİHLİ">SALİHLİ</option>
+                                        <option value="SARIGÖL">SARIGÖL</option>
+                                        <option value="SARUHANLI">SARUHANLI</option>
+                                        <option value="SOMA">SOMA</option>
+                                        <option value="ŞEHZADELER">ŞEHZADELER</option>
+                                        <option value="TURGUTLU">TURGUTLU</option>
+                                        <option value="YUNUSEMRE">YUNUSEMRE</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right"><b>Kadronuzun Bulunduğu Okul:</b></td>
+                        <td height="30">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-10">
+                                    <select id="okul1" class="form-control" name="okul1" size="1">
+
+                                        <option value="">------ Okul Seçiniz------</option>
+
+                                        <option class="ŞEHZADELER" value="715">Liste Veri Tabanından Gelecek</option>
+
+
+
+                                    </select>
+                                </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Branşı:</td>
+                        <td height="30"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><input type="text" name="brans" size="30" value="BTY" class="form-control"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Mezuniyet:</td>
+                        <td height="30">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <select size="1" name="mezuniyet" tabindex="6" class="form-control">
+                                        <option value="Lisans" selected="">Lisans</option>
+                                        <option value="Lisans">Lisans</option>
+                                        <option value="Yüksek Lisans">Yüksek Lisans</option>
+                                        <option value="Doktora">Doktora</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Kadro Durumu:</td>
+                        <td height="30">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <select size="1" name="kadro" tabindex="6" class="form-control">
+                                        <option value="" selected="">---Seçiniz---</option>
+                                        <option value="Kadrolu">Kadrolu</option>
+                                        <option value="Sözleşmeli">Sözleşmeli</option>
+                                        <option value="Ücretli">Ücretli</option>
+                                        <option value="Görevlendirme">Görevlendirme</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="50%" align="right">İkametgah Adresiniz:</td>
+                        <td height="30"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><textarea rows="3" name="a9" cols="46" tabindex="9" class="form-control"></textarea></div></div></td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Kişisel	Mail Adresi:</td>
+                        <td height="30"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><input type="text" name="mail" size="30" value="mail@adresiniz" class="form-control"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td width="50%" align="right">Cep Telefonu:</td>
+                        <td height="32"><div class="row"><div class="col-xs-12 col-sm-12 col-md-7"><input type="text" name="cep" size="30" value="05XX XXX XX XX" class="form-control"></div></div></td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+        </form>
+
+    </div>
+
+
+
+    </br></br>
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div align="justify" class="card card-blue">
+            <div class="card-header">
+                <h5 class="card-title">OKUL BİLGİLERİ</h5>
+            </div>
+
+            <tr class="danger">
+                <td colspan="3"><font color="#FF0000"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Seçtiğiniz bir okulu iptal etmek için (o okulda artık derse girmiyorsanız) okul listesindeki  <b>Okul Seçiniz</b> seçeneğini seçin.<br></td>
+                <td>
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Okul listesinin <b>yanındaki kutuya</b> o okulda girdiğiniz ders saatini yazın.<br>
+                    </font>
+                </td>
+            </tr>
+
+            <table border="1" width="100%" class="table table-bordered table-hover">
+                <tbody>
+                    <tr class="active">
+                        <td>Sıra</td>
+                        <td>Görev Yaptığınız Okul</td>
+                        <td>Ders Saati</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center">1</td>
+                        <td><input type="text" name="kokulu" size="30" value="Kadrosunun olduğu Okul adı otomatik gelecek" class="form-control" disabled=""></td>
+                        <td><input type="text" name="ds1" value="" class="form-control"></td>
+                    </tr>
+
+                    <tr>
+                        <td align="center">2</td>
+                        <td height="30">
+                            <select id="okul2" class="form-control" name="okul2" size="1">
+                                <option value="">------ Okul Seçiniz------</option>
+                                <option class="ŞEHZADELER" value="715">Liste Veri Tabanından Gelecek</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="ds2" size="30" value="" class="form-control"></td>
+                    </tr></br>
+                    <tr>
+                    <tr>
+                        <td align="center">3</td>
+                        <td height="30">
+                            <select id="okul2" class="form-control" name="okul2" size="1">
+                                <option value="">------ Okul Seçiniz------</option>
+                                <option class="ŞEHZADELER" value="715">Liste Veri Tabanından Gelecek</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="ds2" size="30" value="" class="form-control"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+    </br>
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div align="justify" class="card card-maroon">
+            <div class="card-header">
+                <h5 class="card-title">GÖREVLENDİRME BİLGİLERİ</h5>
+            </div>
+
+
+            <table border="1" width="100%" class="table table-bordered table-hover">
+                <tbody>
+                    <tr class="active">
+                        <td>Sıra</td>
+                        <td>Görevlendirme Türü</td>
+                        <td>Görev Başlama Tarihi</td>
+                        <td>Görev Bitiş Tarihi</td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td align="center">1</td>
+                        <td>
+                            <select name="gorevturu" id="gorevturu" size="1" tabindex="9" class="form-control">
+                                <option value="" selected="">Görevlendirme Türü</option>
+                                <option value="1">BT Öğretmeni</option>
+                                <option value="2">Okul Müdürü</option>
+                                <option value="3">Müdür Yardımcısı</option>
+                                <option value="4">Branş Öğretmeni</option>
+                                <option value="5">BTR</option>
+                                <option value="6">Tam Zamanlı Atölye Sorumlusu</option>
+                                <option value="7">Yarı Zamanlı Atölye Sorumlusu</option>
+                                <option value="8">Proje İl Ekibi</option>
+                                <option value="9">Proje İlçe Ekibi</option>
+
+                            </select>
+                        </td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="AA/YY"></td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="AA/YY"></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td align="center">2</td>
+                        <td>
+                            <select name="gorevturu" id="gorevturu" size="1" tabindex="9" class="form-control">
+                                <option value="" selected="">Görevlendirme Türü</option>
+                                <option value="1">BT Öğretmeni</option>
+                                <option value="2">Okul Müdürü</option>
+                                <option value="3">Müdür Yardımcısı</option>
+                                <option value="4">Branş Öğretmeni</option>
+                                <option value="5">BTR</option>
+                                <option value="6">Tam Zamanlı Atölye Sorumlusu</option>
+                                <option value="7">Yarı Zamanlı Atölye Sorumlusu</option>
+                                <option value="8">Proje İl Ekibi</option>
+                                <option value="9">Proje İlçe Ekibi</option>
+                            </select>
+                        </td></td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="AA/YY"></td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="AA/YY"></td>
+
+
+
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+            <div class="row">
+                <div align="center" class="col-lg-12">
+                    <button type="button" class="btn btn-secondary">Ekle</button>
+
+                </div>
+            </div>
+            </br>
+        </div>
+        </br>
+
+
+        </hr></br>
+
+    </div>
+
+
+
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div align="justify" class="card card-teal">
+            <div class="card-header">
+                <h5 class="card-title">DYK(DESTEKLEME YETİŞTİRME KURSU) BİLGİLERİ</h5>
+            </div>
+
+
+            <table border="1" width="100%" class="table table-bordered table-hover">
+                <tbody>
+                    <tr class="active">
+                        <td>Sıra</td>
+                        <td>Okul Türü</td>
+                        <td>DYK Açılan Okul</td>
+                        <td>Sınıf</td>
+                        <td>Ders Saati</td>
+                        <td>Öğrenci Sayısı</td>
+
+                    </tr>
+
+                    <tr>
+                        <td align="center">1</td>
+                        <td>
+                            <select name="okulturu" id="okulturu" size="1" tabindex="3" class="form-control">
+                                <option value="" selected="">Okul Türü</option>
+                                <option value="1">İlkokul</option>
+                                <option value="2">Ortaokul</option>
+                                <option value="3">Lise</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <select id="dykokul" class="form-control" name="dykokul" size="1">
+                                <option value="">------ Okul Seçiniz------</option>
+                                <option class="ŞEHZADELER" value="#">Liste Veri Tabanından Gelecek</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="dyksinif" id="dyksinif" size="1" tabindex="3" class="form-control">
+                                <option value="" selected="">Sınıf Seçin</option>
+                                <option value="1">3.Sınıf</option>
+                                <option value="2">4.Sınıf</option>
+                                <option value="3">5.Sınıf</option>
+                                <option value="4">6.Sınıf</option>
+                                <option value="5">7.Sınıf</option>
+                                <option value="6">8.Sınıf</option>
+                                <option value="7">9.Sınıf</option>
+                                <option value="8">10.Sınıf</option>
+                                <option value="9">11.Sınıf</option>
+                                <option value="10">12.Sınıf</option>
+                            </select>
+                        </td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="Ders Saati"></td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="Öğrenci Sayısı"></td>
+
+
+                    </tr>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>
+                            <select name="okulturu" id="okulturu" size="1" tabindex="3" class="form-control">
+                                <option value="" selected="">Okul Türü</option>
+                                <option value="1">İlkokul</option>
+                                <option value="2">Ortaokul</option>
+                                <option value="3">Lise</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <select id="dykokul1" class="form-control" name="dykokul1" size="1">
+                                <option value="">------ Okul Seçiniz------</option>
+                                <option class="ŞEHZADELER" value="#">Liste Veri Tabanından Gelecek</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="dyksinif" id="dyksinif1" size="1" tabindex="3" class="form-control">
+                                <option value="" selected="">Sınıf Seçin</option>
+                                <option value="1">3.Sınıf</option>
+                                <option value="2">4.Sınıf</option>
+                                <option value="3">5.Sınıf</option>
+                                <option value="4">6.Sınıf</option>
+                                <option value="5">7.Sınıf</option>
+                                <option value="6">8.Sınıf</option>
+                                <option value="7">9.Sınıf</option>
+                                <option value="8">10.Sınıf</option>
+                                <option value="9">11.Sınıf</option>
+                                <option value="10">12.Sınıf</option>
+                            </select>
+                        </td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="Ders Saati"></td>
+                        <td><input id="textinput" name="textinput" type="text" class="form-control" placeholder="Öğrenci Sayısı"></td>
+
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+            <div class="row">
+                <div align="center" class="col-lg-12">
+                    <button type="button" class="btn btn-secondary"">Ekle</button>
+
+                </div>
+            </div>
+            </br>
+        </div>
+        </br>
+
+        <!---Kaydet Butonu-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pull-right">
+                    <a href="#" class="btn btn-success btn-lg" id="btnSubmit"><i class="fa fa-save"></i> Kaydet</a>
+                    <a class="btn btn-warning btn-lg" href="#" id="btnToTop"><i class="fa fa-arrow-up"></i> Yukarı</a>
+                </div>
+            </div>
+        </div>
+        <!---Kaydet Butonu-->
+        </hr></br>
+
+    </div>
+
+</div>

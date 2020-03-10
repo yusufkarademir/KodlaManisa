@@ -1,5 +1,5 @@
-﻿@model KodlaManisa.Models.EntityFramework.tblAtolyeler
-
+﻿
+@model KodlaManisa.ViewModels.AtolyeDetayViewModel
 @{
     ViewBag.Title = "AtolyeDetay";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,12 +12,11 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="card card-gray-dark">
                 <div class="card-header">
-                    <h3 class ="card-title" >@Html.ValueFor(m=>m.AtolyeAdi)</h3>
-                </div>
-                <div class="card-body">
+                    <h3 class="card-title">@Model.Atolye.Adi</h3></div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6">
-                            <img src="~/Content/dist/img/sehzadeler1.jpg" width="300" title="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" alt="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" align="left" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
+                                            @*Resim Linki Düzgün Çekilmiyor...Düzeltilecek  *@
+                            <img src="%@Html.DisplayFor(m=>m.Fotograflar.FotografLink)%" width="300" title="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" alt="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" align="left" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
                         </div>
 
 
@@ -29,7 +28,8 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img src="~/Content/dist/img/sehzadeler1.jpg" width="800" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
+                                        @*Resim Linki Düzgün Çekilmiyor...Düzeltilecek  *@
+                                        <img src="%@Model.Fotograflar.FotografLink%" width="800" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
                                     </div>
                                 </div>
                             </div>
@@ -37,8 +37,8 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-6">
                             <div class="alert alert-info" role="alert">
-                                <b>Çalışma Saatleri:</b><br>@Html.ValueFor(m => m.AtolyeCalismaSaati)<br><br>
-                                <b>Adres:</b> @Html.ValueFor(m => m.AtolyeAdres)<br>
+                                <b>Çalışma Saatleri:</b> @Model.Atolye.CalismaSaati<br><br><br>
+                                <b>Adres:</b> @Model.Atolye.Adres <br>
                             </div>
                             <div class="alert alert-default-light" role="alert">
                                 <a href="facebook.com"><img src="~/Content/dist/img/fb.png" border="0"></a> <a href="facebook.com"><img src="~/Content/dist/img/tw.png" border="0"></a> <a href="facebook.com"><img src="~/Content/dist/img/ins.png" border="0"></a> <a href="facebook.com"><img src="~/Content/dist/img/yt.png" border="0"></a>
@@ -51,9 +51,9 @@
                             <br>
                             <div class="list-group">
                                 <a href="#" class="list-group-item active"> Atölye Sorumlusu  </a>
-
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> @Html.ValueFor(m => m.OgretmenID)</span>
-
+                                <div style="margin:auto;">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"><b> @Model.Atolye.OgretmenAdi @Model.Atolye.OgretmenSoyadi</b></span>
+                                </div>
 
 
                             </div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+     
 
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="card card-gray-dark">
@@ -71,9 +71,9 @@
                 </div>
 
 
-                <table border="1" width="100%" class="table table-bordered table-hover">
+                <table border="1"  class="table table-bordered table-hover">
                     <tr>
-                        <td width="10%" align="center">SIRA</td>
+                        
                         <td width="20%"><p>Adı</p></td>
                         <td width="10%"><p>Adedi</p></td>
                         <td width="20%"><p>Temin Şekli</p></td>
@@ -81,47 +81,21 @@
                         <td width="15%"><p>Durumu</p></td>
 
                     </tr>
-                    <tr>
-                        <td width="10%" align="center">1</td>
-                        <td width="20%"></td>
-                        <td width="10%">10</td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                    </tr>
+                    <tbody>
+                        @foreach (var malzeme in Model.Malzemeler)
+                        {
+                            <tr>
+                                
+                                <td>@malzeme.MalzemeAdi</td>
+                                <td>@malzeme.MalzemeAdedi</td>
+                                <td>@malzeme.MalzemeTeminSekli</td>
+                                <td>@Html.DisplayFor(m => malzeme.TeminTarihi.Year, new { @class = "form-control", type = "date" })</td>
+                                <td>@malzeme.MalzemeDurumu</td>
 
-                    <tr>
-                        <td width="10%" align="center">3</td>
-                        <td width="20%">LEGO</td>
-                        <td width="10%">3</td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                    </tr>
-                    <tr>
-                        <td width="10%" align="center">4</td>
-                        <td width="20%">VEX</td>
-                        <td width="10%">0</td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                    </tr>
-                    <tr>
-                        <td width="10%" align="center">5</td>
-                        <td width="20%">3B YAZICI</td>
-                        <td width="10%">1</td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                    </tr>
-                    <tr>
-                        <td width="10%" align="center">6</td>
-                        <td width="20%">LAPTOP</td>
-                        <td width="10%">12</td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                        <td width="20%"></td>
-                    </tr>
+                            </tr>
+                        }
+
+                    </tbody>
 
 
                 </table>
@@ -142,9 +116,9 @@
                     <h3 class="card-title">ATÖLYEDE DEVAM EDEN KURSLAR</h3>
                 </div>
 
-                <table border="1" width="100%" class="table table-bordered table-hover">
+                <table border="1"  class="table table-bordered table-hover">
                     <tr class="active">
-                        <td>SIRA</td>
+
                         <td>KURS ADI</td>
                         <td>KURS SEVİYESİ</td>
                         <td>KURS GRUBU</td>
@@ -153,59 +127,28 @@
                         <td>SAATİ</td>
                         <td>İŞLEMLER</td>
                     </tr>
-                    <tr>
-                        <td align="center">2</td>
-                        <td>LEGO</td>
-                        <td>ORTAOKUL</td>
-                        <td>
-                            A GRUBU
-                        </td>
-                        <td align="center">ALİ AKCAN</td>
-                        <td>SALI</td>
-                        <td>10:00-12:30</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-info">Kurs Öğrencileri</a>
-                            <a href="/Atolye/KursDuzenle/" class="btn btn-success">Kursu Düzenle</a>
+                    <tbody>
+                        @foreach (var kurs in Model.Kurslar)
+                        {
+                            <tr>
 
-                        </td>
-                    </tr>
+                                <td>@kurs.KursTuru</td>
+                                <td>@kurs.KursSeviyesi</td>
+                                <td>@kurs.KursGrubu</td>
+                                <td>@kurs.Ogretmen.OgretmenAdi</td>
+                                <td>@kurs.GrupGunu</td>
+                                <td>@kurs.GrupSaati</td>
+                                <td>
+                                    <a href="/Atolye/KursOgrencileri/" class="btn btn-info">Kurs Öğrencileri</a>
+                                    <a href="/Atolye/KursDuzenle/" class="btn btn-success">Kursu Düzenle</a>
 
-                    <tr>
-                        <td align="center">1</td>
-                        <td>ARDUINO</td>
-                        <td>LİSE</td>
-                        <td>
-                            B GRUBU
-                        </td>
-                        <td align="center">ALİ AKCAN</td>
-                        <td>PAZARTESİ</td>
-                        <td>10:00-12:30</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-info">Kurs Öğrencileri</a>
-                            <a href="/Atolye/KursDuzenle/" class="btn btn-success">Kursu Düzenle</a>
+                                </td>
 
-                        </td>
-                    </tr>
+                            </tr>
+                        }
 
+                    </tbody>
 
-
-
-                    <tr>
-                        <td align="center">3</td>
-                        <td>3B TASARIM</td>
-                        <td>ORTAOKUL</td>
-                        <td>
-                            C GRUBU
-                        </td>
-                        <td align="center">ALİ AKCAN</td>
-                        <td>ÇARŞAMBA</td>
-                        <td>13:30-16:30</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-info">Kurs Öğrencileri</a>
-                            <a href="/Atolye/KursDuzenle/" class="btn btn-success">Kursu Düzenle</a>
-
-                        </td>
-                    </tr>
 
 
 
@@ -223,77 +166,34 @@
                     <h3 class="card-title">ATÖLYEYE DEVAM EDEN ÖĞRENCİLER</h3>
                 </div>
 
-                <table border="1" width="100%" class="table table-bordered table-hover">
+                <table border="1"  class="table table-bordered table-hover">
                     <tr class="active">
-                        <td>SIRA</td>
+
                         <td>ADI SOYADI</td>
                         <td>OKULU</td>
                         <td>SINIFI</td>
                         <td>DEVAM ETTİĞİ KURS</td>
-                        <td>GRUBU</td>
                         <td>İŞLEMLER</td>
                     </tr>
+                    <tbody>
+                        @foreach (var ogrenci in Model.KursOgrencileri)
+                        {
+                            <tr>
+                                <td>@ogrenci.Ogrenci.OgrenciAdi @ogrenci.Ogrenci.OgrenciSoyadi</td>
+                                <td>@ogrenci.Ogrenci.Ogretmen.OkulOgretmenler</td>
+                                <td>@ogrenci.Ogrenci.OkulSinif.SinifAdi</td>
+                                <td>@ogrenci.AtolyeKurs.KursTuru - @ogrenci.AtolyeKurs.KursGrubu</td>                               
+                                <td>
+                                    <a href="/Atolye/KursOgrencileri/" class="btn btn-outline-secondary">Öğrenci Profili</a>
+                                </td>
 
-                    <tr>
-                        <td align="center">1</td>
-                        <td>KAMIL KILINC</td>
-                        <td>
-                            Dr. Ömer Faruk Meriç Ortaokulu
-                        </td>
-                        <td align="center">5</td>
-                        <td align="center">LEGO</td>
-                        <td>A GRUBU</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-outline-secondary">Öğrenci Profili</a>
-                           
-                        </td>
+                            </tr>
+                        }
 
-                    </tr>
+                    </tbody>
 
-                    <tr>
-                        <td align="center">2</td>
-                        <td>Hatice Gül Akar</td>
-                        <td>
-                            Akşemseddin Ortaokulu
-                        </td>
-                        <td align="center">7</td>
-                        <td align="center">3B TASARIM</td>
-                        <td>C GRUBU</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-outline-secondary">Öğrenci Profili</a>
 
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td align="center">3</td>
-                        <td>Havvanur Yanık</td>
-                        <td>
-                            Akşemseddin Ortaokulu
-                        </td>
-                        <td align="center">7</td>
-                        <td align="center">LEGO</td>
-                        <td>A GRUBU</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-outline-secondary">Öğrenci Profili</a>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td align="center">4</td>
-                        <td>Mustafa ilke Yalın</td>
-                        <td>
-                            Manisa Lisesi
-                        </td>
-                        <td align="center">9</td>
-                        <td align="center">ARDUINO</td>
-                        <td>B GRUBU</td>
-                        <td>
-                            <a href="/Atolye/KursOgrencileri/" class="btn btn-outline-secondary">Öğrenci Profili</a>
-
-                        </td>
-                    </tr>
 
 
                 </table>

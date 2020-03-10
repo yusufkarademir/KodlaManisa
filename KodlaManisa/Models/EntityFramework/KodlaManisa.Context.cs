@@ -52,5 +52,6 @@ namespace KodlaManisa.Models.EntityFramework
         public virtual DbSet<tblOkulTeknolojiTakimi> tblOkulTeknolojiTakimi { get; set; }
         public virtual DbSet<tblOkulTuru> tblOkulTuru { get; set; }
         public virtual DbSet<tblOrtaokulSorular> tblOrtaokulSorular { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

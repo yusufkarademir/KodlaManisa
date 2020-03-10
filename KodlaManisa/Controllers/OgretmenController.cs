@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using KodlaManisa.Models.EntityFramework;
+using KodlaManisa.Models;
+using KodlaManisa.Models.Database;
+using KodlaManisa.ViewModels;
 
 namespace KodlaManisa.Controllers
 {
@@ -19,6 +21,15 @@ namespace KodlaManisa.Controllers
         public ActionResult Ogretmenler()
         {
             var ogretmenler = db.tblOgretmenler.ToList();
+
+            List<SelectListItem> Okullar = (from i in db.tblOkullar.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.OkulAdi,
+                                                Value = i.ID.ToString()
+                                            }).ToList();
+           
+            ViewBag.okul = Okullar;
             return View(ogretmenler);
         }
 
@@ -29,28 +40,28 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
-                                                Value = i.IlceID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
             List<SelectListItem> okullar = (from i in db.tblOkullar.ToList()
-                                               select new SelectListItem
-                                               {
-                                                   Text = i.OkulAdi,
-                                                   Value = i.OkulID.ToString()
-                                               }).ToList();
+                                            select new SelectListItem
+                                            {
+                                                Text = i.OkulAdi,
+                                                Value = i.ID.ToString()
+                                            }).ToList();
             ViewBag.okul = okullar;
             return View();
         }
         [HttpPost]
         public ActionResult OgretmenEkle(tblOgretmenler p)
         {
-            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var okul = db.tblOkullar.Where(m => m.OkulID == p.tblOkullar.OkulID).FirstOrDefault();
-            p.tblIlceler = ilce;
-            p.tblOkullar = okul;
-            db.tblOgretmenler.Add(p);
-            db.SaveChanges();
+            //var ilce = db.tblIlceler.Where(m => m.ID == p.OkulOgretmenler.).FirstOrDefault();
+            //var okul = db.tblOkullar.Where(m => m.ID == p.OkulOgretmenler).FirstOrDefault();
+            //p.OkulOgretmenler = ilce;
+            //p.OkulOgretmenler = okul;
+            //db.tblOgretmenler.Add(p);
+            //db.SaveChanges();
             return RedirectToAction("Ogretmenler");
         }
 
@@ -62,7 +73,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
-                                                Value = i.IlceID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
@@ -70,7 +81,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.OkulAdi,
-                                                Value = i.OkulID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.okul = okullar;
 
@@ -78,18 +89,18 @@ namespace KodlaManisa.Controllers
         }
         public ActionResult Guncelle(tblOgretmenler p)
         {
-            var ogretmen = db.tblOgretmenler.Find(p.OgretmenID);
-            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var okul = db.tblOkullar.Where(m => m.OkulID == p.tblOkullar.OkulID).FirstOrDefault();
-            ogretmen.tblIlceler = ilce;
-            ogretmen.tblOkullar = okul;
-            ogretmen.OgretmenAdi = p.OgretmenAdi;
-            ogretmen.OgretmenSoyadi = p.OgretmenSoyadi;
-            ogretmen.OgretmenBrans = p.OgretmenBrans;
-            ogretmen.OgretmenMezuniyet = p.OgretmenMezuniyet;
-            ogretmen.OgretmenTel = p.OgretmenTel;
-            ogretmen.OgretmenEposta = p.OgretmenEposta;
-            db.SaveChanges();
+            var ogretmen = db.tblOgretmenler.Find(p.ID);
+            //var ilce = db.tblIlceler.Where(m => m.ID == p.OkulOgretmenler.).FirstOrDefault();
+            //var okul = db.tblOkullar.Where(m => m.ID == p.tblOkullar.ID).FirstOrDefault();
+            //ogretmen.tblIlceler = ilce;
+            //ogretmen.tblOkullar = okul;
+            //ogretmen.OgretmenAdi = p.OgretmenAdi;
+            //ogretmen.OgretmenSoyadi = p.OgretmenSoyadi;
+            //ogretmen.OgretmenBrans = p.OgretmenBrans;
+            //ogretmen.OgretmenMezuniyet = p.OgretmenMezuniyet;
+            //ogretmen.OgretmenTel = p.OgretmenTel;
+            //ogretmen.OgretmenEposta = p.OgretmenEposta;
+            //db.SaveChanges();
             return RedirectToAction("Ogretmenler", "Ogretmen");
         }
 
@@ -100,7 +111,7 @@ namespace KodlaManisa.Controllers
             db.SaveChanges();
             return RedirectToAction("Ogretmenler");
         }
-        public ActionResult Bilgilerim(int id=1)
+        public ActionResult Bilgilerim(int id = 1)
         {
             var ogretmen = db.tblOgretmenler.Find(id);
             ViewBag.ogretmen = ogretmen;
@@ -109,7 +120,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
-                                                Value = i.IlceID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
@@ -117,7 +128,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.OkulAdi,
-                                                Value = i.OkulID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.okul = okullar;
 
@@ -133,6 +144,12 @@ namespace KodlaManisa.Controllers
         {
             return View();
         }
+
+        public ActionResult OgretmenDetay()
+        {
+            return View();
+        }
+
 
     }
 }

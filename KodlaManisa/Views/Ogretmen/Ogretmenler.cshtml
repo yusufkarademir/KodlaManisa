@@ -1,4 +1,4 @@
-﻿@using KodlaManisa.Models.EntityFramework
+﻿@using KodlaManisa.Models
 @model List<tblOgretmenler>
 @{
     ViewBag.Title = "Ogretmeler";
@@ -21,12 +21,11 @@
 <div style="margin:20px">
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
-            <th>ADI</th>
-            <th>SOYADI</th>
-            <th>İLÇESİ</th>
-            <th>OKULU</th>
+            
+            <th>ADI SOYADI</th>
             <th>BRANŞI</th>
+            <th>İLÇESİ</th>
+            <th>OKULU</th>           
             <th>İŞLEMLER</th>
 
         </tr>
@@ -34,16 +33,16 @@
             @foreach (var ogretmen in Model)
             {
             <tr>
-                <td>@ogretmen.OgretmenID</td>
-                <td>@ogretmen.OgretmenAdi</td>
-                <td>@ogretmen.OgretmenSoyadi</td>
-                <td>@ogretmen.tblIlceler.IlceAdi</td>
-                <td>@ogretmen.tblOkullar.OkulAdi</td>
+               
+                <td>@ogretmen.OgretmenAdi @ogretmen.OgretmenSoyadi</td>
                 <td>@ogretmen.OgretmenBrans</td>
+                <td>Okul</td>
+                <td></td>
+                
                 <td>
-                    <a href="/Ogretmen/Sil/@ogretmen.OgretmenID" class="btn btn-danger">Sil</a>
-                    <a href="/Ogretmen/OgretmenGuncelle/@ogretmen.OgretmenID" class="btn btn-success">Düzenle</a>
-                    <a href="/Ogretmen/OgretmenDetay/@ogretmen.OgretmenID" class="btn btn-info">Detay</a>
+                    <a href="/Ogretmen/Sil/@ogretmen.ID" class="btn btn-danger">Sil</a>
+                    <a href="/Ogretmen/OgretmenGuncelle/@ogretmen.ID" class="btn btn-success">Düzenle</a>
+                    <a href="/Ogretmen/OgretmenDetay/@ogretmen.ID" class="btn btn-info">Detay</a>
                 </td>
             </tr>
             }

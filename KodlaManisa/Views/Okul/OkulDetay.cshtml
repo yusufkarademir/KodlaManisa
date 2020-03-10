@@ -1,0 +1,294 @@
+﻿@model KodlaManisa.ViewModels.OkulDetayViewModel
+@{
+    ViewBag.Title = "OkulDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--------------------------------><br>
+<div class="container" style="margin-top:10px;">
+
+
+    <div class="card card-tools" style="margin:auto;">
+        <div class="card-header">
+            <h4 class="card-title"><b>OKUL BİLGİLERİ SAYFASI</b></h4>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Buraya Açıklama Bişeyler Yazılabilir.</p>
+
+                    <div class="row">
+                        <div class="col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label" >Okul Adı</label>
+                                <div class="panel-body" align="left">@Model.Okul.OkulAdi</div>                                
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label" for="ilceadi">İlçesi</label>
+                                <div class="panel-body" align="left"> @Model.Okul.OkulIlceAdi</div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label" for="okulturu">Okul Türü</label>
+                                <div class="panel-body" align="left"> @Model.Okul.OkulTuru</div>
+
+                            </div><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label" for="okulmuduru">Okul Müdürü</label>
+                        <div align="left"> @Model.Okul.OkulMuduru</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-4">
+                    <div class="form-group">
+
+                        <label class="control-label" for="btsayisi">BT Öğretmeni Sayısı</label>
+                        <div align="left"> @Model.Okul.BTSayisi</div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-4">
+                    <div class="form-group">
+
+                        <label class="control-label" for="okuladresi">Okul Adresi</label>
+                        <div align="left"> @Model.Okul.OkulAdresi</div>
+
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="row">
+
+                <div class="col-md-3 col-lg-4">
+                    <div class="form-group">
+
+                        <label class="control-label" for="okultel">Okul E-Posta Adresi</label>
+                        <div align="left"> @Model.Okul.Eposta</div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-4">
+                    <div class="form-group">
+
+                        <label class="control-label" for="okultel">Okul Telefon</label>
+                        <div align="left"> @Model.Okul.OkulTel</div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-4">
+                    <div class="form-group">
+
+                        <label class="control-label" for="okultel">Okul Fax</label>
+                        <div align="left"> @Model.Okul.OkulFax</div>
+
+
+                    </div>
+                </div>
+
+            </div><br>
+
+        </div>
+
+    </div><br><br>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="card card-navy">
+                <div class="card-header">
+                    <h5 class="card-title">GENEL BİLGİLER</h5>
+                </div>
+                <table border="1" class="table table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <td width="65%" align="right" height="30"> </td>
+                            <td width="40%" height="30"><input type="radio" value="1" name="a1">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a1">Hayır</td>
+                        </tr>
+                        <tr>
+                            <td width="65%" align="right" height="30"> Destekleme Yetiştirme Kursu açıldı mı?</td>
+                            <td width="40%" height="30"><input type="radio" value="1" name="a2">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a2">Hayır</td>
+                        </tr>
+                        <tr>
+                            <td width="65%" align="right" height="30"> 7. Sınıflarda seçmeli ders var mı?</td>
+                            <td width="40%" height="30"><input type="radio" value="1" name="a3">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a3">Hayır</td>
+                        </tr>
+                        <tr>
+                            <td width="65%" align="right" height="30"> 8. Sınıflarda seçmeli ders var mı?</td>
+                            <td width="40%" height="30"><input type="radio" value="1" name="a4">Evet &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="0" name="a4">Hayır</td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> Okuldaki BT sınıfı sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> Bilgisayar Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> 5. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı (Hazırlık sınıfları hariç)</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> 6. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> 7. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> 8. Sınıf Bilişim Teknolojileri ve Yazılım Dersi Gören Öğrenci Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> Bilişim Teknolojileri ve Yazılım Dersi Gören Toplam Öğrenci Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> Okuldaki Bilişim Dersine Giren Öğretmen Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> Okuldaki Bilişim Dersi Toplam Ders Saati</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> BT Sınıfının Durumu: (BT sınıfının kurulum yılı, bağış mı, kurulum şekli,bilgisayarların durumu vs.)</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> BT Sınıfında İhtiyaç Duyulan Bilgisayar Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td width="55%" align="right"> BT Sınıfında Kullanılmayan İhtiyaç Fazlası Bilgisayar Sayısı</td>
+                            <td width="45%"><input id="textinput" name="textinput" type="text" class="form-control"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="card card-blue">
+                <div class="card-header">
+                    <h5 class="card-title"><b>PROJE OKUL EKİBİ</b></h5>
+                </div>
+
+                <table border="1" class="table table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <td width="35%" align="center"> Yönetici :</td>
+                            <td width="75%">@Model.OkulEkibi.Yonetici</td>
+                        </tr>
+                        <tr>
+                            <td width="35%" align="center"> Öğretmen :</td>
+                            <td width="75%">@Model.OkulEkibi.Ogretmen1</td>
+                        </tr>
+                        <tr>
+                            <td width="35%" align="center"> Öğretmen :</td>
+                            <td width="75%">@Model.OkulEkibi.Ogretmen2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="card card-cyan">
+                <div class="card-header">
+                    <h5 class="card-title"><b>TEKNOLOJİ TAKIMI BİLGİLERİ</b></h5>
+                </div>
+
+                <table border="1"  class="table table-bordered table-hover">
+                    <tbody>
+
+                        <tr>
+                            <td width="35%" align="center"> Takım Adı :</td>
+                            @* System.NullReferenceException HATASI VERİYOR AMA DB' DE KARŞILIĞI VAR *@
+                            <td width="75%">@*@Html.DisplayFor(i=>i.TTakimi.TakimAdi)*@</td>
+                        </tr>
+                        <tr>
+                            @* Öğretmen adını ilişkili tablodan getirmiyor *@
+                            <td width="35%" align="center"> Sorumlu Öğretmen :</td>
+                            <td width="75%">@*@Model.TTakimi.OgretmenAdi*@</td>
+                        </tr>
+                        <tr>
+                            @* System.NullReferenceException HATASI VERİYOR AMA DB' DE KARŞILIĞI VAR *@
+                            <td width="35%" align="center"> Öğrenci Sayısı :</td>
+                            <td width="75%">@*@Model.TTakimi.OgrenciSayisi*@</td>
+                        </tr>
+                        <tr>
+                            <td width="35%" align="center"> Katıldığı Yarışmalar :</td>
+                            <td width="75%"><textarea class="form-control">@*@Model.TTakimi.KatildigiYarismaAdi*@</textarea></td>
+                        </tr>                        
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <br>
+
+
+
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="card card-olive">
+            <div class="card-header">
+                <h5 class="card-title">OKULDAKİ ROBOTİK SETLER</h5>
+            </div>
+
+
+            <table border="1"  class="table table-bordered table-hover">
+                <tbody>
+                    <tr class="active">
+
+                        <td>Malzeme Adı</td>
+                        <td>Adedi</td>
+                        <td>Temin Şekli</td>
+                        <td>Temin Tarihi</td>
+                        <td>Durumu</td>
+                    </tr>
+               
+                    @foreach (var malzeme in Model.Malzemeler)
+                    {
+                    <tr>
+
+                        <td>@malzeme.MalzemeAdi</td>
+                        <td>@malzeme.MalzemeAdedi</td>
+                        <td>@malzeme.MalzemeTeminSekli</td>                        
+                        <td>@Html.DisplayFor(m => malzeme.TeminTarihi.Year, new { @class = "form-control", type = "date" })</td>
+                        <td>@malzeme.MalzemeDurumu</td>
+
+                    </tr>
+                    }
+
+                </tbody>             
+
+            </table>
+
+        </div>
+    </div>
+
+
+</div>
+<hr />

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<KodlaManisa.Models.Database.tblOgrenciler>
+@{
+    ViewBag.Title = "OgrenciYonlendir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="card card-dark">
+            <div class="card-header">
+                <h1 class="card-title" style="margin-top:8px">ATÖLYEYE ÖĞRENCİ YÖNLENDİRME</h1><a href="/Ogrenci/Index" class="btn btn-primary" style="float:right"><< ÖĞRENCİ İŞLEMLERİ</a>
+                <div class="col-sm-12 col-md-3" style="float:right; ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card-body">
+        <div style="margin:20px">
+            <table class="table table-bordered">
+                <tr>
+
+                    <th>TC</th>
+                    <th>ADI</th>
+                    <th>SOYADI</th>
+                    <th>ILCESI</th>
+                    <th>OKULU</th>
+                    <th>SINIFI</th>
+                    <th>İŞLEMLER</th>
+
+                </tr>
+                <tbody>
+                    @foreach (var ogrenci in Model)
+                    {
+                        <tr>
+
+                            <td>@ogrenci.OgrenciTC</td>
+                            <td>@ogrenci.OgrenciAdi</td>
+                            <td>@ogrenci.OgrenciSoyadi</td>
+                            <td>@*@ogrenci.tblIlceler.IlceAdi*@</td>
+                            <td>@*@ogrenci.tblOkullar.OkulAdi*@</td>
+                            <td>@ogrenci.OkulSinif.SinifAdi</td>
+                            <td>
+
+                                <a href="/Ogrenci/AtolyeOgrenciKaydet/@ogrenci.ID" class="btn btn-success"><label>Atölyeye Yönlendir >></label></a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+    </div>
+</div>

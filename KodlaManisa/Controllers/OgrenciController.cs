@@ -1,9 +1,10 @@
-﻿using System;
+﻿using KodlaManisa.Models;
+using KodlaManisa.Models.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using KodlaManisa.Models.EntityFramework;
 
 namespace KodlaManisa.Controllers
 {
@@ -11,6 +12,7 @@ namespace KodlaManisa.Controllers
     {
         // GET: Ogrenci
         KodlaManisaEntities db = new KodlaManisaEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -28,7 +30,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
-                                                Value = i.IlceID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
@@ -36,24 +38,24 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.OkulAdi,
-                                                Value = i.OkulID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.okul = okullar;
 
             List<SelectListItem> ogretmenler = (from i in db.tblOgretmenler.ToList()
-                                            select new SelectListItem
-                                            {
-                                                Text = i.OgretmenAdi,
-                                                Value = i.OgretmenID.ToString()
-                                            }).ToList();
-            ViewBag.ogretmen= ogretmenler;
-
-            List<SelectListItem> siniflar = (from i in db.tblOkulSiniflar.ToList()
                                                 select new SelectListItem
                                                 {
-                                                    Text = i.SinifAdi,
-                                                    Value = i.SinifID.ToString()
+                                                    Text = i.OgretmenAdi,
+                                                    Value = i.ID.ToString()
                                                 }).ToList();
+            ViewBag.ogretmen = ogretmenler;
+
+            List<SelectListItem> siniflar = (from i in db.tblOkulSiniflar.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.SinifAdi,
+                                                 Value = i.ID.ToString()
+                                             }).ToList();
             ViewBag.sinif = siniflar;
 
             return View();
@@ -61,14 +63,10 @@ namespace KodlaManisa.Controllers
         [HttpPost]
         public ActionResult OgrenciEkle(tblOgrenciler p)
         {
-            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var okul = db.tblOkullar.Where(m => m.OkulID == p.tblOkullar.OkulID).FirstOrDefault();
-            var ogretmen = db.tblOgretmenler.Where(m => m.OgretmenID == p.tblOgretmenler.OgretmenID).FirstOrDefault();
-            var sinif = db.tblOkulSiniflar.Where(m => m.SinifID == p.tblOkulSiniflar.SinifID).FirstOrDefault();
-            p.tblIlceler = ilce;
-            p.tblOkullar = okul;
-            p.tblOgretmenler = ogretmen;
-            p.tblOkulSiniflar = sinif;
+            var ogretmen = db.tblOgretmenler.Where(m => m.ID == p.Ogretmen.ID).FirstOrDefault();
+            var sinif = db.tblOkulSiniflar.Where(m => m.ID == p.OkulSinif.ID).FirstOrDefault();
+            p.Ogretmen = ogretmen;
+            p.OkulSinif = sinif;
             db.tblOgrenciler.Add(p);
             db.SaveChanges();
             return RedirectToAction("Ogrenciler");
@@ -84,7 +82,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.IlceAdi,
-                                                Value = i.IlceID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
@@ -92,7 +90,7 @@ namespace KodlaManisa.Controllers
                                             select new SelectListItem
                                             {
                                                 Text = i.OkulAdi,
-                                                Value = i.OkulID.ToString()
+                                                Value = i.ID.ToString()
                                             }).ToList();
             ViewBag.okul = okullar;
 
@@ -100,7 +98,7 @@ namespace KodlaManisa.Controllers
                                                 select new SelectListItem
                                                 {
                                                     Text = i.OgretmenAdi,
-                                                    Value = i.OgretmenID.ToString()
+                                                    Value = i.ID.ToString()
                                                 }).ToList();
             ViewBag.ogretmen = ogretmenler;
 
@@ -108,7 +106,7 @@ namespace KodlaManisa.Controllers
                                              select new SelectListItem
                                              {
                                                  Text = i.SinifAdi,
-                                                 Value = i.SinifID.ToString()
+                                                 Value = i.ID.ToString()
                                              }).ToList();
             ViewBag.sinif = siniflar;
 
@@ -117,11 +115,9 @@ namespace KodlaManisa.Controllers
 
         public ActionResult Guncelle(tblOgrenciler p)
         {
-            var ogrenci = db.tblOgrenciler.Find(p.OgrenciID);
-            var ilce = db.tblIlceler.Where(m => m.IlceID == p.tblIlceler.IlceID).FirstOrDefault();
-            var okul = db.tblOkullar.Where(m => m.OkulID == p.tblOkullar.OkulID).FirstOrDefault();
-            var sinif = db.tblOkulSiniflar.Where(m => m.SinifID == p.tblOkulSiniflar.SinifID).FirstOrDefault();
-            var ogretmen = db.tblOgretmenler.Where(m => m.OgretmenID == p.tblOgretmenler.OgretmenID).FirstOrDefault();
+            var ogrenci = db.tblOgrenciler.Find(p.ID);
+            var sinif = db.tblOkulSiniflar.Where(m => m.ID == p.OkulSinif.ID).FirstOrDefault();
+            var ogretmen = db.tblOgretmenler.Where(m => m.ID == p.Ogretmen.ID).FirstOrDefault();
             ogrenci.OgrenciTC = p.OgrenciTC;
             ogrenci.OgrenciAdi = p.OgrenciAdi;
             ogrenci.OgrenciSoyadi = p.OgrenciSoyadi;
@@ -131,11 +127,11 @@ namespace KodlaManisa.Controllers
             ogrenci.OgrenciVeli = p.OgrenciVeli;
             ogrenci.OgrenciVeliTelefon = p.OgrenciVeliTelefon;
             ogrenci.OgrenciVeliEposta = p.OgrenciVeliEposta;
+
+            ogrenci.Ogretmen = ogretmen;
+            ogrenci.OkulSinif = sinif;
             db.SaveChanges();
             return RedirectToAction("Ogrenciler", "Ogrenci");
-
-
-
         }
 
         public ActionResult Sil(int id)
@@ -144,7 +140,42 @@ namespace KodlaManisa.Controllers
             db.tblOgrenciler.Remove(ogrenci);
             db.SaveChanges();
             return RedirectToAction("Ogrenciler");
-            
+
+        }
+
+        public ActionResult OgrenciDetay(int? id)
+        {
+            var ogrenci = db.tblOgrenciler.Find(id);
+            return View(ogrenci);
+        }
+
+        [HttpGet]
+        public ActionResult OgrenciYonlendir()
+        {
+            //int ogretmenId = 1;
+
+            //int soruId = 1;
+            // buraya, atölyeye öğrenci yönlendirecek öğretmenin sadece kendi eklediği (okulundaki kendi öğrencileri) gelecek şekilde filtreleme kodu gelecek.
+            //db.tblOgrenciler.Where(i => i.OgrenciOgretmenID == ogretmenId).ToList();
+
+            //db.tblOrtaokulSorular.Where(i => i.SoruID == soruId && i. ).SelectMany(i=> i.tblOkullar.tblOgretmenler).ToList();
+
+            var ogrenciler = db.tblOgrenciler.ToList();
+            return View(ogrenciler);
+        }
+
+
+        public ActionResult AtolyeOgrenciKaydet(int id)
+        {
+            var ogrenci = db.tblOgrenciler.Find(id);
+
+            //var atolyeOgrenci = db.tblAtolyeKursOgrencileri.Add();
+            //    atolyeOgrenci.OgrenciID = id;
+            //    atolyeOgrenci.KursID = null;
+            //    atolyeOgrenci.OgrenciNot = null;
+            //    atolyeOgrenci.OgretmenGorusu = null;
+            //    db.SaveChanges();
+            return View();
         }
 
     }

@@ -22,5 +22,6 @@ namespace KodlaManisa.Models.EntityFramework
         public string OgretmenGorusu { get; set; }
     
         public virtual tblAtolyeKurslar tblAtolyeKurslar { get; set; }
+        public virtual tblOgrenciler tblOgrenciler { get; set; }
     }
 }

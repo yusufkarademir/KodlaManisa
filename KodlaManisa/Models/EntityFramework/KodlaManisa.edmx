@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KodlaManisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tblAtolyeFotograf">
           <Key>
             <PropertyRef Name="FotografID" />
@@ -365,6 +375,18 @@
             </Principal>
             <Dependent Role="tblAtolyeKursOgrencileri">
               <PropertyRef Name="KursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAtolyeKursOgrencileri_tblOgrenciler">
+          <End Role="tblOgrenciler" Type="Self.tblOgrenciler" Multiplicity="0..1" />
+          <End Role="tblAtolyeKursOgrencileri" Type="Self.tblAtolyeKursOgrencileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgrenciler">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="tblAtolyeKursOgrencileri">
+              <PropertyRef Name="OgrenciID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -765,6 +787,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="KodlaManisaModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAtolyeFotograf" EntityType="Self.tblAtolyeFotograf" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAtolyeGelenZiyaretci" EntityType="Self.tblAtolyeGelenZiyaretci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAtolyeKurslar" EntityType="Self.tblAtolyeKurslar" Schema="dbo" store:Type="Tables" />
@@ -810,6 +833,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" Association="Self.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar">
             <End Role="tblAtolyeKurslar" EntitySet="tblAtolyeKurslar" />
+            <End Role="tblAtolyeKursOgrencileri" EntitySet="tblAtolyeKursOgrencileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAtolyeKursOgrencileri_tblOgrenciler" Association="Self.FK_tblAtolyeKursOgrencileri_tblOgrenciler">
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
             <End Role="tblAtolyeKursOgrencileri" EntitySet="tblAtolyeKursOgrencileri" />
           </AssociationSet>
           <AssociationSet Name="FK_tblAtolyeler_tblAtolyeTuru" Association="Self.FK_tblAtolyeler_tblAtolyeTuru">
@@ -999,6 +1026,7 @@
           <Property Name="OgrenciNot" Type="Byte" />
           <Property Name="OgretmenGorusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblAtolyeKurslar" Relationship="Self.FK_tblAtolyeKursOgrencileri_tblAtolyeKurslar" FromRole="tblAtolyeKursOgrencileri" ToRole="tblAtolyeKurslar" />
+          <NavigationProperty Name="tblOgrenciler" Relationship="KodlaManisaModel.FK_tblAtolyeKursOgrencileri_tblOgrenciler" FromRole="tblAtolyeKursOgrencileri" ToRole="tblOgrenciler" />
         </EntityType>
         <EntityType Name="tblAtolyeler">
           <Key>
@@ -1146,6 +1174,7 @@
           <NavigationProperty Name="tblOkullar" Relationship="Self.FK_tblOgrenciler_tblOkullar" FromRole="tblOgrenciler" ToRole="tblOkullar" />
           <NavigationProperty Name="tblOkulSiniflar" Relationship="Self.FK_tblOgrenciler_tblOkulSiniflar" FromRole="tblOgrenciler" ToRole="tblOkulSiniflar" />
           <NavigationProperty Name="tblOgrenciOgrenimBilgileri" Relationship="Self.FK_tblOgrenciOgrenimBilgileri_tblOgrenciler" FromRole="tblOgrenciler" ToRole="tblOgrenciOgrenimBilgileri" />
+          <NavigationProperty Name="tblAtolyeKursOgrencileri" Relationship="KodlaManisaModel.FK_tblAtolyeKursOgrencileri_tblOgrenciler" FromRole="tblOgrenciler" ToRole="tblAtolyeKursOgrencileri" />
         </EntityType>
         <EntityType Name="tblOgrenciOgrenimBilgileri">
           <Key>
@@ -1964,7 +1993,34 @@
             <End Role="tblOkullar" EntitySet="tblOkullar" />
             <End Role="tblOrtaokulSorular" EntitySet="tblOrtaokulSorular" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="KodlaManisaModel.sysdiagrams" />
+          <AssociationSet Name="FK_tblAtolyeKursOgrencileri_tblOgrenciler" Association="KodlaManisaModel.FK_tblAtolyeKursOgrencileri_tblOgrenciler">
+            <End Role="tblOgrenciler" EntitySet="tblOgrenciler" />
+            <End Role="tblAtolyeKursOgrencileri" EntitySet="tblAtolyeKursOgrencileri" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_tblAtolyeKursOgrencileri_tblOgrenciler">
+          <End Type="KodlaManisaModel.tblOgrenciler" Role="tblOgrenciler" Multiplicity="0..1" />
+          <End Type="KodlaManisaModel.tblAtolyeKursOgrencileri" Role="tblAtolyeKursOgrencileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOgrenciler">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="tblAtolyeKursOgrencileri">
+              <PropertyRef Name="OgrenciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2298,6 +2354,17 @@
                 <ScalarProperty Name="OkulID" ColumnName="OkulID" />
                 <ScalarProperty Name="Sorular" ColumnName="Sorular" />
                 <ScalarProperty Name="Cevaplar" ColumnName="Cevaplar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KodlaManisaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

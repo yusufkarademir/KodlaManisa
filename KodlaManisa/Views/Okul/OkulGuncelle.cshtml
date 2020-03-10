@@ -1,4 +1,4 @@
-﻿@model KodlaManisa.Models.EntityFramework.tblOkullar
+﻿@model KodlaManisa.Models.Database.tblOkullar
 @{
     ViewBag.Title = "OkulGuncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,20 +23,15 @@
     {
 
     <div class="form-group" style="margin:auto;">
-
-        <div class="row" style="margin-top:20px">
-            <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Okul Kodu :</label></div>
-            <div class="col-sm-6 col-md-7" align="center">  @Html.TextBoxFor(m => m.OkulKodu, new { @class = "form-control" }) </div>
-        </div>
-
+        
         <div class="row" style="margin-top:20px">
             <div class="col-sm-2" align="right"> <label style="margin-left:5px"> İlçesi :</label></div>
-            <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblIlceler.IlceID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" }) </div>
+            <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblIlceler.ID, (List<SelectListItem>)ViewBag.ilce, new { @class = "form-control" }) </div>
         </div>
 
         <div class="row" style="margin-top:20px">
             <div class="col-sm-2" align="right"> <label style="margin-left:5px"> Okul Türü :</label></div>
-            <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblOkulTuru.OkulTuruID, (List<SelectListItem>)ViewBag.okulTuru, new { @class = "form-control" }) </div>
+            <div class="col-sm-6 col-md-7" align="center">  @Html.DropDownListFor(m => m.tblOkulTuru.OkulTuru, (List<SelectListItem>)ViewBag.okulTuru, new { @class = "form-control" }) </div>
         </div>
 
         <div class="row" style="margin-top:20px">
@@ -58,7 +53,7 @@
             <div class="col-sm-6 col-md-7" align="center"> @Html.TextAreaFor(m => m.OkulAdres, new { @class = "form-control" })</div>
         </div>
 
-        @Html.HiddenFor(m => m.OkulID)
+        @Html.HiddenFor(m => m.ID)
         <div align="center" style="margin:15px">
             <button class="btn btn-info">Güncelle</button>
         </div>

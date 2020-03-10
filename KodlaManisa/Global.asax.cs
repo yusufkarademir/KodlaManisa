@@ -1,5 +1,8 @@
+using KodlaManisa.Migrations;
+using KodlaManisa.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +16,9 @@ namespace KodlaManisa
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KodlaManisaEntities, Configuration>());
+            new KodlaManisaEntities().Database.Initialize(true);
         }
     }
 }
