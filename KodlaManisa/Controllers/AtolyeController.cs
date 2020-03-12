@@ -103,10 +103,13 @@ namespace KodlaManisa.Controllers
             return RedirectToAction("Atolyeler");
         }
 
+      
+       
         [HttpGet]
         public ActionResult AtolyeDetay(int id)
         {
             AtolyeDetayViewModel vm = new AtolyeDetayViewModel();
+          
 
             vm.Atolye = db.tblAtolyeler
                 .Where(i => i.ID == id)
@@ -118,6 +121,7 @@ namespace KodlaManisa.Controllers
                     OgretmenAdi = i.Ogretmen.OgretmenAdi,
                     OgretmenSoyadi = i.Ogretmen.OgretmenSoyadi,
                 }).FirstOrDefault();
+
             vm.Fotograflar = db.tblAtolyeFotograf
                 .Where(i => i.ID == id)
                 .Select(i => new AtolyeDetayViewModel.AtolyeFotograflariViewModel
@@ -126,13 +130,14 @@ namespace KodlaManisa.Controllers
                     Atolye_ID = i.Atolye.ID,                    
                 }).FirstOrDefault();
             
+           
             vm.Malzemeler = db.tblAtolyeMalzemeler.Where(i => i.ID == id).ToList();
             vm.Kurslar = db.tblAtolyeKurslar.Where(i => i.ID == id).ToList();
             vm.KursOgrencileri = db.tblAtolyeKursOgrencileri.Where(i => i.AtolyeKurs.Atolye.ID== id).ToList();
 
             //var atolye = _db.tblAtolyeler.Find(id);
             //var malzeme = _db.tblAtolyeMalzemeler.Where(m => m.AtolyeID == id).FirstOrDefault();
-
+           
             return View(vm);
         }
 

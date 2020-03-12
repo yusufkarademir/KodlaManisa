@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6">
                                             @*Resim Linki Düzgün Çekilmiyor...Düzeltilecek  *@
-                            <img src="%@Html.DisplayFor(m=>m.Fotograflar.FotografLink)%" width="300" title="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" alt="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" align="left" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
+                            <img src="@Model.Fotograflar.FotografLink" width="300" title="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" alt="FOTOĞRAFI BÜYÜTMEK İÇİN TIKLA" align="left" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
                         </div>
 
 
@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="modal-body">
                                         @*Resim Linki Düzgün Çekilmiyor...Düzeltilecek  *@
-                                        <img src="%@Model.Fotograflar.FotografLink%" width="800" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
+                                        <img src="@Model.Fotograflar.FotografLink" width="800" class="img-thumbnail" data-toggle="modal" data-target="#myModal">
                                     </div>
                                 </div>
                             </div>
