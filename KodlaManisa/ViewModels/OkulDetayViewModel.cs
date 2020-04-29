@@ -14,7 +14,7 @@ namespace KodlaManisa.ViewModels
         //public IEnumerable<tblOkullar> Okullar {get;set;}
         public IEnumerable<tblOkulMalzemeler> Malzemeler { get; set; }
         public IEnumerable<tblSorular> Sorular {get; set;}
-        //public SorularVievModel Sorular { get; set; }
+        //public SorularViewModel Sorular { get; set; }
        
 
     }
@@ -53,7 +53,7 @@ namespace KodlaManisa.ViewModels
         public string Ogretmen2 { get; set; }
     }
 
-    //public class SorularVievModel
+    //public class SorularViewModel
     //{
     //    public int ID { get; set; }
     //    public string Soru { get; set; }

@@ -194,47 +194,53 @@
                     <tbody>
                         <tr>
                             <td width="35%" align="center"> Yönetici :</td>
-                            <td width="75%">@Model.OkulEkibi.Yonetici</td>
+                            <td width="75%"@Html.DisplayFor(i=>i.OkulEkibi.Yonetici)</td>
                         </tr>
                         <tr>
                             <td width="35%" align="center"> Öğretmen :</td>
-                            <td width="75%">@Model.OkulEkibi.Ogretmen1</td>
-                        </tr>
-                        <tr>
-                            <td width="35%" align="center"> Öğretmen :</td>
-                            <td width="75%">@Model.OkulEkibi.Ogretmen2</td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <td width="75%">
+                                @Html.DisplayFor(i=>i.OkulEkibi.Ogretmen1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="35%" align="center"> Öğretmen :</td>
+                                        <td width="75%">@Html.DisplayFor(i=>i.OkulEkibi.Ogretmen2)</td>
 
-            </div>
+</tr>
 
-            <div class="card card-cyan">
-                <div class="card-header">
-                    <h5 class="card-title"><b>TEKNOLOJİ TAKIMI BİLGİLERİ</b></h5>
-                </div>
+</tbody>
 
-                <table border="1"  class="table table-bordered table-hover">
-                    <tbody>
+</table>
 
-                        <tr>
-                            <td width="35%" align="center"> Takım Adı :</td>
+
+</div>
+
+
+<div class="card card-cyan">
+         <div class="card-header">
+             <h5 class="card-title"><b>TEKNOLOJİ TAKIMI BİLGİLERİ</b></h5>
+         </div>
+
+         <table border = "1"  class="table table-bordered table-hover">
+             <tbody>
+
+                 <tr>
+                     <td width = "35%" align="center"> Takım Adı :</td>
                             @* System.NullReferenceException HATASI VERİYOR AMA DB' DE KARŞILIĞI VAR *@
-                            <td width="75%">@*@Html.DisplayFor(i=>i.TTakimi.TakimAdi)*@</td>
-                        </tr>
-                        <tr>
+                                                        <td width = "75%" > @Html.DisplayFor(i => i.TTakimi.TakimAdi) </td>
+                                                    </tr>
+                                                    <tr>
                             @* Öğretmen adını ilişkili tablodan getirmiyor *@
                             <td width="35%" align="center"> Sorumlu Öğretmen :</td>
-                            <td width="75%">@*@Model.TTakimi.OgretmenAdi*@</td>
+                            <td width = "75%" > @Html.DisplayFor(i => i.TTakimi.OgretmenAdi) </td>
                         </tr>
                         <tr>
                             @* System.NullReferenceException HATASI VERİYOR AMA DB' DE KARŞILIĞI VAR *@
-                            <td width="35%" align="center"> Öğrenci Sayısı :</td>
-                            <td width="75%">@*@Model.TTakimi.OgrenciSayisi*@</td>
+<td width="35%" align="center"> Öğrenci Sayısı :</td>
+                            <td width="75%">@Html.DisplayFor(i=>i.TTakimi.OgrenciSayisi)</td>
                         </tr>
                         <tr>
                             <td width="35%" align="center"> Katıldığı Yarışmalar :</td>
-                            <td width="75%"><textarea class="form-control">@*@Model.TTakimi.KatildigiYarismaAdi*@</textarea></td>
+                            <td width="75%"><textarea class="form-control">@Html.DisplayFor(i=>i.TTakimi.KatildigiYarismaAdi)</textarea></td>
                         </tr>                        
 
                     </tbody>
@@ -291,4 +297,4 @@
 
 
 </div>
-<hr />
+<hr/>

@@ -1,4 +1,5 @@
 ﻿@using KodlaManisa.Models
+@using GridMvc.Html
 @model List<tblOkullar>
 @{
     ViewBag.Title = "Okullar";
@@ -19,33 +20,83 @@
 </div>
 
 <div style="margin:10px">
-    <table class="table table-bordered">
-        <tr>
-            <th>OKUL ADI</th>
-            <th>OKUL TÜRÜ</th>
-            <th>İLÇESİ</th>
-            <th>OKUL TEL</th>
-            <th>OKUL EPOSTA</th>
-            <th>İŞLEMLER</th>
 
-        </tr>
-        <tbody>
-            @foreach (var okul in Model)
-            {
+
+    @Html.Grid(Model).SetLanguage("ru").Columns(columns =>
+    {
+ columns.Add(m=>m.ID)
+    .Titled("Okul Kodu")
+    .Filterable(true)
+    .Sanitized(false)
+    .Sortable(true)
+    .SetWidth(10)
+    .Encoded(false);
+    columns.Add(m=>m.OkulAdi)
+    .Titled("Okul Adı")
+    .Filterable(true)
+    .Sanitized(false)
+    .Sortable(true)
+    .Encoded(false);
+    columns.Add(m=>m.tblIlceler.IlceAdi)
+    .Titled("İlçesi")
+    .Filterable(true)
+    .Sanitized(false)
+    .Sortable(true)
+    .Encoded(false);
+    columns.Add(m => m.tblOkulTuru.OkulTuru)
+    .Titled("Kademesi")
+    .Filterable(true)
+    .Sanitized(false)
+    .Sortable(true)
+    .Encoded(false);
+    columns.Add()
+    .Titled("İşlemler")
+    .Sanitized(false)
+    .Encoded(false)
+    .SetWidth(20)
+    .RenderValueAs(o => Html.ActionLink("Düzenle", "OkulGuncelle", "Okul", new { id = o.ID }, new { @class = "btn btn-success" })
+    .ToHtmlString());
+    columns.Add()
+    .Sanitized(false)
+    .Encoded(false)
+    .SetWidth(20)
+    .RenderValueAs(o => Html.ActionLink("Sil", "Sil", "Okul", new { id = o.ID }, new { @class = "btn btn-danger" })
+    .ToHtmlString());
+    columns.Add()
+    .Sanitized(false)
+    .Encoded(false)
+    .SetWidth(30)
+    .RenderValueAs(o => Html.ActionLink("Detay", "OkulDetay", "Okul", new { id = o.ID }, new { @class = "btn btn-info" })
+    .ToHtmlString());
+
+    }).WithPaging(15)
+
+
+    @*<table class="table table-bordered">
             <tr>
-                <td>@okul.OkulAdi</td>
-                <td>@okul.tblOkulTuru.OkulTuru</td>
-                <td>@okul.tblIlceler.IlceAdi</td>
-                <td>@okul.OkulTel</td>
-                <td>@okul.OkulEposta</td>
-                <td>
-                    <a href="/Okul/Sil/@okul.ID" class="btn btn-danger">Sil</a>
-                    <a href="/Okul/OkulGuncelle/@okul.ID" class="btn btn-success">Düzenle</a>
-                    <a href="/Okul/OkulDetay/@okul.ID" class="btn btn-info">Detay</a>
-                </td>
+                <th>OKUL ADI</th>
+                <th>OKUL TÜRÜ</th>
+                <th>İLÇESİ</th>
+                <th>OKUL TEL</th>
+                <th>İŞLEMLER</th>
+
             </tr>
-            }
-        </tbody>
-    </table>
+            <tbody>
+                @foreach (var okul in Model)
+                {
+                <tr>
+                    <td>@okul.OkulAdi</td>
+                    <td>@okul.tblOkulTuru.OkulTuru</td>
+                    <td>@okul.tblIlceler.IlceAdi</td>
+                    <td>@okul.OkulTel</td>
+                    <td>
+                        <a href="/Okul/Sil/@okul.ID" class="btn btn-danger">Sil</a>
+                        <a href="/Okul/OkulGuncelle/@okul.ID" class="btn btn-success">Düzenle</a>
+                        <a href="/Okul/OkulDetay/@okul.ID" class="btn btn-info">Detay</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>*@
     <a href="/Okul/OkulEkle" class="btn btn-primary">Yeni Okul Kaydı</a>
 </div>

@@ -22,9 +22,11 @@ namespace KodlaManisa.Controllers
         }
 
         public ActionResult Okullar()
+        
         {
+           
             var okullar = db.tblOkullar.ToList();
-            return View(okullar);
+           return View(okullar);
         }
 
         [HttpGet]
@@ -108,7 +110,6 @@ namespace KodlaManisa.Controllers
 
         public ActionResult OkulDetay(int id)
         {
-            //KodlaManisaEntities _db = new KodlaManisaEntities();
             OkulDetayViewModel vm = new OkulDetayViewModel();
 
             vm.Okul = db.tblOkullar
@@ -128,7 +129,7 @@ namespace KodlaManisa.Controllers
                 }).FirstOrDefault();
 
             vm.TTakimi = db.tblOkulTeknolojiTakimi
-               .Where(i => i.ID == id)
+               .Where(i => i.Okul.ID == id)
                .Select(i => new TTakimiViewModel
                {
                    TakimAdi = i.TakimAdi.ToString(),
@@ -139,7 +140,7 @@ namespace KodlaManisa.Controllers
                }).FirstOrDefault();
 
             vm.OkulEkibi = db.tblOkulProjeEkibi
-            .Where(i => i.ID == id)
+            .Where(i => i.Okul.ID == id)
             .Select(i => new OkulProjeEkibiViewModel
             {
                 Yonetici = i.Yonetici,
@@ -148,7 +149,7 @@ namespace KodlaManisa.Controllers
             }).FirstOrDefault();
 
 
-            vm.Malzemeler = db.tblOkulMalzemeler.Where(i => i.ID == id).ToList();
+            vm.Malzemeler = db.tblOkulMalzemeler.Where(i => i.Okul.ID == id).ToList();
             
 
 

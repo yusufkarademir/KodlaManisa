@@ -1,5 +1,6 @@
 ﻿@using KodlaManisa.Models
-@model List<tblOkullar> 
+@using GridMvc.Html
+@model List<tblOkullar>
 
 @{
     ViewBag.Title = "Index";
@@ -12,45 +13,51 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h1 class="card-title" style="margin-top:8px">OKULLAR</h1>
-               
+
             </div>
         </div>
     </div>
 </div>
 
 <div style="margin:10px">
-    <table class="table table-bordered">
-        <tr>
-            <th>OKUL ADI</th>
-            <th>OKUL TÜRÜ</th>
-            <th>İLÇESİ</th>
-            <th>İŞLEMLER</th>
 
 
-        </tr>
-        <tbody>
-            @foreach (var okul in Model)
-            {
-            <tr>
-                <td>@okul.OkulAdi</td>
-                <td>@okul.tblOkulTuru.OkulTuru</td>
-                <td>@okul.tblIlceler.IlceAdi</td>
-                <td align="justify">                    
-                    <a href="/Okul/OkulDetay/@okul.ID" class="btn btn-outline-primary btn-block">Detay</a>
-                </td>
+    @Html.Grid(Model).Columns(columns =>
+{
 
+columns.Add(m=>m.OkulAdi)
+.Titled("Okul Adı")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add(m=>m.tblIlceler.IlceAdi)
+.Titled("İlçesi")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add(m => m.tblOkulTuru.OkulTuru)
+.Titled("Kademesi")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add()
+.Titled("İşlemler")
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(20)
+.RenderValueAs(o => Html.ActionLink("Detay", "OkulDetay", "Okul", new { id = o.ID }, new { @class = "btn btn-info" })
+.ToHtmlString());
 
-            </tr>
-            }
-        </tbody>
-    </table>
-  
+}).WithPaging(15)
 </div>
 
 
 
 
-    @*<div class="row">
+@*<div class="row">
 
         <div class="col-sm-12 col-md-12">
             <div class="card card-primary">

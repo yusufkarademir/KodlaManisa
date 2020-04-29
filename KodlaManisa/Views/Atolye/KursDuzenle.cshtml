@@ -1,0 +1,154 @@
+﻿@model tblAtolyeKurslar
+@{
+    ViewBag.Title = "KursDuzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="card card-gray-dark">
+
+            <div class="card-header">
+                <div style="float:right; position: relative;  top:-8px">
+                    <div class="col-sm-12 col-md-6" style="float:unset; position: relative; top: 8px">
+                        <form method="POST" action="#">
+                            <input type="hidden" name="islem" size="4" value="ekle">
+                            <input type="submit" class="btn btn-info btn-sm" value="YENİ KURS EKLE" name="B1">
+                        </form>
+                    </div>
+
+                </div>
+                <h3 class="card-title">@Model.Atolye.AtolyeAdi -  KURS BİLGİLERİ DÜZENLEME </h3>
+
+            </div></br>
+            <div class="container" style="margin:auto;">
+                @using (Html.BeginForm("KursGuncelle", "Atolye", FormMethod.Post))
+                {
+
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS ADI:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.KursTuru, new { @class = "form-control" })</div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS SEVİYESİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.KursSeviyesi, new { @class = "form-control" })</div>
+
+
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS GRUBU :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.KursGrubu, new { @class = "form-control" })</div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS ÖĞRETMENİ :</label></div>
+                        @*Buraya Öğretmen Listesi Açılır Menü Olarak Gelmeli*@
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.Ogretmen.ID, (List<SelectListItem>)ViewBag.ogretmen, new { @class = "form-control" }) </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS YILI :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                @Html.TextBoxFor(m => m.KursYili, new { @class = "form-control" })
+                            </td>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS DÖNEMİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                @Html.TextBoxFor(m => m.KursDönemi, new { @class = "form-control" })
+                            </td>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS GÜNÜ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                @Html.TextBoxFor(m => m.GrupGunu, new { @class = "form-control" })
+                            </td>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS SAATİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.GrupSaati, new { @class = "form-control" })</div>
+                    </div>
+
+
+                    @Html.HiddenFor(m => m.ID)
+                    <div align="center" style="margin-top:15px">
+                        <button class="btn btn-info">Güncelle</button>
+                    </div>
+                }
+            </div>
+
+            </br>
+        </div>
+    </div>
+</div>
+</br>
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                <div style="float:right; position: relative;  top:-8px">
+                    <div class="col-sm-12 col-md-6" style="float:unset; position:center; top: 8px">
+                        <form method="POST" action="#">
+                            <input type="hidden" name="islem" size="4" value="ekle">
+                            <input type="submit" class="btn btn-info btn-sm" value="BU KURSA ÖĞRENCİ EKLE" name="B1">
+                        </form>
+                    </div>
+
+                </div>
+                <h3 class="card-title">@Model.KursTuru Kursuna Devam Eden Öğrenciler</h3>
+            </div>
+
+            <table border="1" class="table table-bordered table-hover">
+                <tr class="active">
+
+                    <td>ADI SOYADI</td>
+                    <td>OKULU</td>
+                    <td>SINIFI</td>
+                    <td>DEVAM ETTİĞİ KURS</td>
+                    <td>İŞLEMLER</td>
+                </tr>
+                <tbody>
+                    @foreach (var ogrenci in Model.tblAtolyeKursOgrencileri)
+                    {
+                        <tr>
+                            <td>@ogrenci.Ogrenci.OgrenciAdi @ogrenci.Ogrenci.OgrenciSoyadi</td>
+                            @*Bağlı Tablolardan Okul Bilgisi Çekilecek...*@
+                            <td>@*@ogrenci.AtolyeKurs.Ogretmen.OkulOgretmenler.Select(i => i.Okul.OkulAdi).Single()*@   @*Bağlı Tablolardan Okul Bilgisi Çekilecek..*@</td>
+                            <td>@ogrenci.Ogrenci.OkulSinif.SinifAdi</td>
+                            <td>@ogrenci.AtolyeKurs.KursTuru - @ogrenci.AtolyeKurs.KursGrubu</td>
+                            <td>
+                                <a href="/Ogrenci/OgrenciDetay/@ogrenci.Ogrenci.ID" class="btn btn-outline-secondary btn-sm">Öğrenci Profili</a>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+
+
+
+
+            </table>
+            
+        </div>
+        
+    </div>
+</div>

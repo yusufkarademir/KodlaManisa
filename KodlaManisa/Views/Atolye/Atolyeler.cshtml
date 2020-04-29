@@ -1,4 +1,5 @@
 ﻿@using KodlaManisa.Models
+@using GridMvc.Html
 @model List<tblAtolyeler>
 @{
     ViewBag.Title = "Atolyeler";
@@ -19,9 +20,59 @@
 </div>
 <div class="card-body">
     <div style="margin:20px">
-        <table class="table table-bordered">
+
+        @Html.Grid(Model).Columns(columns =>
+{
+
+columns.Add(m=>m.AtolyeAdi)
+.Titled("Atölye Adı")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add(m=>m.AtolyeTuru.AtolyeTurAdi)
+.Titled("Atölye Türü")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add(m => m.Ilce.IlceAdi)
+.Titled("İlçesi")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add(m => m.AtolyeAdres)
+.Titled("Atölye Adresi")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+columns.Add()
+.Titled("İşlemler")
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(20)
+.RenderValueAs(o => Html.ActionLink("Düzenle", "AtolyeGuncelle", "Atolye", new { id = o.ID }, new { @class = "btn btn-success btn-sm" })
+.ToHtmlString());
+columns.Add()
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(20)
+.RenderValueAs(o => Html.ActionLink("Sil", "Sil", "Atolye", new { id = o.ID }, new { @class = "btn btn-danger btn-sm" })
+.ToHtmlString());
+columns.Add()
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(30)
+.RenderValueAs(o => Html.ActionLink("Detay", "AtolyeDetay", "Atolye", new { id = o.ID }, new { @class = "btn btn-info btn-sm" })
+.ToHtmlString());
+
+}).WithPaging(15)
+
+        @*<table class="table table-bordered">
             <tr>
-                <th>ATÖLYE ADI</th>                
+                <th>ATÖLYE ADI</th>
                 <th>TÜRÜ</th>
                 <th>İLÇESİ</th>
                 <th>ADRESİ</th>
@@ -47,7 +98,7 @@
 
             </tbody>
 
-        </table>
+        </table>*@
 
         <div style="float:left"> <a href="/Atolye/AtolyeEkle" class="btn btn-primary" style="margin-bottom:8px">Yeni Atölye Kaydı</a></div>
         <br>

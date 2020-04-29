@@ -1,0 +1,50 @@
+﻿@using KodlaManisa.Models
+@model List<tblAtolyeKursOgrencileri>
+@{
+    ViewBag.Title = "KursOgrencileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="card card-gray-dark">
+            <div class="card-header">
+                @*Hangi Atölyenin Hangi Kursuna ait olduğunu DB den çekecek*@
+               <h3 class="card-title">@Model.Select(i=>i.AtolyeKurs.Atolye.AtolyeAdi).Single() - @Model.Select(m=>m.AtolyeKurs.KursTuru).Single() Kursu Öğrencileri</h3>
+            </div>
+
+            <table border="1" class="table table-bordered table-hover">
+                <tr class="active">
+
+                    <td>ADI SOYADI</td>
+                    <td>OKULU</td>
+                    <td>SINIFI</td>
+                    <td>DEVAM ETTİĞİ KURS</td>
+                    <td>İŞLEMLER</td>
+                </tr>
+                <tbody>
+                    @foreach (var ogrenci in Model)
+                    {
+                        <tr>
+                            <td>@ogrenci.Ogrenci.OgrenciAdi @ogrenci.Ogrenci.OgrenciSoyadi</td>
+                            @*Bağlı Tablolardan Okul Bilgisi Çekilecek...*@
+                            <td>@*@ogrenci.AtolyeKurs.Ogretmen.OkulOgretmenler.Select(i=>i.Okul.OkulAdi).Single()*@  </td>
+                            <td>@ogrenci.Ogrenci.OkulSinif.SinifAdi</td>
+                            <td>@ogrenci.AtolyeKurs.KursTuru - @ogrenci.AtolyeKurs.KursGrubu</td>
+                            <td>
+                                <a href="/Ogrenci/OgrenciDetay/@ogrenci.Ogrenci.ID" class="btn btn-outline-secondary btn-sm">Öğrenci Profili</a>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+
+
+
+
+            </table>
+        </div>
+    </div>
+</div>

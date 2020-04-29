@@ -34,13 +34,13 @@ namespace KodlaManisa.Controllers
                                             }).ToList();
             ViewBag.ilce = ilceler;
 
-            List<SelectListItem> okullar = (from i in db.tblOkullar.ToList()
-                                            select new SelectListItem
-                                            {
-                                                Text = i.OkulAdi,
-                                                Value = i.ID.ToString()
-                                            }).ToList();
-            ViewBag.okul = okullar;
+            //List<SelectListItem> okullar = (from i in db.tblOkullar.ToList()
+            //                                select new SelectListItem
+            //                                {
+            //                                    Text = i.OkulAdi,
+            //                                    Value = i.ID.ToString()
+            //                                }).ToList();
+            //ViewBag.okul = okullar;
 
             List<SelectListItem> ogretmenler = (from i in db.tblOgretmenler.ToList()
                                                 select new SelectListItem

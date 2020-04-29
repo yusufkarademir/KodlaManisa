@@ -13,6 +13,8 @@ namespace KodlaManisa.Controllers
     {
         KodlaManisaEntities db = new KodlaManisaEntities();
 
+        public object FotografLink { get; private set; }
+        public object KursYili { get; private set; }
 
         public ActionResult Index()
         {
@@ -103,8 +105,7 @@ namespace KodlaManisa.Controllers
             return RedirectToAction("Atolyeler");
         }
 
-      
-       
+             
         [HttpGet]
         public ActionResult AtolyeDetay(int id)
         {
@@ -123,23 +124,72 @@ namespace KodlaManisa.Controllers
                 }).FirstOrDefault();
 
             vm.Fotograflar = db.tblAtolyeFotograf
-                .Where(i => i.ID == id)
+                .Where(i => i.Atolye.ID == id)
                 .Select(i => new AtolyeDetayViewModel.AtolyeFotograflariViewModel
                 {
                     FotografLink = i.FotografLink,
                     Atolye_ID = i.Atolye.ID,                    
                 }).FirstOrDefault();
-            
-           
-            vm.Malzemeler = db.tblAtolyeMalzemeler.Where(i => i.ID == id).ToList();
-            vm.Kurslar = db.tblAtolyeKurslar.Where(i => i.ID == id).ToList();
+                       
+            vm.Malzemeler = db.tblAtolyeMalzemeler.Where(i => i.Atolye.ID == id).ToList();
+            vm.Kurslar = db.tblAtolyeKurslar.Where(i => i.Atolye.ID == id).ToList();
             vm.KursOgrencileri = db.tblAtolyeKursOgrencileri.Where(i => i.AtolyeKurs.Atolye.ID== id).ToList();
-
-            //var atolye = _db.tblAtolyeler.Find(id);
-            //var malzeme = _db.tblAtolyeMalzemeler.Where(m => m.AtolyeID == id).FirstOrDefault();
-           
+            //vm.OgrenciOkul = db.tblOkulOgrenciler.Where(i=>i.Ogrenci.ID==tblAtolyeKursOgrencileri.)
+                       
             return View(vm);
         }
+        public ActionResult KursOgrencileri(int id)
+       
+        {
+            List<tblAtolyeKursOgrencileri> Ogrenciler = db.tblAtolyeKursOgrencileri.Where(i => i.AtolyeKurs.ID == id).ToList();
+            
+
+            return View(Ogrenciler);
+        }
+
+        public ActionResult KursDuzenle(int id)
+        {
+            var Kurs = db.tblAtolyeKurslar.Find(id);
+
+            List<SelectListItem> ogrenciler = (from i in db.tblAtolyeKursOgrencileri.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = i.Ogrenci.OgrenciAdi + i.Ogrenci.OgrenciSoyadi,                                               
+                                                Value = i.ID.ToString()
+                                            }).ToList();
+            ViewBag.ogrenciler = ogrenciler;
+
+            List<SelectListItem> ogretmen = (from i in db.tblOgretmenler.ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = i.OgretmenAdi +" "+i.OgretmenSoyadi,
+                                                   Value = i.ID.ToString()
+                                               }).ToList();
+            ViewBag.ogretmen = ogretmen;
+
+
+            return View("KursDuzenle", Kurs);
+        }
+
+        public ActionResult KursGuncelle(tblAtolyeKurslar p)
+        {
+            var Kurs = db.tblAtolyeKurslar.Find(p.ID);
+            var ogrenciler = db.tblAtolyeKursOgrencileri.Where(m =>m.AtolyeKurs.ID == Kurs.ID).FirstOrDefault();
+            var ogretmen = db.tblAtolyeKurslar.Where(m => m.Ogretmen.ID == p.Ogretmen.ID).FirstOrDefault();
+
+            Kurs.KursTuru = p.KursTuru;            
+            Kurs.KursGrubu = p.KursGrubu;
+            Kurs.KursSeviyesi = p.KursSeviyesi;
+            Kurs.KursDönemi = p.KursDönemi;
+            Kurs.KursYili = p.KursYili;
+            Kurs.Ogretmen = p.Ogretmen;
+            Kurs.GrupGunu = p.GrupGunu;
+            Kurs.GrupSaati = p.GrupSaati;
+            
+            db.SaveChanges();
+            return RedirectToAction("AtolyeDetay", "Atolye");
+        }
+
 
     }
 }

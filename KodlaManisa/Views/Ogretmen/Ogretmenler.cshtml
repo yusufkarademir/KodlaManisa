@@ -1,7 +1,8 @@
 ﻿@using KodlaManisa.Models
+@using GridMvc.Html
 @model List<tblOgretmenler>
 @{
-    ViewBag.Title = "Ogretmeler";
+    ViewBag.Title = "Ogretmenler";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,35 +20,83 @@
 </div>
 
 <div style="margin:20px">
-    <table class="table table-bordered">
+
+    @Html.Grid(Model).SetLanguage("tr").Columns(columns =>
+{
+
+columns.Add(m=>m.OgretmenAdi)
+.Titled("ADI")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.SetWidth(50)
+.Encoded(false);
+columns.Add(m=>m.OgretmenSoyadi)
+.Titled("SOYADI")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.SetWidth(50)
+.Encoded(false);
+columns.Add(m => m.OgretmenBrans)
+.Titled("BRANŞI")
+.Filterable(true)
+.Sanitized(false)
+.Sortable(true)
+.Encoded(false);
+
+columns.Add()
+.Titled("İşlemler")
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(20)
+.RenderValueAs(o => Html.ActionLink("Düzenle", "OgretmenGuncelle", "Ogretmen", new { id = o.ID }, new { @class = "btn btn-success" })
+.ToHtmlString());
+columns.Add()
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(20)
+.RenderValueAs(o => Html.ActionLink("Sil", "Sil", "Ogretmen", new { id = o.ID }, new { @class = "btn btn-danger" })
+.ToHtmlString());
+columns.Add()
+.Sanitized(false)
+.Encoded(false)
+.SetWidth(30)
+.RenderValueAs(o => Html.ActionLink("Detay", "OgretmenDetay", "Ogretmen", new { id = o.ID }, new { @class = "btn btn-info" })
+.ToHtmlString());
+
+}).WithPaging(15)
+
+
+    @*<table class="table table-bordered">
         <tr>
-            
+
             <th>ADI SOYADI</th>
             <th>BRANŞI</th>
             <th>İLÇESİ</th>
-            <th>OKULU</th>           
+            <th>OKULU</th>
             <th>İŞLEMLER</th>
 
         </tr>
         <tbody>
             @foreach (var ogretmen in Model)
             {
-            <tr>
-               
-                <td>@ogretmen.OgretmenAdi @ogretmen.OgretmenSoyadi</td>
-                <td>@ogretmen.OgretmenBrans</td>
-                <td>Okul</td>
-                <td></td>
-                
-                <td>
-                    <a href="/Ogretmen/Sil/@ogretmen.ID" class="btn btn-danger">Sil</a>
-                    <a href="/Ogretmen/OgretmenGuncelle/@ogretmen.ID" class="btn btn-success">Düzenle</a>
-                    <a href="/Ogretmen/OgretmenDetay/@ogretmen.ID" class="btn btn-info">Detay</a>
-                </td>
-            </tr>
+                <tr>
+
+                    <td>@ogretmen.OgretmenAdi @ogretmen.OgretmenSoyadi</td>
+                    <td>@ogretmen.OgretmenBrans</td>
+                    <td>Okul</td>
+                    <td></td>
+
+                    <td>
+                        <a href="/Ogretmen/Sil/@ogretmen.ID" class="btn btn-danger">Sil</a>
+                        <a href="/Ogretmen/OgretmenGuncelle/@ogretmen.ID" class="btn btn-success">Düzenle</a>
+                        <a href="/Ogretmen/OgretmenDetay/@ogretmen.ID" class="btn btn-info">Detay</a>
+                    </td>
+                </tr>
             }
         </tbody>
-    </table>
+    </table>*@
     <a href="/Ogretmen/OgretmenEkle" class="btn btn-primary">Yeni Öğretmen Kaydı</a>
 </div>
 

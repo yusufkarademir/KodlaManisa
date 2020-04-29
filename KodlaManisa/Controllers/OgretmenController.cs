@@ -22,14 +22,14 @@ namespace KodlaManisa.Controllers
         {
             var ogretmenler = db.tblOgretmenler.ToList();
 
-            List<SelectListItem> Okullar = (from i in db.tblOkullar.ToList()
-                                            select new SelectListItem
-                                            {
-                                                Text = i.OkulAdi,
-                                                Value = i.ID.ToString()
-                                            }).ToList();
+            //List<SelectListItem> Okullar = (from i in db.tblOkullar.ToList()
+            //                                select new SelectListItem
+            //                                {
+            //                                    Text = i.OkulAdi,s
+            //                                    Value = i.ID.ToString()
+            //                                }).ToList();
            
-            ViewBag.okul = Okullar;
+            //ViewBag.okul = Okullar;
             return View(ogretmenler);
         }
 
@@ -111,7 +111,7 @@ namespace KodlaManisa.Controllers
             db.SaveChanges();
             return RedirectToAction("Ogretmenler");
         }
-        public ActionResult Bilgilerim(int id = 1)
+        public ActionResult Bilgilerim(int id = 376)
         {
             var ogretmen = db.tblOgretmenler.Find(id);
             ViewBag.ogretmen = ogretmen;
@@ -145,9 +145,22 @@ namespace KodlaManisa.Controllers
             return View();
         }
 
-        public ActionResult OgretmenDetay()
+        public ActionResult OgretmenDetay(int id)
         {
-            return View();
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var ogretmen = db.tblOgretmenler.Find(id);
+            //if (ogretmen == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            var tuple = new Tuple<tblOgretmenler, tblOgretmenGorevleri, tblOgretmenDYKBilgileri, tblOkulOgretmenler>(new tblOgretmenler(), new tblOgretmenGorevleri(), new tblOgretmenDYKBilgileri(), new tblOkulOgretmenler());
+
+            return View(tuple);
+
         }
 
 
