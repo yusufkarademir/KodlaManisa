@@ -138,6 +138,62 @@ namespace KodlaManisa.Controllers
                        
             return View(vm);
         }
+
+        public ActionResult AtolyeKurslar(int id)
+        {
+            //Hangi Atölyenin AtolyeDetay Sayfasından tıklandıysa sadece o atolyeye ait Kurslar gelmeli..
+            AtolyeDetayViewModel vm = new AtolyeDetayViewModel();
+
+
+            vm.Atolye = db.tblAtolyeler
+                .Where(i => i.ID == id)
+                .Select(i => new AtolyeDetayViewModel.AtolyeDataViewModel
+                {
+                    ID = i.ID,
+                    Adi = i.AtolyeAdi,
+                    CalismaSaati = i.AtolyeCalismaSaati,
+                    Adres = i.AtolyeAdres,
+                    OgretmenAdi = i.Ogretmen.OgretmenAdi,
+                    OgretmenSoyadi = i.Ogretmen.OgretmenSoyadi,
+                }).FirstOrDefault();
+            vm.Kurslar = db.tblAtolyeKurslar.Where(i => i.Atolye.ID == id).ToList();
+            ViewBag.AtolyeID = vm.Atolye.ID;
+
+            return View(vm);
+
+        }
+
+        public ActionResult KursEkle()
+        {
+
+            List<SelectListItem> atolye = (from i in db.tblAtolyeler.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.AtolyeAdi,
+                                                 Value = i.ID.ToString()
+                                             }).ToList();
+            ViewBag.ogretmen = ogretmen;
+            List<SelectListItem> ogretmen = (from i in db.tblOgretmenler.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.OgretmenAdi + " " + i.OgretmenSoyadi,
+                                                 Value = i.ID.ToString()
+                                             }).ToList();
+            ViewBag.ogretmen = ogretmen;
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult KursEkle(tblAtolyeKurslar p)
+        {
+           
+            //db.tblAtolyeKurslar.Add(p);
+            //db.SaveChanges();
+            return RedirectToAction("KursEkle");
+        }
+
         public ActionResult KursOgrencileri(int id)
        
         {

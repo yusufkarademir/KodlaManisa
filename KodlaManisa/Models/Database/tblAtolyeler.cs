@@ -41,5 +41,10 @@ namespace KodlaManisa.Models.Database
         public virtual ICollection<tblAtolyeMalzemeler> tblAtolyeMalzemeler { get; set; }
         [InverseProperty("Atolye")]
         public virtual ICollection<tblAtolyeYaptigiZiyaretler> tblAtolyeYaptigiZiyaretler { get; set; }
+
+        public static implicit operator int(tblAtolyeler v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

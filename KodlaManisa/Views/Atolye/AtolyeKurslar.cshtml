@@ -1,0 +1,71 @@
+﻿@model KodlaManisa.ViewModels.AtolyeDetayViewModel
+@*@using KodlaManisa.Models
+  @model List < tblAtolyeKurslar > *@
+    @{
+        ViewBag.Title = "AtolyeKurslar";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="card card-gray-dark">
+
+                <div class="card-header">
+                    @*<div style="float:right; position: relative;  top:-8px">
+            <div class="col-sm-12 col-md-6" style="float:unset; position: relative; top: 8px">
+                <form method="POST" action="/Atolye/KursEkle/@Model.Atolye.ID">
+                    <input type="hidden" name="islem" size="4" value="ekle">
+                    <input type="submit" class="btn btn-info btn-sm" value="Kurs EKLE" name="B1">
+                </form>
+
+            </div>
+
+        </div>*@
+                    @Html.HiddenFor(m => m.Atolye.ID)
+                    <h3 class="card-title">ATÖLYEDE DEVAM EDEN KURSLAR</h3>
+
+                </div>
+
+                <table border="1" class="table table-bordered table-hover">
+                    <tr class="active">
+
+                        <td>KURS ADI</td>
+                        <td>KURS SEVİYESİ</td>
+                        <td>KURS GRUBU</td>
+                        <td>KURS ÖĞRETMENİ</td>
+                        <td>KURS GÜNÜ</td>
+                        <td>SAATİ</td>
+                        <td>İŞLEMLER</td>
+                    </tr>
+                    <tbody>
+                        @foreach (var kurs in Model.Kurslar)
+                        {
+                            <tr>
+
+                                <td>@kurs.KursTuru</td>
+                                <td>@kurs.KursSeviyesi</td>
+                                <td>@kurs.KursGrubu</td>
+                                @*Bilgileri değiştirip Güncelle Butonuna tıklayınca tüm bilgiler değişiyor öğretmen bilgisi değişmediği için hata üretiyor*@
+                                @*<td>@kurs.Atolye.Ogretmen.OgretmenAdi @kurs.Atolye.Ogretmen.OgretmenSoyadi</td>*@
+                                <td>@kurs.Ogretmen.OgretmenAdi @kurs.Ogretmen.OgretmenSoyadi</td>
+                                <td>@kurs.GrupGunu</td>
+                                <td>@kurs.GrupSaati</td>
+                                <td>
+                                    <a href="/Atolye/KursOgrencileri/@kurs.ID" class="btn btn-info">Kurs Öğrencileri</a>
+                                    <a href="/Atolye/KursDuzenle/@kurs.ID" class="btn btn-success">Kursu Düzenle</a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                                       
+                </table>
+            </div>
+        </div>
+    </div>
+
+

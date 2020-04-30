@@ -131,16 +131,24 @@
             <div class="card card-gray-dark">
 
                 <div class="card-header">
-                    <div style="float:right; position: relative;  top:-8px">
-                        <div class="col-sm-12 col-md-6" style="float:unset; position: relative; top: 8px">
-                            <form method="POST" action="#">
-                                <input type="hidden" name="islem" size="4" value="ekle">
-                                <input type="submit" class="btn btn-info btn-sm" value="YENİ KURS EKLE" name="B1">
+                    <div style="float:right; position: relative; left: 10px; top:-8px">
+                        <div class="col-sm-12 col-md-6" style="float:right; position: relative; top: 8px">
+                            @*Atölye ID sini Atolye/KursEkle/ ActionResult ına göndermiyor...*@
+                            <form method="post" action="/Atolye/KursEkle/@Model.Atolye.ID">                                
+                                <input type="submit" class="btn btn-info btn-sm" value="KURS EKLE" >
+                            </form>
+
+                        </div>
+                        <div class="col-sm-12 col-md-6" style="float:right; position: relative; top: 8px">
+                            @*Atölye ID sini Atolye/AtolyeKurslar/ ActionResult ına göndermiyor...*@
+                            <form method="post" action="/Atolye/AtolyeKurslar/@ViewBag.AtolyeID">                               
+                                <input type="submit" class="btn btn-info btn-sm"
+                                       value="TÜM KURSLAR" >
                             </form>
                         </div>
 
                     </div>
-                    <h3 class="card-title">ATÖLYEDE DEVAM EDEN KURSLAR</h3>
+                    <h3 class="card-title">ATÖLYEDE AKTİF DEVAM EDEN KURSLAR</h3>
 
                 </div>
 

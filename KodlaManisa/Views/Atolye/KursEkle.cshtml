@@ -1,0 +1,110 @@
+﻿@model KodlaManisa.ViewModels.AtolyeDetayViewModel
+
+@{
+    ViewBag.Title = "KursEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="card card-gray-dark">
+
+            <div class="card-header">
+                <div style="float:right; position: relative;  top:-8px">
+                    <div class="col-sm-12 col-md-6" style="float:unset; position: relative; top: 8px">
+                        <form method="POST" action="#">
+                            <input type="hidden" name="islem" size="4" value="ekle">
+                            <input type="submit" class="btn btn-info btn-sm" value="YENİ KURS EKLE" name="B1">
+                        </form>
+                    </div>
+
+                </div>
+                <h3 class="card-title">KURS EKLEME </h3>
+
+            </div></br>
+            <div class="container" style="margin:auto;">
+                <form method="post" class="form-group">
+
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">ATÖLYE ADI:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.Atolye.ID, (List<SelectListItem>)ViewBag.atolye, new { @class = "form-control" })</div>
+
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS ADI:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> <input type="text" class="form-control" name="KursTuru" /></div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS SEVİYESİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> <input type="text" class="form-control" name="KursSeviyesi" /></div>
+
+
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS GRUBU :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"><input type="text" class="form-control" name="KursGrubu" /></div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS ÖĞRETMENİ :</label></div>
+                        @*Buraya Öğretmen Listesi Açılır Menü Olarak Gelmeli*@
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.Ogretmen.ID, (List<SelectListItem>)ViewBag.ogretmen, new { @class = "form-control" }) </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS YILI :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                <input type="text" class="form-control" name="KursYili" />
+                            </td>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS DÖNEMİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                <input type="text" class="form-control" name="KursDönemi" />
+                            </td>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS GÜNÜ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                <input type="text" class="form-control" name="GrupGunu" />
+                            </td>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS SAATİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"><input type="text" class="form-control" name="GrupSaati" /></div>
+                    </div>
+
+
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-sm-2" align="right"> <button class="btn btn-info" id="btn1">Kurs Ekle</button> </div>
+
+                    </div>
+
+                    <script>
+                        $('#btn1').click(function () {
+                            alert('Atölye Ekleme İşlemi Yapıldı...!');
+                        });
+                    </script>
+            </div>
+
+            </br>
+        </div>
+    </div>
+</div>
+</br>
+
+
+
+

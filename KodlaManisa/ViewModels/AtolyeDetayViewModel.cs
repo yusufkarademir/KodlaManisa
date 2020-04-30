@@ -22,6 +22,7 @@ namespace KodlaManisa.ViewModels
 
         public class AtolyeDataViewModel
         {
+            public int ID { get; set; }
             public string Adi { get; set; }
 
             public string CalismaSaati { get; set; }

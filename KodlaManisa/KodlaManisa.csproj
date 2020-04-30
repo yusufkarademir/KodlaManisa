@@ -2375,6 +2375,8 @@
     <Content Include="Views\Grid\Listele.cshtml" />
     <Content Include="Views\Atolye\KursOgrencileri.cshtml" />
     <Content Include="Views\Atolye\KursDuzenle.cshtml" />
+    <Content Include="Views\Atolye\KursEkle.cshtml" />
+    <Content Include="Views\Atolye\AtolyeKurslar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
