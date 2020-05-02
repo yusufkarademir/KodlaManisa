@@ -12,6 +12,7 @@ namespace KodlaManisa.Models.Database
         {
             this.Ogrenciler = new HashSet<tblOkulOgrenciler>();
             this.AtolyeKurslari = new HashSet<tblAtolyeKursOgrencileri>();
+            this.AtolyeYonlendir = new HashSet<tblAtolyeYonlendirilenOgrenciler>();
         }
 
         public int ID { get; set; }
@@ -35,5 +36,7 @@ namespace KodlaManisa.Models.Database
         public virtual ICollection<tblOkulOgrenciler> Ogrenciler { get; set; }
         [InverseProperty("Ogrenci")]
         public virtual ICollection<tblAtolyeKursOgrencileri> AtolyeKurslari { get; set; }
+        [InverseProperty("Ogrenci")]
+        public virtual ICollection<tblAtolyeYonlendirilenOgrenciler> AtolyeYonlendir { get; set; }
     }
 }

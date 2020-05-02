@@ -15,6 +15,7 @@ namespace KodlaManisa.Models.Database
             this.tblAtolyeKurslar = new HashSet<tblAtolyeKurslar>();
             this.tblAtolyeMalzemeler = new HashSet<tblAtolyeMalzemeler>();
             this.tblAtolyeYaptigiZiyaretler = new List<tblAtolyeYaptigiZiyaretler>();
+            this.TblAtolyeYonlendirilenOgrenciler = new List<tblAtolyeYonlendirilenOgrenciler>();
         }
 
         public int ID { get; set; }
@@ -41,6 +42,8 @@ namespace KodlaManisa.Models.Database
         public virtual ICollection<tblAtolyeMalzemeler> tblAtolyeMalzemeler { get; set; }
         [InverseProperty("Atolye")]
         public virtual ICollection<tblAtolyeYaptigiZiyaretler> tblAtolyeYaptigiZiyaretler { get; set; }
+        [InverseProperty("Atolye")]
+        public virtual ICollection<tblAtolyeYonlendirilenOgrenciler> TblAtolyeYonlendirilenOgrenciler { get; set; }
 
         public static implicit operator int(tblAtolyeler v)
         {

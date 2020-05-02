@@ -1,4 +1,4 @@
-﻿@model KodlaManisa.ViewModels.AtolyeDetayViewModel
+﻿@model KodlaManisa.Models.Database.tblAtolyeKurslar
 
 @{
     ViewBag.Title = "KursEkle";
@@ -25,27 +25,28 @@
             </div></br>
             <div class="container" style="margin:auto;">
                 <form method="post" class="form-group">
-
+                    <div align="center">Atölye Adı, Atolye Detay sayfasında hangi atölyeden yönlendiyse o atölye ismi otomatik gelmeli...</div>
                     <div class="row" style="margin-top:20px">
+
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">ATÖLYE ADI:</label></div>
                         <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.Atolye.ID, (List<SelectListItem>)ViewBag.atolye, new { @class = "form-control" })</div>
 
                     </div>
                     <div class="row" style="margin-top:20px">
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS ADI:</label></div>
-                        <div class="col-sm-6 col-md-7" align="center"> <input type="text" class="form-control" name="KursTuru" /></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.KursTuru, new { @class = "form-control" })</div>
                     </div>
 
                     <div class="row" style="margin-top:8px">
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS SEVİYESİ :</label></div>
-                        <div class="col-sm-6 col-md-7" align="center"> <input type="text" class="form-control" name="KursSeviyesi" /></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.KursSeviyesi, new { @class = "form-control" })</div>
 
 
                     </div>
 
                     <div class="row" style="margin-top:8px">
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS GRUBU :</label></div>
-                        <div class="col-sm-6 col-md-7" align="center"><input type="text" class="form-control" name="KursGrubu" /></div>
+                        <div class="col-sm-6 col-md-7" align="center">@Html.TextBoxFor(m => m.KursGrubu, new { @class = "form-control" })</div>
                     </div>
 
                     <div class="row" style="margin-top:8px">
@@ -58,7 +59,7 @@
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS YILI :</label></div>
                         <div class="col-sm-6 col-md-7" align="center">
                             <td width="60%">
-                                <input type="text" class="form-control" name="KursYili" />
+                                @Html.TextBoxFor(m => m.KursYili, new { @class = "form-control" })
                             </td>
                         </div>
                     </div>
@@ -67,7 +68,7 @@
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS DÖNEMİ :</label></div>
                         <div class="col-sm-6 col-md-7" align="center">
                             <td width="60%">
-                                <input type="text" class="form-control" name="KursDönemi" />
+                                @Html.TextBoxFor(m => m.KursDönemi, new { @class = "form-control" })
                             </td>
                         </div>
                     </div>
@@ -76,14 +77,14 @@
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS GÜNÜ :</label></div>
                         <div class="col-sm-6 col-md-7" align="center">
                             <td width="60%">
-                                <input type="text" class="form-control" name="GrupGunu" />
+                                @Html.TextBoxFor(m => m.GrupGunu, new { @class = "form-control" })
                             </td>
                         </div>
                     </div>
 
                     <div class="row" style="margin-top:8px">
                         <div class="col-sm-2" align="right"><label style="margin-left:5px">KURS SAATİ :</label></div>
-                        <div class="col-sm-6 col-md-7" align="center"><input type="text" class="form-control" name="GrupSaati" /></div>
+                        <div class="col-sm-6 col-md-7" align="center">@Html.TextBoxFor(m => m.GrupSaati, new { @class = "form-control" })</div>
                     </div>
 
 
@@ -97,7 +98,7 @@
                             alert('Atölye Ekleme İşlemi Yapıldı...!');
                         });
                     </script>
-            </div>
+</div>
 
             </br>
         </div>

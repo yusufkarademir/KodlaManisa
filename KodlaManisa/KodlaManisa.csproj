@@ -2287,6 +2287,14 @@
     <Compile Include="Migrations\202002121407439_InitialCreate.designer.cs">
       <DependentUpon>202002121407439_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005022307088_CreateTblAtolyeYonlendirilenOgrencilersTable.cs" />
+    <Compile Include="Migrations\202005022307088_CreateTblAtolyeYonlendirilenOgrencilersTable.designer.cs">
+      <DependentUpon>202005022307088_CreateTblAtolyeYonlendirilenOgrencilersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005022315107_CreateOgrenciOnayColumnInTblAtolyeYonlendirilenOgrencilersTable.cs" />
+    <Compile Include="Migrations\202005022315107_CreateOgrenciOnayColumnInTblAtolyeYonlendirilenOgrencilersTable.designer.cs">
+      <DependentUpon>202005022315107_CreateOgrenciOnayColumnInTblAtolyeYonlendirilenOgrencilersTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Database\tblAtolyeFotograf.cs" />
     <Compile Include="Models\Database\tblAtolyeGelenZiyaretci.cs" />
@@ -2297,6 +2305,7 @@
     <Compile Include="Models\Database\tblAtolyeOduncVerme.cs" />
     <Compile Include="Models\Database\tblAtolyeTuru.cs" />
     <Compile Include="Models\Database\tblAtolyeYaptigiZiyaretler.cs" />
+    <Compile Include="Models\Database\tblAtolyeYonlendirilenOgrenciler.cs" />
     <Compile Include="Models\Database\tblIlceler.cs" />
     <Compile Include="Models\Database\tblOgrenciler.cs" />
     <Compile Include="Models\Database\tblOgretmenDYKBilgileri.cs" />
@@ -2377,6 +2386,7 @@
     <Content Include="Views\Atolye\KursDuzenle.cshtml" />
     <Content Include="Views\Atolye\KursEkle.cshtml" />
     <Content Include="Views\Atolye\AtolyeKurslar.cshtml" />
+    <Content Include="Views\Atolye\MalzemeEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2402,6 +2412,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002121407439_InitialCreate.resx">
       <DependentUpon>202002121407439_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005022307088_CreateTblAtolyeYonlendirilenOgrencilersTable.resx">
+      <DependentUpon>202005022307088_CreateTblAtolyeYonlendirilenOgrencilersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005022315107_CreateOgrenciOnayColumnInTblAtolyeYonlendirilenOgrencilersTable.resx">
+      <DependentUpon>202005022315107_CreateOgrenciOnayColumnInTblAtolyeYonlendirilenOgrencilersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

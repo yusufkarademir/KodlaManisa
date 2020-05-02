@@ -134,8 +134,9 @@ namespace KodlaManisa.Controllers
             vm.Malzemeler = db.tblAtolyeMalzemeler.Where(i => i.Atolye.ID == id).ToList();
             vm.Kurslar = db.tblAtolyeKurslar.Where(i => i.Atolye.ID == id).ToList();
             vm.KursOgrencileri = db.tblAtolyeKursOgrencileri.Where(i => i.AtolyeKurs.Atolye.ID== id).ToList();
+            vm.YonlendirilenOgrenciler = db.TblAtolyeYonlendirilenOgrenciler.Where(i => i.Atolye.ID == id).ToList();
             //vm.OgrenciOkul = db.tblOkulOgrenciler.Where(i=>i.Ogrenci.ID==tblAtolyeKursOgrencileri.)
-                       
+
             return View(vm);
         }
 
@@ -163,16 +164,19 @@ namespace KodlaManisa.Controllers
 
         }
 
+
+        [HttpGet]
         public ActionResult KursEkle()
         {
 
-            List<SelectListItem> atolye = (from i in db.tblAtolyeler.ToList()
+            IEnumerable<SelectListItem> atolye = (from i in db.tblAtolyeler.ToList()
                                              select new SelectListItem
                                              {
                                                  Text = i.AtolyeAdi,
                                                  Value = i.ID.ToString()
                                              }).ToList();
-            ViewBag.ogretmen = ogretmen;
+            ViewBag.atolye = atolye;
+
             List<SelectListItem> ogretmen = (from i in db.tblOgretmenler.ToList()
                                              select new SelectListItem
                                              {
@@ -188,7 +192,11 @@ namespace KodlaManisa.Controllers
         [HttpPost]
         public ActionResult KursEkle(tblAtolyeKurslar p)
         {
-           
+            //Yorum satırlarını kaldırınca hata üretiyor
+            //var ogretmen = db.tblOgretmenler.Where(m => m.ID == p.Ogretmen.ID).FirstOrDefault();
+            //var atolye = db.tblAtolyeler.Where(m => m.ID == p.Atolye.ID).FirstOrDefault();
+            //p.Ogretmen = ogretmen;
+            //p.Atolye = atolye;
             //db.tblAtolyeKurslar.Add(p);
             //db.SaveChanges();
             return RedirectToAction("KursEkle");
@@ -244,6 +252,43 @@ namespace KodlaManisa.Controllers
             
             db.SaveChanges();
             return RedirectToAction("AtolyeDetay", "Atolye");
+        }
+
+        [HttpGet]
+        public ActionResult MalzemeEkle(int id)
+        {
+            
+            List<tblAtolyeMalzemeler> malzemeler = db.tblAtolyeMalzemeler.Where(i => i.Atolye.ID == id).ToList();
+            IEnumerable<SelectListItem> atolye = (from i in db.tblAtolyeler.ToList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = i.AtolyeAdi,
+                                                      Value = i.ID.ToString()
+                                                  }).ToList();
+            ViewBag.atolye = atolye;
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MalzemeEkle(tblAtolyeMalzemeler p)
+        {
+
+            //Yorum satırlarını kaldırınca hata üretiyor
+            //var malzeme = db.tblAtolyeMalzemeler.Where(i => i.Atolye.ID == p.Atolye.ID).FirstOrDefault();
+            //var atolye = db.tblAtolyeler.Where(m => m.ID == p.Atolye.ID).FirstOrDefault();
+            //p.MalzemeAdi = malzeme.MalzemeAdi;
+            //p.MalzemeAdedi = malzeme.MalzemeAdedi;
+            //p.MalzemeDurumu = malzeme.MalzemeDurumu;
+            //p.MalzemeTeminSekli = malzeme.MalzemeTeminSekli;
+            //p.TeminTarihi = malzeme.TeminTarihi;
+            //p.Atolye = atolye;
+            //db.tblAtolyeMalzemeler.Add(p);
+            //db.SaveChanges();
+
+
+            return RedirectToAction("MalzemeEkle");
+
+           
         }
 
 

@@ -1,0 +1,82 @@
+﻿@model KodlaManisa.Models.Database.tblAtolyeMalzemeler
+
+@{
+    ViewBag.Title = "MalzemeEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="card card-gray-dark">
+
+            <div class="card-header">
+                <div style="float:right; position: relative;  top:-8px">
+                    <div class="col-sm-12 col-md-6" style="float:unset; position: relative; top: 8px">
+                        <form method="POST" action="/Atolye/MalzemeEkle/">
+                            <input type="hidden" name="islem" size="4" value="ekle">
+                            <input type="submit" class="btn btn-info btn-sm" value="MALZEME EKLE" name="B1">
+                        </form>
+                    </div>
+
+                </div>
+                <h3 class="card-title">ATÖLYE MALZEMELERİ EKLEME/DÜZENLEME </h3>
+
+            </div></br>
+            <div class="container" style="margin:auto;">
+                @using (Html.BeginForm("MalzemeEkle", "Atolye", FormMethod.Post))
+                {
+                    <div align="center">Atölye Adı, Atolye Detay sayfasında hangi atölyeden yönlendiyse o atölye ismi otomatik gelmeli...</div>
+                    <div class="row" style="margin-top:20px">
+
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">ATÖLYE ADI:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.DropDownListFor(m => m.Atolye.ID, (List<SelectListItem>)ViewBag.atolye, new { @class = "form-control" })</div>
+
+                    </div>
+
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">MALZEME ADI:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.MalzemeAdi, new { @class = "form-control" })</div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">ADEDİ:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.MalzemeAdedi, new { @class = "form-control" })</div>
+
+
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">TEMİN ŞEKLİ :</label></div>
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.MalzemeTeminSekli, new { @class = "form-control" })</div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">TEMİN TARİHİ :</label></div>
+
+                        <div class="col-sm-6 col-md-7" align="center"> @Html.TextBoxFor(m => m.TeminTarihi, new { @class = "form-control" }) </div>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <div class="col-sm-2" align="right"><label style="margin-left:5px">DURUMU:</label></div>
+                        <div class="col-sm-6 col-md-7" align="center">
+                            <td width="60%">
+                                @Html.TextBoxFor(m => m.MalzemeDurumu, new { @class = "form-control" })
+                            </td>
+                        </div>
+                    </div>
+
+
+                    @Html.HiddenFor(m => m.Atolye.ID)
+                    <div align="center" style="margin-top:15px">
+                        <button class="btn btn-info">Güncelle</button>
+                    </div>
+                }
+            </div>
+
+            </br>
+        </div>
+    </div>
+</div>
+</br>

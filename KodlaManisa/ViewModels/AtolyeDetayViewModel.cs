@@ -14,6 +14,7 @@ namespace KodlaManisa.ViewModels
         public IEnumerable<tblAtolyeMalzemeler> Malzemeler { get; set; }
         public IEnumerable<tblAtolyeKurslar> Kurslar { get; set; }
         public IEnumerable<tblAtolyeKursOgrencileri> KursOgrencileri { get; set; }
+        public IEnumerable<tblAtolyeYonlendirilenOgrenciler> YonlendirilenOgrenciler { get; set; }
         public IEnumerable<tblOkulOgretmenler> OgretmenOkul { get; set; }
         public IEnumerable<tblOkulOgrenciler> OgrenciOkul { get; set; }
         public List<tblAtolyeKursOgrencileri> Ogrenciler { get; internal set; }

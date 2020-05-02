@@ -18,6 +18,7 @@ namespace KodlaManisa.Models
         public virtual DbSet<tblAtolyeOduncVerme> tblAtolyeOduncVerme { get; set; }
         public virtual DbSet<tblAtolyeTuru> tblAtolyeTuru { get; set; }
         public virtual DbSet<tblAtolyeYaptigiZiyaretler> tblAtolyeYaptigiZiyaretler { get; set; }
+        public virtual DbSet<tblAtolyeYonlendirilenOgrenciler> TblAtolyeYonlendirilenOgrenciler { get; set; }
         public virtual DbSet<tblIlceler> tblIlceler { get; set; }
         public virtual DbSet<tblOgrenciler> tblOgrenciler { get; set; }
         public virtual DbSet<tblOgretmenDYKBilgileri> tblOgretmenDYKBilgileri { get; set; }
